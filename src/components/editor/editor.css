@@ -1,0 +1,102 @@
+/* === Editor Component Styles === */
+
+/* Cursor blinking animation */
+@keyframes cursor-blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+.vim-cursor--blink {
+  animation: cursor-blink 1s step-end infinite;
+}
+
+/* Focus glow ring */
+@keyframes focus-glow {
+  0%, 100% { box-shadow: 0 0 8px rgba(158, 206, 106, 0.4); }
+  50% { box-shadow: 0 0 16px rgba(158, 206, 106, 0.6); }
+}
+
+.vim-editor:focus-within {
+  outline: 2px solid var(--green);
+  outline-offset: -2px;
+  animation: focus-glow 2s ease-in-out infinite;
+}
+
+/* Mode-specific border accents */
+.vim-editor--normal {
+  border-color: var(--green);
+}
+
+.vim-editor--insert {
+  border-color: var(--blue);
+}
+
+.vim-editor--visual {
+  border-color: var(--purple);
+}
+
+.vim-editor--command {
+  border-color: var(--yellow);
+}
+
+/* Line number gutter */
+.vim-gutter {
+  color: var(--text-secondary);
+  user-select: none;
+  text-align: right;
+  min-width: 3ch;
+  padding-right: 1ch;
+}
+
+.vim-gutter--current {
+  color: var(--text-primary);
+}
+
+/* Visual selection highlight */
+.vim-selection {
+  background-color: rgba(187, 154, 247, 0.25);
+}
+
+/* Search match highlight */
+.vim-search-match {
+  background-color: rgba(224, 175, 104, 0.35);
+  border-radius: 2px;
+}
+
+.vim-search-match--current {
+  background-color: rgba(224, 175, 104, 0.6);
+}
+
+/* Cursor styles */
+.vim-cursor--block {
+  background-color: var(--text-primary);
+  color: var(--bg);
+  mix-blend-mode: difference;
+}
+
+.vim-cursor--bar {
+  border-left: 2px solid var(--text-primary);
+}
+
+/* StatusBar mode indicators */
+.vim-mode--normal { color: var(--green); }
+.vim-mode--insert { color: var(--blue); }
+.vim-mode--visual { color: var(--purple); }
+.vim-mode--command { color: var(--yellow); }
+
+.vim-mode-badge--normal { background-color: var(--green); }
+.vim-mode-badge--insert { background-color: var(--blue); }
+.vim-mode-badge--visual { background-color: var(--purple); }
+.vim-mode-badge--command { background-color: var(--yellow); }
+
+/* Editor line */
+.vim-line {
+  white-space: pre;
+  min-height: 1.6em;
+  line-height: 1.6;
+}
+
+/* Empty line placeholder to maintain height */
+.vim-line--empty::after {
+  content: ' ';
+}

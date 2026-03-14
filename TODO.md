@@ -140,66 +140,66 @@
 ## Phase 2：Editor UI 组件（Day 4–6）
 
 ### P2-1 useKeyCapture Hook
-- [ ] 实现 `src/hooks/useKeyCapture.ts`
-- [ ] 监听 `keydown` 事件，归一化输出：普通字符 → `a`、`/`、`:` 等；特殊键 → `<Esc>`、`<Enter>`、`<Backspace>`、`<Tab>`、`<C-r>`
-- [ ] IME 处理：`isComposing === true` 时，非 INSERT 模式忽略
-- [ ] Insert mode 允许中文 composition 提交
-- [ ] 阻止浏览器默认行为（如 `Ctrl-r` 刷新页面）
-- [ ] 编写测试：key 归一化映射 ≥10 cases
+- [x] 实现 `src/hooks/useKeyCapture.ts`
+- [x] 监听 `keydown` 事件，归一化输出：普通字符 → `a`、`/`、`:` 等；特殊键 → `<Esc>`、`<Enter>`、`<Backspace>`、`<Tab>`、`<C-r>`
+- [x] IME 处理：`isComposing === true` 时，非 INSERT 模式忽略
+- [x] Insert mode 允许中文 composition 提交
+- [x] 阻止浏览器默认行为（如 `Ctrl-r` 刷新页面）
+- [x] 编写测试：key 归一化映射 ≥10 cases
 
 ### P2-2 useVimEditor Hook
-- [ ] 实现 `src/hooks/useVimEditor.ts`
-- [ ] 接收 `initialState: EditorState`，内部管理 state
-- [ ] 暴露 `onKey(key: string)`：调用 `processKey` 并更新 state
-- [ ] 暴露只读派生值：`mode`、`lines`、`cursor`、`statusMessage`、`visualSelection`
-- [ ] 支持 `resetState(newState)` 方法（供 Lesson 切步骤使用）
+- [x] 实现 `src/hooks/useVimEditor.ts`
+- [x] 接收 `initialState: EditorState`，内部管理 state
+- [x] 暴露 `onKey(key: string)`：调用 `processKey` 并更新 state
+- [x] 暴露只读派生值：`mode`、`lines`、`cursor`、`statusMessage`、`visualSelection`
+- [x] 支持 `resetState(newState)` 方法（供 Lesson 切步骤使用）
 
 ### P2-3 EditorLine 组件
-- [ ] 实现 `src/components/editor/EditorLine.tsx`
-- [ ] 渲染单行文本 + 行号 gutter
-- [ ] 支持 Visual mode 选区高亮（根据当前行是否在选区内）
-- [ ] 搜索匹配高亮
-- [ ] 使用 `React.memo` 优化，仅在行内容/选区/搜索变化时重渲染
-- [ ] 使用 JetBrains Mono 字体，`14px`，`line-height: 1.6`
+- [x] 实现 `src/components/editor/EditorLine.tsx`
+- [x] 渲染单行文本 + 行号 gutter
+- [x] 支持 Visual mode 选区高亮（根据当前行是否在选区内）
+- [x] 搜索匹配高亮
+- [x] 使用 `React.memo` 优化，仅在行内容/选区/搜索变化时重渲染
+- [x] 使用 JetBrains Mono 字体，`14px`，`line-height: 1.6`
 
 ### P2-4 Cursor 组件
-- [ ] 实现 `src/components/editor/Cursor.tsx`
-- [ ] NORMAL mode：block cursor（覆盖字符）
-- [ ] INSERT mode：bar cursor（竖线）
-- [ ] VISUAL mode：同 NORMAL block
-- [ ] 纯 CSS 闪烁动画（1s 周期）
-- [ ] 绝对定位，根据 `cursor.line` 和 `cursor.col` 计算位置
+- [x] 实现 `src/components/editor/Cursor.tsx`
+- [x] NORMAL mode：block cursor（覆盖字符）
+- [x] INSERT mode：bar cursor（竖线）
+- [x] VISUAL mode：同 NORMAL block
+- [x] 纯 CSS 闪烁动画（1s 周期）
+- [x] 绝对定位，根据 `cursor.line` 和 `cursor.col` 计算位置
 
 ### P2-5 StatusBar 组件
-- [ ] 实现 `src/components/editor/StatusBar.tsx`
-- [ ] 左侧显示当前模式（带颜色标识：Normal=绿、Insert=蓝、Visual=紫、Command=黄）
-- [ ] 中间显示 statusMessage / commandBuffer（Command mode 时显示 `:` + buffer）
-- [ ] 右侧显示行号/列号 `Ln X, Col Y`
-- [ ] 高度 32px，固定于 editor 底部
+- [x] 实现 `src/components/editor/StatusBar.tsx`
+- [x] 左侧显示当前模式（带颜色标识：Normal=绿、Insert=蓝、Visual=紫、Command=黄）
+- [x] 中间显示 statusMessage / commandBuffer（Command mode 时显示 `:` + buffer）
+- [x] 右侧显示行号/列号 `Ln X, Col Y`
+- [x] 高度 32px，固定于 editor 底部
 
 ### P2-6 VimEditor 容器组件
-- [ ] 实现 `src/components/editor/VimEditor.tsx`
-- [ ] 渲染所有 `EditorLine` + `Cursor` + `StatusBar`
-- [ ] 容器管理焦点（click-to-focus）
-- [ ] 聚焦态绿色 glow ring
-- [ ] 将 `useKeyCapture` 绑定到容器
-- [ ] 将按键传递给 `useVimEditor.onKey`
-- [ ] 最小高度 `400px`，背景色 `#1a1b26`
+- [x] 实现 `src/components/editor/VimEditor.tsx`
+- [x] 渲染所有 `EditorLine` + `Cursor` + `StatusBar`
+- [x] 容器管理焦点（click-to-focus）
+- [x] 聚焦态绿色 glow ring
+- [x] 将 `useKeyCapture` 绑定到容器
+- [x] 将按键传递给 `useVimEditor.onKey`
+- [x] 最小高度 `400px`，背景色 `#1a1b26`
 
 ### P2-7 editor.css 样式
-- [ ] 编写 `src/components/editor/editor.css`
-- [ ] 模式对应的 border/accent 颜色
-- [ ] 光标闪烁 keyframes
-- [ ] 行号 gutter 样式
-- [ ] 搜索高亮样式
-- [ ] Visual 选区高亮样式
+- [x] 编写 `src/components/editor/editor.css`
+- [x] 模式对应的 border/accent 颜色
+- [x] 光标闪烁 keyframes
+- [x] 行号 gutter 样式
+- [x] 搜索高亮样式
+- [x] Visual 选区高亮样式
 
 ### P2-8 集成验证
-- [ ] 在 `app/page.tsx` 临时放置 `VimEditor`，传入测试文本
-- [ ] 验证：可输入 `i` 进入 INSERT，输入字符，`Esc` 回 NORMAL
-- [ ] 验证：`hjkl` 移动光标、`dd` 删行、`u` 撤销
-- [ ] 验证：`:wq` 命令模式反馈
-- [ ] 验证：Visual mode 选区高亮
+- [x] 在 `app/page.tsx` 临时放置 `VimEditor`，传入测试文本
+- [x] 验证：可输入 `i` 进入 INSERT，输入字符，`Esc` 回 NORMAL
+- [x] 验证：`hjkl` 移动光标、`dd` 删行、`u` 撤销
+- [x] 验证：`:wq` 命令模式反馈
+- [x] 验证：Visual mode 选区高亮
 
 ---
 

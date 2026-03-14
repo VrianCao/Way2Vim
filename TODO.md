@@ -44,96 +44,96 @@
 ## Phase 1：Vim Engine 核心引擎（Day 2–5）
 
 ### P1-1 类型定义
-- [ ] 编写 `src/types/vim.ts`：定义 `VimMode`、`CursorPosition`、`VisualSelection`、`EditorState`、`CommandResult`、`RegisterState`、`EditorSnapshot`、`RepeatableChange`
-- [ ] 编写 `src/types/lesson.ts`：定义 `LessonDefinition`、`LessonStep`、`ExpectedAction`、`ValidationRule`
-- [ ] 编写 `src/types/gamification.ts`：定义 `ProgressState`、`Badge` 相关类型
+- [x] 编写 `src/types/vim.ts`：定义 `VimMode`、`CursorPosition`、`VisualSelection`、`EditorState`、`CommandResult`、`RegisterState`、`EditorSnapshot`、`RepeatableChange`
+- [x] 编写 `src/types/lesson.ts`：定义 `LessonDefinition`、`LessonStep`、`ExpectedAction`、`ValidationRule`
+- [x] 编写 `src/types/gamification.ts`：定义 `ProgressState`、`Badge` 相关类型
 
 ### P1-2 Engine 主入口
-- [ ] 实现 `src/engine/VimEngine.ts`：`processKey(key: string, state: EditorState): EditorState`
-- [ ] 实现模式路由分发逻辑（根据 `state.mode` 分发到不同 handler）
-- [ ] 实现 `createInitialState(lines: string[], cursor?: CursorPosition): EditorState` 工厂函数
-- [ ] 实现 state finalization 逻辑（cursor clamp、statusMessage 清理）
-- [ ] 编写测试：模式路由分发正确性、初始状态工厂（≥5 cases）
+- [x] 实现 `src/engine/VimEngine.ts`：`processKey(key: string, state: EditorState): EditorState`
+- [x] 实现模式路由分发逻辑（根据 `state.mode` 分发到不同 handler）
+- [x] 实现 `createInitialState(lines: string[], cursor?: CursorPosition): EditorState` 工厂函数
+- [x] 实现 state finalization 逻辑（cursor clamp、statusMessage 清理）
+- [x] 编写测试：模式路由分发正确性、初始状态工厂（≥5 cases）
 
 ### P1-3 Normal Mode - 基础移动
-- [ ] 实现 `src/engine/normalMode.ts`：`handleNormalMode(key, state): EditorState`
-- [ ] 实现基础移动：`h`（左）、`l`（右）、`j`（下）、`k`（上）
-- [ ] 实现行内移动：`0`（行首）、`$`（行尾）
-- [ ] 实现文档移动：`gg`（首行）、`G`（尾行）
-- [ ] 实现词移动：`w`（词首前进）、`b`（词首后退）、`e`（词尾前进）
-- [ ] 实现字符查找：`f<char>`、`t<char>`
-- [ ] 编写测试：每个移动命令 ≥3 cases（含边界：行首、行尾、文件首尾、空行）
+- [x] 实现 `src/engine/normalMode.ts`：`handleNormalMode(key, state): EditorState`
+- [x] 实现基础移动：`h`（左）、`l`（右）、`j`（下）、`k`（上）
+- [x] 实现行内移动：`0`（行首）、`$`（行尾）
+- [x] 实现文档移动：`gg`（首行）、`G`（尾行）
+- [x] 实现词移动：`w`（词首前进）、`b`（词首后退）、`e`（词尾前进）
+- [x] 实现字符查找：`f<char>`、`t<char>`
+- [x] 编写测试：每个移动命令 ≥3 cases（含边界：行首、行尾、文件首尾、空行）
 
 ### P1-4 Motion Parser 状态机
-- [ ] 实现 `src/engine/motionParser.ts`：解析 count + operator + motion 组合
-- [ ] 支持 parser 状态：`IDLE` → `COUNT_PENDING` → `OPERATOR_PENDING` → `EXECUTE`
-- [ ] 支持 count prefix（如 `3j`、`2w`、`5dd`）
-- [ ] 支持 operator + motion（如 `dw`、`d$`、`cw`、`yw`）
-- [ ] 支持 operator double（如 `dd`、`cc`、`yy` 为行级操作）
-- [ ] 支持 count + operator + motion（如 `2dw`、`d2w`）
-- [ ] 编写测试：各组合解析正确性 ≥15 cases
+- [x] 实现 `src/engine/motionParser.ts`：解析 count + operator + motion 组合
+- [x] 支持 parser 状态：`IDLE` → `COUNT_PENDING` → `OPERATOR_PENDING` → `EXECUTE`
+- [x] 支持 count prefix（如 `3j`、`2w`、`5dd`）
+- [x] 支持 operator + motion（如 `dw`、`d$`、`cw`、`yw`）
+- [x] 支持 operator double（如 `dd`、`cc`、`yy` 为行级操作）
+- [x] 支持 count + operator + motion（如 `2dw`、`d2w`）
+- [x] 编写测试：各组合解析正确性 ≥15 cases
 
 ### P1-5 Normal Mode - 编辑操作
-- [ ] 实现删除：`x`（删当前字符）、`X`（删前一字符）、`dd`（删整行）、`dw`（删词）、`d$`（删到行尾）
-- [ ] 实现修改：`cc`（改整行）、`cw`（改词）、`c$`（改到行尾）—— 删除后自动切 INSERT
-- [ ] 实现复制：`yy`（复制整行）、`yw`（复制词）、`y$`（复制到行尾）
-- [ ] 实现粘贴：`p`（光标后粘贴）、`P`（光标前粘贴），区分行级/字符级
-- [ ] 实现其他：`r<char>`（替换字符）、`J`（合并行）、`.`（重复上次修改）
-- [ ] 编写测试：每个编辑命令 ≥3 cases（含空行、单字符行、多行操作）
+- [x] 实现删除：`x`（删当前字符）、`X`（删前一字符）、`dd`（删整行）、`dw`（删词）、`d$`（删到行尾）
+- [x] 实现修改：`cc`（改整行）、`cw`（改词）、`c$`（改到行尾）—— 删除后自动切 INSERT
+- [x] 实现复制：`yy`（复制整行）、`yw`（复制词）、`y$`（复制到行尾）
+- [x] 实现粘贴：`p`（光标后粘贴）、`P`（光标前粘贴），区分行级/字符级
+- [x] 实现其他：`r<char>`（替换字符）、`J`（合并行）、`.`（重复上次修改）
+- [x] 编写测试：每个编辑命令 ≥3 cases（含空行、单字符行、多行操作）
 
 ### P1-6 Register 系统
-- [ ] 实现 `src/engine/registers.ts`：`RegisterState` 管理
-- [ ] 实现未命名寄存器 `"`：记录最近一次 yank/delete/change
-- [ ] 实现 `0` 寄存器：仅记录最近一次 yank
-- [ ] 预留命名寄存器 `a-z` 接口（MVP 不暴露 UI）
-- [ ] 编写测试：yank/delete 后寄存器内容正确 ≥8 cases
+- [x] 实现 `src/engine/registers.ts`：`RegisterState` 管理
+- [x] 实现未命名寄存器 `"`：记录最近一次 yank/delete/change
+- [x] 实现 `0` 寄存器：仅记录最近一次 yank
+- [x] 预留命名寄存器 `a-z` 接口（MVP 不暴露 UI）
+- [x] 编写测试：yank/delete 后寄存器内容正确 ≥8 cases
 
 ### P1-7 Undo/Redo
-- [ ] 实现 undo（`u`）：从 `history` 栈弹出快照，当前状态推入 `future`
-- [ ] 实现 redo（`Ctrl-r`）：从 `future` 栈弹出快照，当前状态推入 `history`
-- [ ] 确定快照点策略（每次可变更操作生成 snapshot）
-- [ ] 编写测试：undo/redo 链式操作、边界（空栈）≥8 cases
+- [x] 实现 undo（`u`）：从 `history` 栈弹出快照，当前状态推入 `future`
+- [x] 实现 redo（`Ctrl-r`）：从 `future` 栈弹出快照，当前状态推入 `history`
+- [x] 确定快照点策略（每次可变更操作生成 snapshot）
+- [x] 编写测试：undo/redo 链式操作、边界（空栈）≥8 cases
 
 ### P1-8 Insert Mode
-- [ ] 实现 `src/engine/insertMode.ts`：`handleInsertMode(key, state): EditorState`
-- [ ] 支持可见字符直接插入
-- [ ] 支持 `Enter`：拆分当前行
-- [ ] 支持 `Backspace`：删除前一字符，跨行合并
-- [ ] 支持 `Tab`：插入空格（默认 2）
-- [ ] 支持 `Escape`：切回 NORMAL，光标左移一格（不超出行首）
-- [ ] 实现模式切换入口：`i`/`I`/`a`/`A`/`o`/`O` 各自的光标定位逻辑
-- [ ] 编写测试：插入、删除、换行、退出 ≥12 cases
+- [x] 实现 `src/engine/insertMode.ts`：`handleInsertMode(key, state): EditorState`
+- [x] 支持可见字符直接插入
+- [x] 支持 `Enter`：拆分当前行
+- [x] 支持 `Backspace`：删除前一字符，跨行合并
+- [x] 支持 `Tab`：插入空格（默认 2）
+- [x] 支持 `Escape`：切回 NORMAL，光标左移一格（不超出行首）
+- [x] 实现模式切换入口：`i`/`I`/`a`/`A`/`o`/`O` 各自的光标定位逻辑
+- [x] 编写测试：插入、删除、换行、退出 ≥12 cases
 
 ### P1-9 Visual Mode
-- [ ] 实现 `src/engine/visualMode.ts`：`handleVisualMode(key, state): EditorState`
-- [ ] `v` 进入字符选择模式，`V` 进入行选择模式
-- [ ] 移动命令扩展/收缩选区（`h j k l w b e 0 $`）
-- [ ] 选区操作：`d`（删除）、`y`（复制）、`c`（修改）—— 执行后回 NORMAL
-- [ ] `Escape` 退出 Visual，清除选区
-- [ ] 编写测试：选区边界计算、跨行选区操作 ≥10 cases
+- [x] 实现 `src/engine/visualMode.ts`：`handleVisualMode(key, state): EditorState`
+- [x] `v` 进入字符选择模式，`V` 进入行选择模式
+- [x] 移动命令扩展/收缩选区（`h j k l w b e 0 $`）
+- [x] 选区操作：`d`（删除）、`y`（复制）、`c`（修改）—— 执行后回 NORMAL
+- [x] `Escape` 退出 Visual，清除选区
+- [x] 编写测试：选区边界计算、跨行选区操作 ≥10 cases
 
 ### P1-10 Command Mode
-- [ ] 实现 `src/engine/commandMode.ts`：`handleCommandMode(key, state): EditorState`
-- [ ] `:`  从 NORMAL 进入 COMMAND mode，初始化 `commandBuffer`
-- [ ] 支持字符输入追加到 `commandBuffer`
-- [ ] `Enter` 执行命令并回到 NORMAL
-- [ ] `Escape` 取消命令回到 NORMAL
-- [ ] `Backspace` 删除 buffer 末位字符，空 buffer 时退回 NORMAL
-- [ ] 实现 `:w`（模拟保存，statusMessage 反馈）
-- [ ] 实现 `:q`（检查 dirty flag，决定是否允许退出）
-- [ ] 实现 `:wq`（保存+退出）
-- [ ] 实现 `:q!`（强制退出）
-- [ ] 实现 `:<number>`（行跳转）
-- [ ] 实现 `:s/pat/rep/g`（当前行替换，支持 `/g` 标志）
-- [ ] 编写测试：每个命令 ≥2 cases + 边界处理
+- [x] 实现 `src/engine/commandMode.ts`：`handleCommandMode(key, state): EditorState`
+- [x] `:`  从 NORMAL 进入 COMMAND mode，初始化 `commandBuffer`
+- [x] 支持字符输入追加到 `commandBuffer`
+- [x] `Enter` 执行命令并回到 NORMAL
+- [x] `Escape` 取消命令回到 NORMAL
+- [x] `Backspace` 删除 buffer 末位字符，空 buffer 时退回 NORMAL
+- [x] 实现 `:w`（模拟保存，statusMessage 反馈）
+- [x] 实现 `:q`（检查 dirty flag，决定是否允许退出）
+- [x] 实现 `:wq`（保存+退出）
+- [x] 实现 `:q!`（强制退出）
+- [x] 实现 `:<number>`（行跳转）
+- [x] 实现 `:s/pat/rep/g`（当前行替换，支持 `/g` 标志）
+- [x] 编写测试：每个命令 ≥2 cases + 边界处理
 
 ### P1-11 搜索功能
-- [ ] 实现 `/` 进入搜索输入（复用或扩展 COMMAND mode 逻辑）
-- [ ] `Enter` 确认搜索，高亮所有匹配，光标跳到第一个匹配
-- [ ] `n` 跳到下一个匹配
-- [ ] `N` 跳到上一个匹配
-- [ ] 无匹配时 statusMessage 提示 `Pattern not found`
-- [ ] 编写测试：搜索匹配、循环跳转、无匹配 ≥6 cases
+- [x] 实现 `/` 进入搜索输入（复用或扩展 COMMAND mode 逻辑）
+- [x] `Enter` 确认搜索，高亮所有匹配，光标跳到第一个匹配
+- [x] `n` 跳到下一个匹配
+- [x] `N` 跳到上一个匹配
+- [x] 无匹配时 statusMessage 提示 `Pattern not found`
+- [x] 编写测试：搜索匹配、循环跳转、无匹配 ≥6 cases
 
 ---
 

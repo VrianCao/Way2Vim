@@ -1,0 +1,47 @@
+@import "tailwindcss";
+
+/* === Tokyo Night Inspired Color Palette === */
+:root {
+  --bg: #1a1b26;
+  --surface: #24283b;
+  --surface-hover: #414868;
+  --text-primary: #c0caf5;
+  --text-secondary: #565f89;
+  --green: #9ece6a;
+  --blue: #7aa2f7;
+  --purple: #bb9af7;
+  --yellow: #e0af68;
+  --red: #f7768e;
+  --orange: #ff9e64;
+  --cyan: #7dcfff;
+}
+
+@theme inline {
+  --color-background: var(--bg);
+  --color-foreground: var(--text-primary);
+  --color-surface: var(--surface);
+  --color-surface-hover: var(--surface-hover);
+  --color-text-primary: var(--text-primary);
+  --color-text-secondary: var(--text-secondary);
+  --color-tn-green: var(--green);
+  --color-tn-blue: var(--blue);
+  --color-tn-purple: var(--purple);
+  --color-tn-yellow: var(--yellow);
+  --color-tn-red: var(--red);
+  --color-tn-orange: var(--orange);
+  --color-tn-cyan: var(--cyan);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-jetbrains-mono);
+}
+
+body {
+  background: var(--bg);
+  color: var(--text-primary);
+  font-family: var(--font-sans), Arial, Helvetica, sans-serif;
+}
+
+/* Selection styling */
+::selection {
+  background: var(--surface-hover);
+  color: var(--text-primary);
+}

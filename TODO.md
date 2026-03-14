@@ -9,35 +9,35 @@
 ## Phase 0：项目脚手架（Day 1）
 
 ### P0-1 项目初始化
-- [ ] 使用 `create-next-app` 初始化项目（TypeScript + App Router + Tailwind CSS 4）
-- [ ] 确认 `tsconfig.json` 开启 `strict: true`
-- [ ] 配置 ESLint（Next.js 默认规则 + 自定义 strict rules）
-- [ ] 可选：配置 Prettier
+- [x] 使用 `create-next-app` 初始化项目（TypeScript + App Router + Tailwind CSS 4）
+- [x] 确认 `tsconfig.json` 开启 `strict: true`
+- [x] 配置 ESLint（Next.js 默认规则 + 自定义 strict rules）
+- [x] 可选：配置 Prettier
 
 ### P0-2 依赖安装
-- [ ] 安装 Zustand（`zustand`）
-- [ ] 安装 Framer Motion（`framer-motion`）
-- [ ] 安装 Lucide React（`lucide-react`）
-- [ ] 安装 Vitest + @testing-library/react + jsdom（`vitest @testing-library/react jsdom`）
-- [ ] 配置 `vitest.config.ts`（支持 TypeScript + path alias + jsdom 环境）
+- [x] 安装 Zustand（`zustand`）
+- [x] 安装 Framer Motion（`framer-motion`）
+- [x] 安装 Lucide React（`lucide-react`）
+- [x] 安装 Vitest + @testing-library/react + jsdom（`vitest @testing-library/react jsdom`）
+- [x] 配置 `vitest.config.ts`（支持 TypeScript + path alias + jsdom 环境）
 
 ### P0-3 目录结构搭建
-- [ ] 创建 `src/engine/` 及 `__tests__/` 子目录
-- [ ] 创建 `src/components/layout/`、`src/components/editor/`、`src/components/lesson/`、`src/components/gamification/`
-- [ ] 创建 `src/lessons/data/`
-- [ ] 创建 `src/store/`
-- [ ] 创建 `src/hooks/`
-- [ ] 创建 `src/types/`
-- [ ] 创建 `src/utils/`
-- [ ] 在各目录下建占位 `index.ts` 文件
+- [x] 创建 `src/engine/` 及 `__tests__/` 子目录
+- [x] 创建 `src/components/layout/`、`src/components/editor/`、`src/components/lesson/`、`src/components/gamification/`
+- [x] 创建 `src/lessons/data/`
+- [x] 创建 `src/store/`
+- [x] 创建 `src/hooks/`
+- [x] 创建 `src/types/`
+- [x] 创建 `src/utils/`
+- [x] 在各目录下建占位 `index.ts` 文件
 
 ### P0-4 基础配置
-- [ ] 配置 Tailwind 主题色板（Tokyo Night 色系，见 Plan §12.1）
-- [ ] 引入 JetBrains Mono 字体（`public/fonts/` 或 Google Fonts / next/font）
-- [ ] 配置全局 CSS 变量（背景色、Surface、文本色等）
-- [ ] 验证 `npm run dev` 能正常启动空白页面
-- [ ] 验证 `npm run build` 零错误
-- [ ] 验证 `npx vitest run` 能执行（即使无测试用例）
+- [x] 配置 Tailwind 主题色板（Tokyo Night 色系，见 Plan §12.1）
+- [x] 引入 JetBrains Mono 字体（`public/fonts/` 或 Google Fonts / next/font）
+- [x] 配置全局 CSS 变量（背景色、Surface、文本色等）
+- [x] 验证 `npm run dev` 能正常启动空白页面
+- [x] 验证 `npm run build` 零错误
+- [x] 验证 `npx vitest run` 能执行（即使无测试用例）
 
 ---
 

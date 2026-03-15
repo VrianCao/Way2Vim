@@ -1,13 +1,20 @@
 /* === Editor Component Styles === */
 
-/* Cursor blinking animation */
-@keyframes cursor-blink {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0; }
+/* Cursor blinking animations (inline on character spans) */
+@keyframes cursor-block-blink {
+  0%, 100% {
+    background-color: var(--text-primary);
+    color: var(--bg);
+  }
+  50% {
+    background-color: transparent;
+    color: inherit;
+  }
 }
 
-.vim-cursor--blink {
-  animation: cursor-blink 1s step-end infinite;
+@keyframes cursor-bar-blink {
+  0%, 100% { border-left-color: var(--text-primary); }
+  50% { border-left-color: transparent; }
 }
 
 /* Focus glow ring */
@@ -67,15 +74,22 @@
   background-color: rgba(224, 175, 104, 0.6);
 }
 
-/* Cursor styles */
+/* Cursor styles — placed after selection/search so they take precedence */
 .vim-cursor--block {
   background-color: var(--text-primary);
   color: var(--bg);
-  mix-blend-mode: difference;
+}
+
+.vim-cursor--block.vim-cursor--blink {
+  animation: cursor-block-blink 1s step-end infinite;
 }
 
 .vim-cursor--bar {
   border-left: 2px solid var(--text-primary);
+}
+
+.vim-cursor--bar.vim-cursor--blink {
+  animation: cursor-bar-blink 1s step-end infinite;
 }
 
 /* StatusBar mode indicators */

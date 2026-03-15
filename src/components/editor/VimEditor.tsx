@@ -5,7 +5,6 @@ import type { EditorState } from '@/types/vim';
 import { useKeyCapture } from '@/hooks/useKeyCapture';
 import { useVimEditor } from '@/hooks/useVimEditor';
 import EditorLine from './EditorLine';
-import Cursor from './Cursor';
 import StatusBar from './StatusBar';
 import './editor.css';
 
@@ -16,9 +15,6 @@ interface VimEditorProps {
   /** External control: reset the editor state */
   externalState?: EditorState;
 }
-
-// Gutter width in characters
-const GUTTER_CHARS = 3;
 
 export default function VimEditor({
   initialState,
@@ -70,6 +66,8 @@ export default function VimEditor({
           ? 'vim-editor--visual'
           : 'vim-editor--command';
 
+  const isBlockCursor = mode === 'NORMAL' || mode === 'VISUAL';
+
   return (
     <div
       ref={containerRef}
@@ -88,29 +86,22 @@ export default function VimEditor({
     >
       {/* Editor content area */}
       <div className="p-2" style={{ minHeight: 'calc(400px - 32px)' }}>
-        <div className="relative">
-          {/* Cursor layer */}
-          <Cursor
-            cursor={cursor}
-            mode={mode}
-            isFocused={isFocused}
-            gutterChars={GUTTER_CHARS}
-            lineContent={lines[cursor.line] || ''}
-          />
-
-          {/* Lines */}
-          {lines.map((line, idx) => (
+        {lines.map((line, idx) => {
+          const isCursorLine = idx === cursor.line;
+          return (
             <EditorLine
               key={idx}
               lineIndex={idx}
               content={line}
-              isCurrentLine={idx === cursor.line}
+              isCurrentLine={isCursorLine}
               visualSelection={visualSelection}
               searchMatches={searchMatches}
-              cursor={cursor}
+              cursorCol={isCursorLine && mode !== 'COMMAND' ? cursor.col : -1}
+              cursorBlock={isCursorLine ? isBlockCursor : false}
+              cursorBlink={isCursorLine ? isFocused : false}
             />
-          ))}
-        </div>
+          );
+        })}
       </div>
 
       {/* Status bar */}

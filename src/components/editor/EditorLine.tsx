@@ -9,7 +9,12 @@ interface EditorLineProps {
   isCurrentLine: boolean;
   visualSelection?: VisualSelection;
   searchMatches?: CursorPosition[];
-  cursor?: CursorPosition;
+  /** Cursor column on this line, -1 if cursor is not on this line */
+  cursorCol: number;
+  /** true for block cursor (NORMAL/VISUAL), false for bar (INSERT) */
+  cursorBlock: boolean;
+  /** true when editor is focused (enables blink animation) */
+  cursorBlink: boolean;
 }
 
 /**
@@ -71,6 +76,9 @@ const EditorLine = React.memo(function EditorLine({
   isCurrentLine,
   visualSelection,
   searchMatches,
+  cursorCol,
+  cursorBlock,
+  cursorBlink,
 }: EditorLineProps) {
   const gutterWidth = 3;
 
@@ -94,21 +102,27 @@ const EditorLine = React.memo(function EditorLine({
         {chars.map((char, col) => {
           const selected = isInSelection(lineIndex, col, visualSelection);
           const matched = isSearchMatch(lineIndex, col, searchMatches);
+          const isCursor = cursorCol >= 0 && col === cursorCol;
 
           let className = '';
+          if (isCursor && cursorBlock) className += ' vim-cursor--block';
+          if (isCursor && !cursorBlock) className += ' vim-cursor--bar';
+          if (isCursor && cursorBlink) className += ' vim-cursor--blink';
           if (selected) className += ' vim-selection';
           if (matched) className += ' vim-search-match';
 
-          if (className) {
-            return (
-              <span key={col} className={className.trim()}>
-                {char}
-              </span>
-            );
-          }
-
-          return <span key={col}>{char}</span>;
+          return (
+            <span key={col} className={className ? className.trim() : undefined}>
+              {char}
+            </span>
+          );
         })}
+        {/* INSERT cursor past end of line */}
+        {cursorCol >= chars.length && !cursorBlock && (
+          <span className={`vim-cursor--bar${cursorBlink ? ' vim-cursor--blink' : ''}`}>
+            {'\u00A0'}
+          </span>
+        )}
       </span>
     </div>
   );

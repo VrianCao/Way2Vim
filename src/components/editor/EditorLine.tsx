@@ -78,10 +78,10 @@ const EditorLine = React.memo(function EditorLine({
   const chars = content.length === 0 ? [' '] : content.split('');
 
   return (
-    <div className="flex vim-line" data-line={lineIndex}>
+    <div className="flex vim-line font-mono text-sm" data-line={lineIndex}>
       {/* Gutter */}
       <span
-        className={`vim-gutter font-mono text-sm flex-shrink-0 ${
+        className={`vim-gutter flex-shrink-0 ${
           isCurrentLine ? 'vim-gutter--current' : ''
         }`}
         style={{ minWidth: `${gutterWidth}ch`, paddingRight: '1ch' }}
@@ -90,7 +90,7 @@ const EditorLine = React.memo(function EditorLine({
       </span>
 
       {/* Line content */}
-      <span className="font-mono text-sm flex-1">
+      <span className="flex-1">
         {chars.map((char, col) => {
           const selected = isInSelection(lineIndex, col, visualSelection);
           const matched = isSearchMatch(lineIndex, col, searchMatches);

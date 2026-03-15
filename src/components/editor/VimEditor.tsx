@@ -17,9 +17,7 @@ interface VimEditorProps {
   externalState?: EditorState;
 }
 
-// Monospace char measurement constants
-const CHAR_WIDTH_PX = 8.4; // approximate for JetBrains Mono 14px
-const LINE_HEIGHT_PX = 22.4; // 14px * 1.6 line-height
+// Gutter width in characters
 const GUTTER_CHARS = 3;
 
 export default function VimEditor({
@@ -30,9 +28,6 @@ export default function VimEditor({
   const { state, mode, lines, cursor, statusMessage, commandBuffer, visualSelection, searchMatches, onKey, resetState } =
     useVimEditor(initialState);
   const [isFocused, setIsFocused] = useState(false);
-  const measureRef = useRef<HTMLSpanElement>(null);
-  const [charWidth, setCharWidth] = useState(CHAR_WIDTH_PX);
-  const [lineHeight, setLineHeight] = useState(LINE_HEIGHT_PX);
 
   // Handle external state resets (e.g., lesson step changes)
   useEffect(() => {
@@ -59,15 +54,6 @@ export default function VimEditor({
     }
     prevStateRef.current = state;
   }, [state, onStateChange]);
-
-  // Measure actual character dimensions after mount
-  useEffect(() => {
-    if (measureRef.current) {
-      const rect = measureRef.current.getBoundingClientRect();
-      if (rect.width > 0) setCharWidth(rect.width);
-      if (rect.height > 0) setLineHeight(rect.height);
-    }
-  }, []);
 
   const containerRef = useKeyCapture({
     mode,
@@ -100,40 +86,30 @@ export default function VimEditor({
       aria-label="Vim 编辑器"
       aria-roledescription="Vim editor"
     >
-      {/* Hidden measurement span */}
-      <span
-        ref={measureRef}
-        className="font-mono text-sm absolute opacity-0 pointer-events-none whitespace-pre"
-        style={{ lineHeight: '1.6' }}
-        aria-hidden="true"
-      >
-        M
-      </span>
-
       {/* Editor content area */}
-      <div className="relative p-2" style={{ minHeight: 'calc(400px - 32px)' }}>
-        {/* Cursor layer */}
-        <Cursor
-          cursor={cursor}
-          mode={mode}
-          isFocused={isFocused}
-          charWidth={charWidth}
-          lineHeight={lineHeight}
-          gutterChars={GUTTER_CHARS}
-        />
-
-        {/* Lines */}
-        {lines.map((line, idx) => (
-          <EditorLine
-            key={idx}
-            lineIndex={idx}
-            content={line}
-            isCurrentLine={idx === cursor.line}
-            visualSelection={visualSelection}
-            searchMatches={searchMatches}
+      <div className="p-2" style={{ minHeight: 'calc(400px - 32px)' }}>
+        <div className="relative">
+          {/* Cursor layer */}
+          <Cursor
             cursor={cursor}
+            mode={mode}
+            isFocused={isFocused}
+            gutterChars={GUTTER_CHARS}
           />
-        ))}
+
+          {/* Lines */}
+          {lines.map((line, idx) => (
+            <EditorLine
+              key={idx}
+              lineIndex={idx}
+              content={line}
+              isCurrentLine={idx === cursor.line}
+              visualSelection={visualSelection}
+              searchMatches={searchMatches}
+              cursor={cursor}
+            />
+          ))}
+        </div>
       </div>
 
       {/* Status bar */}

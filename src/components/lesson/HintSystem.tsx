@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect, useCallback } from 'react';
 import { Lightbulb } from 'lucide-react';
+import { useTranslations } from 'next-intl';
 
 interface HintSystemProps {
   hint?: string;
@@ -20,6 +21,7 @@ export default function HintSystem({
   showButtonDelay = 10,
   autoRevealDelay = 30,
 }: HintSystemProps) {
+  const t = useTranslations('lessonPlayer');
   const [showButton, setShowButton] = useState(false);
   const [revealed, setRevealed] = useState(false);
 
@@ -60,7 +62,7 @@ export default function HintSystem({
           }}
         >
           <Lightbulb size={12} />
-          需要提示吗？
+          {t('needHint')}
         </button>
       )}
 

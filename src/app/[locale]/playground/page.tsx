@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { RotateCcw } from 'lucide-react';
+import { useTranslations } from 'next-intl';
 import VimEditor from '@/components/editor/VimEditor';
 import { createInitialState } from '@/engine';
 import PageTransition from '@/components/layout/PageTransition';
@@ -29,6 +30,7 @@ const defaultText = [
 ];
 
 export default function PlaygroundPage() {
+  const t = useTranslations('playground');
   const [resetKey, setResetKey] = useState(0);
 
   return (
@@ -37,10 +39,10 @@ export default function PlaygroundPage() {
       <div className="flex items-center justify-between mb-4">
         <div>
           <h1 className="text-2xl font-bold" style={{ color: 'var(--text-primary)' }}>
-            练习场
+            {t('title')}
           </h1>
           <p className="text-sm mt-1" style={{ color: 'var(--text-secondary)' }}>
-            自由练习 Vim 命令，无课程限制
+            {t('subtitle')}
           </p>
         </div>
         <button
@@ -51,10 +53,10 @@ export default function PlaygroundPage() {
             color: 'var(--text-secondary)',
             border: '1px solid var(--surface-hover)',
           }}
-          aria-label="重置编辑器内容"
+          aria-label={t('reset')}
         >
           <RotateCcw size={14} />
-          重置
+          {t('reset')}
         </button>
       </div>
 

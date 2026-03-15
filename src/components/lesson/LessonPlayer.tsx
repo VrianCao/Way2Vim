@@ -3,6 +3,7 @@
 import React, { useState, useCallback, useRef, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Trophy } from 'lucide-react';
+import { useTranslations } from 'next-intl';
 import type { LessonDefinition } from '@/types/lesson';
 import type { EditorState } from '@/types/vim';
 import { createInitialState } from '@/engine/VimEngine';
@@ -34,6 +35,7 @@ export default function LessonPlayer({
   onComplete,
   onExit,
 }: LessonPlayerProps) {
+  const t = useTranslations('lessonPlayer');
   const [stepIndex, setStepIndex] = useState(0);
   const [completedSteps, setCompletedSteps] = useState<boolean[]>(
     () => new Array(lesson.steps.length).fill(false),
@@ -141,11 +143,11 @@ export default function LessonPlayer({
           </motion.div>
 
           <h2 className="text-xl font-bold" style={{ color: 'var(--text-primary)' }}>
-            课程完成！
+            {t('lessonComplete')}
           </h2>
 
           <p className="text-sm" style={{ color: 'var(--text-secondary)' }}>
-            你完成了「{lesson.title}」的 {completedCount}/{totalSteps} 个步骤。
+            {t('completedSteps', { title: lesson.title, completed: completedCount, total: totalSteps })}
           </p>
 
           <div className="flex gap-3">
@@ -158,7 +160,7 @@ export default function LessonPlayer({
                 border: '1px solid var(--surface-hover)',
               }}
             >
-              重新学习
+              {t('restart')}
             </button>
             <button
               onClick={handleExit}
@@ -168,7 +170,7 @@ export default function LessonPlayer({
                 color: 'var(--bg)',
               }}
             >
-              返回课程列表
+              {t('backToList')}
             </button>
           </div>
         </motion.div>

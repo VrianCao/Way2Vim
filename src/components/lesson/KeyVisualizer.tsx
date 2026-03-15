@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useTranslations } from 'next-intl';
 
 interface KeyVisualizerProps {
   keys: string[];
@@ -21,12 +22,13 @@ function formatKeyLabel(key: string): string {
 }
 
 export default function KeyVisualizer({ keys, maxDisplay = 8 }: KeyVisualizerProps) {
+  const t = useTranslations('lessonPlayer');
   const visible = keys.slice(-maxDisplay);
 
   return (
     <div className="flex items-center gap-1.5 px-5 py-2 min-h-[36px] flex-wrap">
       <span className="text-xs mr-1" style={{ color: 'var(--text-secondary)' }}>
-        按键:
+        {t('keys')}:
       </span>
       <AnimatePresence mode="popLayout">
         {visible.map((key, i) => {

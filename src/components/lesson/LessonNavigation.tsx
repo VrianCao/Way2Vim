@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { ChevronLeft, ChevronRight, RotateCcw, ArrowLeft } from 'lucide-react';
+import { useTranslations } from 'next-intl';
 
 interface LessonNavigationProps {
   stepIndex: number;
@@ -24,11 +25,12 @@ export default function LessonNavigation({
   onExit,
   canGoNext,
 }: LessonNavigationProps) {
+  const t = useTranslations('lessonPlayer');
   return (
     <nav
       className="flex items-center justify-between px-5 py-3 border-t"
       style={{ borderColor: 'var(--surface-hover)' }}
-      aria-label="课程导航"
+      aria-label={t('step')}
     >
       {/* Left actions */}
       <div className="flex items-center gap-2">
@@ -36,24 +38,24 @@ export default function LessonNavigation({
           onClick={onExit}
           className="flex items-center gap-1 text-xs px-2 py-1 rounded transition-colors cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-green-400"
           style={{ color: 'var(--text-secondary)' }}
-          aria-label="退出课程"
+          aria-label={t('exit')}
         >
           <ArrowLeft size={14} />
-          退出
+          {t('exit')}
         </button>
         <button
           onClick={onRestart}
           className="flex items-center gap-1 text-xs px-2 py-1 rounded transition-colors cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-green-400"
           style={{ color: 'var(--text-secondary)' }}
-          aria-label="重新开始课程"
+          aria-label={t('restart')}
         >
           <RotateCcw size={14} />
-          重来
+          {t('restartShort')}
         </button>
       </div>
 
       {/* Dot indicators */}
-      <div className="flex items-center gap-1.5" role="progressbar" aria-valuenow={stepIndex + 1} aria-valuemin={1} aria-valuemax={totalSteps} aria-label={`步骤 ${stepIndex + 1} / ${totalSteps}`}>
+      <div className="flex items-center gap-1.5" role="progressbar" aria-valuenow={stepIndex + 1} aria-valuemin={1} aria-valuemax={totalSteps} aria-label={`${t('step')} ${stepIndex + 1} / ${totalSteps}`}>
         {Array.from({ length: totalSteps }, (_, i) => (
           <div
             key={i}
@@ -78,19 +80,19 @@ export default function LessonNavigation({
           disabled={stepIndex === 0}
           className="flex items-center gap-1 text-xs px-2 py-1 rounded transition-colors cursor-pointer disabled:opacity-30 disabled:cursor-not-allowed focus:outline-none focus-visible:ring-2 focus-visible:ring-green-400"
           style={{ color: 'var(--text-secondary)' }}
-          aria-label="上一步"
+          aria-label={t('prevStep')}
         >
           <ChevronLeft size={14} />
-          上一步
+          {t('prevStep')}
         </button>
         <button
           onClick={onNext}
           disabled={!canGoNext}
           className="flex items-center gap-1 text-xs px-2 py-1 rounded transition-colors cursor-pointer disabled:opacity-30 disabled:cursor-not-allowed focus:outline-none focus-visible:ring-2 focus-visible:ring-green-400"
           style={{ color: 'var(--cyan)' }}
-          aria-label="下一步"
+          aria-label={t('nextStep')}
         >
-          下一步
+          {t('nextStep')}
           <ChevronRight size={14} />
         </button>
       </div>

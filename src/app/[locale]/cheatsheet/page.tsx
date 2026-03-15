@@ -1,13 +1,13 @@
 import type { Metadata } from 'next';
+import { getTranslations } from 'next-intl/server';
 
-export const metadata: Metadata = {
-  title: 'Vim 速查表',
-  description: 'Vim 常用命令速查参考表。涵盖移动、编辑、搜索、模式切换等全部 Way2Vim 支持的命令。',
-  openGraph: {
-    title: 'Vim 速查表 - Way2Vim',
-    description: 'Vim 常用命令速查参考表，涵盖全部 Way2Vim 支持的命令。',
-  },
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getTranslations('cheatsheet');
+  return {
+    title: t('title'),
+    description: t('subtitle'),
+  };
+}
 
 interface CommandEntry {
   key: string;
@@ -126,15 +126,16 @@ const sections: CommandSection[] = [
   },
 ];
 
-export default function CheatsheetPage() {
+export default async function CheatsheetPage() {
+  const t = await getTranslations('cheatsheet');
   return (
     <div className="max-w-5xl mx-auto px-4 py-10">
       <div className="mb-8">
         <h1 className="text-2xl font-bold mb-2" style={{ color: 'var(--text-primary)' }}>
-          Vim 速查表
+          {t('title')}
         </h1>
         <p className="text-sm" style={{ color: 'var(--text-secondary)' }}>
-          Way2Vim 支持的所有命令参考
+          {t('subtitle')}
         </p>
       </div>
 

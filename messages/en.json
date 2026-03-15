@@ -1,0 +1,140 @@
+{
+  "metadata": {
+    "title": "Way2Vim - Interactive Vim Learning Platform",
+    "description": "Learn Vim editor's core operations and mindset from scratch through interactive browser-based lessons. 12 progressive courses with instant feedback, free and open source."
+  },
+  "common": {
+    "appName": "Way2Vim",
+    "tagline": "Interactive Vim Learning Platform"
+  },
+  "nav": {
+    "lessons": "Lessons",
+    "playground": "Playground",
+    "cheatsheet": "Cheatsheet"
+  },
+  "landing": {
+    "heroTitle": "The Best Way to Master Vim",
+    "heroSubtitle": "Learn Vim editor's core operations and mindset from scratch through interactive lessons and browser-based simulator.",
+    "startLearning": "Start Learning",
+    "freePractice": "Free Practice",
+    "demoPrompt": "Try it out — Click the editor below to start",
+    "featuresTitle": "Why Choose Way2Vim?",
+    "feature1Title": "12 Interactive Lessons",
+    "feature1Desc": "From basics to compound commands, progressively master Vim core operations",
+    "feature2Title": "Instant Validation",
+    "feature2Desc": "Clear goals and real-time feedback for every step, supporting multiple correct paths",
+    "feature3Title": "Browser-Based Simulator",
+    "feature3Desc": "No installation needed, pure browser-based Vim editor, practice anywhere",
+    "feature4Title": "Progress & Badges",
+    "feature4Desc": "Track learning days, completion progress, and achievement badges to stay motivated",
+    "ctaTitle": "Ready to Start?",
+    "ctaSubtitle": "12 lessons, from zero to hero, master Vim easily.",
+    "ctaButton": "Start First Lesson"
+  },
+  "footer": {
+    "madeWith": "Made with",
+    "by": "by"
+  },
+  "lessonsPage": {
+    "title": "Lessons",
+    "lessons": "lessons",
+    "completed": "completed",
+    "welcomeTitle": "Welcome to Way2Vim!",
+    "welcomeMessage": "Start from Lesson 1 and progressively learn Vim's core operations. Complete 80% or more of each lesson to unlock the next.",
+    "minutes": "min",
+    "steps": "steps"
+  },
+  "lessonPlayer": {
+    "step": "Step",
+    "learnMore": "Learn More",
+    "keys": "Keys",
+    "needHint": "Need a hint?",
+    "lessonComplete": "Lesson Complete!",
+    "restart": "Restart Lesson",
+    "backToList": "Back to Lessons",
+    "exit": "Exit",
+    "restartShort": "Restart",
+    "prevStep": "Previous",
+    "nextStep": "Next",
+    "completeLesson": "Complete",
+    "notFound": "Lesson Not Found",
+    "completedSteps": "You completed {completed}/{total} steps in \"{title}\"."
+  },
+  "lessonSummary": {
+    "title": "Lesson Complete!",
+    "duration": "Time",
+    "durationMin": "m",
+    "durationSec": "s",
+    "keystrokes": "Keystrokes",
+    "mistakes": "Mistakes",
+    "newBadges": "New Badges Earned",
+    "restartLesson": "Retry",
+    "lessonList": "Lesson List",
+    "nextLesson": "Next Lesson"
+  },
+  "playground": {
+    "title": "Playground",
+    "subtitle": "Practice Vim commands freely without lesson constraints",
+    "reset": "Reset"
+  },
+  "cheatsheet": {
+    "title": "Vim Cheatsheet",
+    "subtitle": "Reference for all commands supported by Way2Vim"
+  },
+  "keyboardHelp": {
+    "title": "Keyboard Reference",
+    "close": "Close",
+    "basicMovement": "Basic Movement",
+    "modeSwitch": "Mode Switching",
+    "editing": "Editing",
+    "toggleHint": "Press ? to toggle · Esc to close"
+  },
+  "mobilePrompt": {
+    "message": "Desktop recommended for best practice experience"
+  },
+  "streakTracker": {
+    "currentStreak": "Day streak",
+    "days": "days",
+    "startJourney": "Start your learning streak",
+    "last30Days": "Last 30 days activity"
+  },
+  "badges": {
+    "beginner": {
+      "name": "Beginner",
+      "description": "Complete first lesson"
+    },
+    "hjklMaster": {
+      "name": "HJKL Master",
+      "description": "Complete all steps in lesson 3"
+    },
+    "insertPro": {
+      "name": "Insert Pro",
+      "description": "Complete all steps in lesson 4"
+    },
+    "commandExpert": {
+      "name": "Command Expert",
+      "description": "Complete lessons 5 and 8"
+    },
+    "persistence": {
+      "name": "Persistent",
+      "description": "Learn for 3 consecutive days"
+    },
+    "vimNinja": {
+      "name": "Vim Ninja",
+      "description": "Complete all 12 lessons"
+    },
+    "speedStar": {
+      "name": "Speed Star",
+      "description": "Complete any lesson in under 2 minutes"
+    },
+    "flawless": {
+      "name": "Flawless",
+      "description": "Complete any lesson with zero mistakes"
+    }
+  },
+  "errorBoundary": {
+    "title": "Something went wrong",
+    "message": "An unexpected error occurred. Please try again.",
+    "retry": "Retry"
+  }
+}

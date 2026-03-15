@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import { ChevronDown, ChevronRight, BookOpen } from 'lucide-react';
+import { useTranslations } from 'next-intl';
 import type { LessonStep, LessonDefinition } from '@/types/lesson';
 
 interface InstructionPanelProps {
@@ -17,6 +18,7 @@ export default function InstructionPanel({
   stepIndex,
   totalSteps,
 }: InstructionPanelProps) {
+  const t = useTranslations('lessonPlayer');
   const [showExplanation, setShowExplanation] = useState(false);
 
   return (
@@ -30,7 +32,7 @@ export default function InstructionPanel({
       {/* Step counter */}
       <div className="flex items-center justify-between">
         <span className="text-sm font-medium" style={{ color: 'var(--cyan)' }}>
-          步骤 {stepIndex + 1} / {totalSteps}
+          {t('step')} {stepIndex + 1} / {totalSteps}
         </span>
         <span className="text-xs text-text-secondary">
           难度 {'★'.repeat(lesson.difficulty)}{'☆'.repeat(5 - lesson.difficulty)}
@@ -66,7 +68,7 @@ export default function InstructionPanel({
           style={{ color: 'var(--text-secondary)' }}
         >
           {showExplanation ? <ChevronDown size={14} /> : <ChevronRight size={14} />}
-          <span>了解更多</span>
+          <span>{t('learnMore')}</span>
         </button>
       )}
 

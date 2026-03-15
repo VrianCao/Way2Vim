@@ -3,6 +3,7 @@
 import React, { useEffect, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Check } from 'lucide-react';
+import { useTranslations } from 'next-intl';
 
 interface StepCompletionOverlayProps {
   visible: boolean;
@@ -19,6 +20,7 @@ export default function StepCompletionOverlay({
   onNext,
   autoAdvanceMs = 1500,
 }: StepCompletionOverlayProps) {
+  const t = useTranslations('lessonPlayer');
   const handleNext = useCallback(() => {
     onNext();
   }, [onNext]);
@@ -76,7 +78,7 @@ export default function StepCompletionOverlay({
                 color: 'var(--bg)',
               }}
             >
-              {isLastStep ? '完成课程' : '下一步'}
+              {isLastStep ? t('completeLesson') : t('nextStep')}
             </button>
           </motion.div>
         </motion.div>

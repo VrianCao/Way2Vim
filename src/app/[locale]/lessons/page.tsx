@@ -1,7 +1,8 @@
 'use client';
 
-import Link from 'next/link';
+import { Link } from '@/i18n/navigation';
 import { Lock, CheckCircle, Star, Clock } from 'lucide-react';
+import { useTranslations } from 'next-intl';
 import { allLessons, isLessonUnlocked, getLessonNumber } from '@/lessons/lessonRegistry';
 import { useProgressStore, isLessonCompleted, getLessonProgress } from '@/store/progressStore';
 import ProgressBar from '@/components/gamification/ProgressBar';
@@ -25,6 +26,7 @@ function DifficultyStars({ difficulty }: { difficulty: number }) {
 }
 
 export default function LessonsPage() {
+  const t = useTranslations('lessonsPage');
   const state = useProgressStore();
   const completedCount = state.completedLessons.length;
 
@@ -34,15 +36,15 @@ export default function LessonsPage() {
       {/* Page header */}
       <div className="mb-8">
         <h1 className="text-2xl font-bold mb-2" style={{ color: 'var(--text-primary)' }}>
-          课程列表
+          {t('title')}
         </h1>
         <p className="text-sm" style={{ color: 'var(--text-secondary)' }}>
-          共 {allLessons.length} 节课程，已完成 {completedCount} 节
+          {allLessons.length} {t('lessons')}, {completedCount} {t('completed')}
         </p>
         <div className="mt-3">
           <ProgressBar
             progress={allLessons.length > 0 ? completedCount / allLessons.length : 0}
-            label={`${completedCount} / ${allLessons.length} 课程`}
+            label={`${completedCount} / ${allLessons.length}`}
           />
         </div>
       </div>
@@ -58,14 +60,14 @@ export default function LessonsPage() {
           }}
         >
           <p className="font-medium mb-1" style={{ color: 'var(--blue)' }}>
-            欢迎来到 Way2Vim！
+            {t('welcomeTitle')}
           </p>
-          <p>从第 1 课开始，循序渐进地学习 Vim 的核心操作。完成每节课 80% 以上步骤即可解锁下一课。</p>
+          <p>{t('welcomeMessage')}</p>
         </div>
       )}
 
       {/* Lessons list */}
-      <div className="flex flex-col gap-3" role="list" aria-label="课程列表">
+      <div className="flex flex-col gap-3" role="list" aria-label={t('title')}>
         {allLessons.map((lesson) => {
           const num = getLessonNumber(lesson.id);
           const unlocked = isLessonUnlocked(lesson.id, state.completedSteps);
@@ -117,6 +119,7 @@ function LessonCard({
   completed: boolean;
   progress: number;
 }) {
+  const t = useTranslations('lessonsPage');
   const content = (
     <div
       className="flex gap-4 p-4 rounded-xl transition-colors"
@@ -163,10 +166,10 @@ function LessonCard({
         <div className="flex items-center gap-3">
           <span className="flex items-center gap-1 text-xs" style={{ color: 'var(--text-secondary)' }}>
             <Clock size={12} />
-            {estimatedMinutes} 分钟
+            {estimatedMinutes} {t('minutes')}
           </span>
           <span className="text-xs" style={{ color: 'var(--text-secondary)' }}>
-            {stepCount} 步骤
+            {stepCount} {t('steps')}
           </span>
           {progress > 0 && !completed && (
             <div className="flex-1 max-w-[100px]">
@@ -179,11 +182,11 @@ function LessonCard({
   );
 
   if (!unlocked) {
-    return <div className="cursor-not-allowed" role="listitem" aria-label={`${title} - 未解锁`}>{content}</div>;
+    return <div className="cursor-not-allowed" role="listitem" aria-label={title}>{content}</div>;
   }
 
   return (
-    <Link href={`/lessons/${lessonId}`} className="no-underline block hover:brightness-110 transition-all" role="listitem" aria-label={`${title}${completed ? ' - 已完成' : ''}`}>
+    <Link href={`/lessons/${lessonId}`} className="no-underline block hover:brightness-110 transition-all" role="listitem" aria-label={title}>
       {content}
     </Link>
   );

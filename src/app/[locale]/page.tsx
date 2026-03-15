@@ -1,53 +1,35 @@
 'use client';
 
-import Link from 'next/link';
+import { useTranslations } from 'next-intl';
+import { Link } from '@/i18n/navigation';
 import { motion } from 'framer-motion';
 import { ArrowRight, BookOpen, Gamepad2, Zap, Target, Monitor } from 'lucide-react';
 import VimEditor from '@/components/editor/VimEditor';
 import { createInitialState } from '@/engine';
 import PageTransition from '@/components/layout/PageTransition';
 
-const demoText = [
-  '欢迎来到 Way2Vim！',
-  '',
-  '点击此编辑器，然后试试：',
-  '  h j k l  - 移动光标',
-  '  i        - 进入插入模式',
-  '  Esc      - 返回普通模式',
-  '  dd       - 删除整行',
-  '  u        - 撤销',
-];
-
-const demoState = createInitialState(demoText);
-
-const features = [
-  {
-    icon: BookOpen,
-    title: '12 节交互课程',
-    desc: '从零基础到组合命令，循序渐进掌握 Vim 核心操作',
-    color: 'var(--blue)',
-  },
-  {
-    icon: Target,
-    title: '即时验证反馈',
-    desc: '每一步都有明确目标和实时反馈，支持多种正确路径',
-    color: 'var(--green)',
-  },
-  {
-    icon: Zap,
-    title: '浏览器内模拟器',
-    desc: '无需安装，纯浏览器运行的 Vim 编辑器，随时随地练习',
-    color: 'var(--yellow)',
-  },
-  {
-    icon: Monitor,
-    title: '进度追踪与勋章',
-    desc: '学习天数、完成进度、勋章成就，激励持续学习',
-    color: 'var(--purple)',
-  },
-];
-
 export default function Home() {
+  const t = useTranslations('landing');
+
+  const demoText = [
+    'Welcome to Way2Vim!',
+    '',
+    'Click this editor, then try:',
+    '  h j k l  - move cursor',
+    '  i        - enter insert mode',
+    '  Esc      - return to normal mode',
+    '  dd       - delete line',
+    '  u        - undo',
+  ];
+
+  const demoState = createInitialState(demoText);
+
+  const features = [
+    { icon: BookOpen, color: 'var(--blue)' },
+    { icon: Target, color: 'var(--green)' },
+    { icon: Zap, color: 'var(--yellow)' },
+    { icon: Monitor, color: 'var(--purple)' },
+  ];
   return (
     <PageTransition>
     <div className="flex flex-col">
@@ -59,18 +41,15 @@ export default function Home() {
           transition={{ duration: 0.5 }}
           className="flex flex-col items-center gap-6 max-w-2xl"
         >
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight">
-            <span style={{ color: 'var(--text-primary)' }}>掌握 </span>
-            <span style={{ color: 'var(--green)' }}>Vim</span>
-            <span style={{ color: 'var(--text-primary)' }}> 的最佳方式</span>
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight" style={{ color: 'var(--text-primary)' }}>
+            {t('heroTitle')}
           </h1>
 
           <p
             className="text-base sm:text-lg max-w-lg"
             style={{ color: 'var(--text-secondary)' }}
           >
-            通过交互式课程和浏览器内模拟器，
-            零基础学会 Vim 编辑器的核心操作与思维方式。
+            {t('heroSubtitle')}
           </p>
 
           <div className="flex gap-3 mt-2">
@@ -79,7 +58,7 @@ export default function Home() {
               className="flex items-center gap-2 px-5 py-2.5 rounded-lg text-sm font-medium no-underline transition-colors"
               style={{ backgroundColor: 'var(--green)', color: 'var(--bg)' }}
             >
-              开始学习
+              {t('startLearning')}
               <ArrowRight size={16} />
             </Link>
             <Link
@@ -92,7 +71,7 @@ export default function Home() {
               }}
             >
               <Gamepad2 size={16} />
-              自由练习
+              {t('freePractice')}
             </Link>
           </div>
         </motion.div>
@@ -110,7 +89,7 @@ export default function Home() {
             className="text-sm text-center mb-3"
             style={{ color: 'var(--text-secondary)' }}
           >
-            试试看 — 点击下方编辑器开始体验
+            {t('demoPrompt')}
           </p>
           <VimEditor initialState={demoState} />
         </motion.div>
@@ -123,12 +102,12 @@ export default function Home() {
             className="text-2xl font-bold text-center mb-10"
             style={{ color: 'var(--text-primary)' }}
           >
-            为什么选择 Way2Vim？
+            {t('featuresTitle')}
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-            {features.map(({ icon: Icon, title, desc, color }) => (
+            {features.map(({ icon: Icon, color }, idx) => (
               <motion.div
-                key={title}
+                key={idx}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
@@ -149,10 +128,10 @@ export default function Home() {
                     className="text-sm font-semibold mb-1"
                     style={{ color: 'var(--text-primary)' }}
                   >
-                    {title}
+                    {t(`feature${idx + 1}Title`)}
                   </h3>
                   <p className="text-xs leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
-                    {desc}
+                    {t(`feature${idx + 1}Desc`)}
                   </p>
                 </div>
               </motion.div>
@@ -167,17 +146,17 @@ export default function Home() {
           className="text-xl font-bold mb-3"
           style={{ color: 'var(--text-primary)' }}
         >
-          准备好了吗？
+          {t('ctaTitle')}
         </h2>
         <p className="text-sm mb-6" style={{ color: 'var(--text-secondary)' }}>
-          12 节课程，从零开始，轻松掌握 Vim。
+          {t('ctaSubtitle')}
         </p>
         <Link
           href="/lessons"
           className="inline-flex items-center gap-2 px-6 py-3 rounded-lg text-sm font-medium no-underline transition-colors"
           style={{ backgroundColor: 'var(--green)', color: 'var(--bg)' }}
         >
-          开始第一课
+          {t('ctaButton')}
           <ArrowRight size={16} />
         </Link>
       </section>

@@ -1,8 +1,11 @@
 'use client';
 
+import { useTranslations } from 'next-intl';
 import { Monitor } from 'lucide-react';
 
 export default function MobilePrompt() {
+  const t = useTranslations('mobilePrompt');
+
   return (
     <div
       className="block md:hidden px-4 py-3 text-center text-xs"
@@ -14,7 +17,7 @@ export default function MobilePrompt() {
     >
       <div className="flex items-center justify-center gap-1.5">
         <Monitor size={14} />
-        <span>推荐使用桌面端获得最佳练习体验</span>
+        <span>{t('message')}</span>
       </div>
     </div>
   );

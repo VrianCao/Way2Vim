@@ -1,17 +1,25 @@
 'use client';
 
-import Link from 'next/link';
-import { usePathname } from 'next/navigation';
-import { BookOpen, Terminal, FileText, Gamepad2 } from 'lucide-react';
-
-const navItems = [
-  { href: '/lessons', label: '课程', icon: BookOpen },
-  { href: '/playground', label: '练习场', icon: Gamepad2 },
-  { href: '/cheatsheet', label: '速查表', icon: FileText },
-];
+import { useTranslations, useLocale } from 'next-intl';
+import { Link, usePathname, useRouter } from '@/i18n/navigation';
+import { BookOpen, Terminal, FileText, Gamepad2, Globe } from 'lucide-react';
 
 export default function Header() {
+  const t = useTranslations('nav');
+  const locale = useLocale();
+  const router = useRouter();
   const pathname = usePathname();
+
+  const navItems = [
+    { href: '/lessons', label: t('lessons'), icon: BookOpen },
+    { href: '/playground', label: t('playground'), icon: Gamepad2 },
+    { href: '/cheatsheet', label: t('cheatsheet'), icon: FileText },
+  ];
+
+  const switchLocale = () => {
+    const newLocale = locale === 'zh' ? 'en' : 'zh';
+    router.replace(pathname, { locale: newLocale });
+  };
 
   return (
     <header
@@ -53,6 +61,15 @@ export default function Header() {
               </Link>
             );
           })}
+          <button
+            onClick={switchLocale}
+            className="flex items-center gap-1.5 px-3 py-1.5 rounded-md text-sm transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#9ece6a] ml-1"
+            style={{ color: 'var(--text-secondary)' }}
+            aria-label="Switch language"
+          >
+            <Globe size={16} aria-hidden="true" />
+            <span className="hidden sm:inline">{locale === 'zh' ? 'EN' : '中文'}</span>
+          </button>
         </nav>
       </div>
     </header>

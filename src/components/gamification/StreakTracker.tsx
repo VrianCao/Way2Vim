@@ -2,6 +2,7 @@
 
 import { useMemo } from 'react';
 import { Flame } from 'lucide-react';
+import { useTranslations } from 'next-intl';
 
 interface StreakTrackerProps {
   currentStreak: number;
@@ -30,6 +31,7 @@ export default function StreakTracker({
   lastActiveDate,
   activeDates = [],
 }: StreakTrackerProps) {
+  const t = useTranslations('streakTracker');
   const activeSet = useMemo(() => new Set(activeDates), [activeDates]);
 
   // If we don't have explicit activeDates, derive from streak + lastActiveDate
@@ -60,7 +62,7 @@ export default function StreakTracker({
           style={{ color: currentStreak > 0 ? 'var(--yellow)' : 'var(--text-secondary)' }}
         />
         <span className="text-sm font-medium" style={{ color: 'var(--text-primary)' }}>
-          {currentStreak > 0 ? `连续学习 ${currentStreak} 天` : '开始你的连续学习之旅'}
+          {currentStreak > 0 ? `${t('currentStreak')} ${currentStreak} ${t('days')}` : t('startJourney')}
         </span>
       </div>
 
@@ -85,7 +87,7 @@ export default function StreakTracker({
       </div>
 
       <p className="text-xs" style={{ color: 'var(--text-secondary)' }}>
-        最近 30 天学习记录
+        {t('last30Days')}
       </p>
     </div>
   );

@@ -2,6 +2,7 @@
 
 import React, { useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useTranslations } from 'next-intl';
 import {
   GraduationCap,
   Gamepad2,
@@ -38,6 +39,7 @@ export default function BadgeDisplay({
   unlockedIds,
   newlyUnlockedIds = [],
 }: BadgeDisplayProps) {
+  const t = useTranslations('badges');
   const unlockedSet = useMemo(() => new Set(unlockedIds), [unlockedIds]);
   const newSet = useMemo(() => new Set(newlyUnlockedIds), [newlyUnlockedIds]);
 
@@ -105,7 +107,7 @@ export default function BadgeDisplay({
                   opacity: unlocked ? 1 : 0.5,
                 }}
               >
-                {badge.name}
+                {t(`${badge.id}.name`)}
               </span>
 
               {/* Hover tooltip */}
@@ -117,7 +119,7 @@ export default function BadgeDisplay({
                   border: '1px solid var(--surface-hover)',
                 }}
               >
-                {badge.description}
+                {t(`${badge.id}.description`)}
               </div>
             </motion.div>
           );

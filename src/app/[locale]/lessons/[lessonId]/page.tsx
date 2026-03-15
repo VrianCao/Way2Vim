@@ -1,7 +1,9 @@
 'use client';
 
-import { useParams, useRouter } from 'next/navigation';
+import { useParams } from 'next/navigation';
+import { useRouter } from '@/i18n/navigation';
 import { useEffect, useRef, useState } from 'react';
+import { useTranslations } from 'next-intl';
 import { getLessonById, getNextLesson } from '@/lessons/lessonRegistry';
 import { useProgressStore } from '@/store/progressStore';
 import LessonPlayer from '@/components/lesson/LessonPlayer';
@@ -10,6 +12,7 @@ import { badgeDefinitions } from '@/store/badgeEngine';
 import PageTransition from '@/components/layout/PageTransition';
 
 export default function LessonDetailPage() {
+  const t = useTranslations('lessonPlayer');
   const params = useParams();
   const router = useRouter();
   const lessonId = params.lessonId as string;
@@ -72,17 +75,17 @@ export default function LessonDetailPage() {
       <div className="flex items-center justify-center py-20">
         <div className="text-center">
           <h1 className="text-xl font-bold mb-2" style={{ color: 'var(--red)' }}>
-            课程未找到
+            {t('notFound')}
           </h1>
           <p className="text-sm mb-4" style={{ color: 'var(--text-secondary)' }}>
-            课程 ID &quot;{lessonId}&quot; 不存在。
+            {lessonId}
           </p>
           <button
             onClick={() => router.push('/lessons')}
             className="px-4 py-2 rounded-lg text-sm cursor-pointer transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#9ece6a]"
             style={{ backgroundColor: 'var(--surface)', color: 'var(--text-primary)' }}
           >
-            返回课程列表
+            {t('backToList')}
           </button>
         </div>
       </div>

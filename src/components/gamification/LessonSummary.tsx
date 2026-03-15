@@ -2,6 +2,7 @@
 
 import { motion, AnimatePresence } from 'framer-motion';
 import { Clock, Keyboard, AlertCircle, Trophy, ChevronRight, RotateCcw } from 'lucide-react';
+import { useTranslations } from 'next-intl';
 import type { BadgeDefinition } from '@/types/gamification';
 
 interface LessonSummaryProps {
@@ -19,11 +20,11 @@ interface LessonSummaryProps {
   hasNextLesson?: boolean;
 }
 
-function formatDuration(ms: number): string {
+function formatDuration(ms: number, t: (key: string) => string): string {
   const totalSec = Math.floor(ms / 1000);
   const min = Math.floor(totalSec / 60);
   const sec = totalSec % 60;
-  return min > 0 ? `${min}分${sec}秒` : `${sec}秒`;
+  return min > 0 ? `${min}${t('durationMin')}${sec}${t('durationSec')}` : `${sec}${t('durationSec')}`;
 }
 
 export default function LessonSummary({
@@ -38,6 +39,7 @@ export default function LessonSummary({
   onRestart,
   hasNextLesson = true,
 }: LessonSummaryProps) {
+  const t = useTranslations('lessonSummary');
   return (
     <AnimatePresence>
       {visible && (
@@ -71,7 +73,7 @@ export default function LessonSummary({
                 <Trophy size={28} style={{ color: 'var(--green)' }} />
               </motion.div>
               <h2 className="text-lg font-bold" style={{ color: 'var(--text-primary)' }}>
-                课程完成！
+                {t('title')}
               </h2>
               <p className="text-sm" style={{ color: 'var(--text-secondary)' }}>
                 {lessonTitle}
@@ -80,15 +82,15 @@ export default function LessonSummary({
 
             {/* Stats grid */}
             <div className="grid grid-cols-3 gap-3">
-              <StatCard icon={<Clock size={16} />} label="用时" value={formatDuration(durationMs)} />
+              <StatCard icon={<Clock size={16} />} label={t('duration')} value={formatDuration(durationMs, t)} />
               <StatCard
                 icon={<Keyboard size={16} />}
-                label="按键数"
+                label={t('keystrokes')}
                 value={String(keystrokeCount)}
               />
               <StatCard
                 icon={<AlertCircle size={16} />}
-                label="错误数"
+                label={t('mistakes')}
                 value={String(mistakeCount)}
                 highlight={mistakeCount === 0}
               />
@@ -103,7 +105,7 @@ export default function LessonSummary({
                 transition={{ delay: 0.4 }}
               >
                 <p className="text-xs font-medium" style={{ color: 'var(--yellow)' }}>
-                  新获得勋章
+                  {t('newBadges')}
                 </p>
                 <div className="flex gap-2">
                   {newBadges.map((badge) => (
@@ -137,7 +139,7 @@ export default function LessonSummary({
                   }}
                 >
                   <RotateCcw size={14} />
-                  重学
+                  {t('restartLesson')}
                 </button>
               )}
 
@@ -151,7 +153,7 @@ export default function LessonSummary({
                     border: '1px solid var(--surface-hover)',
                   }}
                 >
-                  课程列表
+                  {t('lessonList')}
                 </button>
               )}
 
@@ -164,7 +166,7 @@ export default function LessonSummary({
                     color: 'var(--bg)',
                   }}
                 >
-                  下一课
+                  {t('nextLesson')}
                   <ChevronRight size={14} />
                 </button>
               )}

@@ -3,6 +3,7 @@
 import { useState, useEffect, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, Keyboard } from 'lucide-react';
+import { useTranslations } from 'next-intl';
 
 const shortcuts = [
   { category: '基础移动', items: [
@@ -26,6 +27,7 @@ const shortcuts = [
 ];
 
 export default function KeyboardHelpPanel() {
+  const t = useTranslations('keyboardHelp');
   const [isOpen, setIsOpen] = useState(false);
 
   const toggle = useCallback(() => setIsOpen(prev => !prev), []);
@@ -60,8 +62,8 @@ export default function KeyboardHelpPanel() {
           border: '1px solid var(--surface-hover)',
           color: 'var(--text-secondary)',
         }}
-        aria-label="快捷键帮助 (按 ? 打开)"
-        title="快捷键帮助 (?)"
+        aria-label={t('title')}
+        title={t('title')}
       >
         <Keyboard size={18} />
       </button>
@@ -89,7 +91,7 @@ export default function KeyboardHelpPanel() {
                 border: '1px solid var(--surface-hover)',
               }}
               role="dialog"
-              aria-label="快捷键参考"
+              aria-label={t('title')}
             >
               {/* Header */}
               <div
@@ -102,14 +104,14 @@ export default function KeyboardHelpPanel() {
                 <div className="flex items-center gap-2">
                   <Keyboard size={16} style={{ color: 'var(--green)' }} />
                   <span className="text-sm font-semibold" style={{ color: 'var(--text-primary)' }}>
-                    快捷键参考
+                    {t('title')}
                   </span>
                 </div>
                 <button
                   onClick={() => setIsOpen(false)}
                   className="p-1 rounded cursor-pointer transition-colors"
                   style={{ color: 'var(--text-secondary)' }}
-                  aria-label="关闭"
+                  aria-label={t('close')}
                 >
                   <X size={16} />
                 </button>
@@ -120,7 +122,7 @@ export default function KeyboardHelpPanel() {
                 {shortcuts.map(section => (
                   <div key={section.category}>
                     <h3 className="text-xs font-semibold mb-1.5" style={{ color: 'var(--cyan)' }}>
-                      {section.category}
+                      {t(section.category)}
                     </h3>
                     <div className="space-y-1">
                       {section.items.map(item => (
@@ -147,7 +149,7 @@ export default function KeyboardHelpPanel() {
                   borderTop: '1px solid var(--surface-hover)',
                 }}
               >
-                按 <kbd className="font-mono px-1 py-0.5 rounded text-xs" style={{ backgroundColor: 'var(--bg)', color: 'var(--yellow)' }}>?</kbd> 切换 · <kbd className="font-mono px-1 py-0.5 rounded text-xs" style={{ backgroundColor: 'var(--bg)', color: 'var(--yellow)' }}>Esc</kbd> 关闭
+                {t('toggleHint')}
               </div>
             </motion.div>
           </>

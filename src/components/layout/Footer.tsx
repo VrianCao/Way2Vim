@@ -1,6 +1,12 @@
+'use client';
+
+import { useTranslations } from 'next-intl';
 import { Heart } from 'lucide-react';
 
 export default function Footer() {
+  const t = useTranslations('footer');
+  const common = useTranslations('common');
+
   return (
     <footer
       className="w-full border-t"
@@ -14,11 +20,11 @@ export default function Footer() {
         style={{ color: 'var(--text-secondary)' }}
       >
         <span className="flex items-center gap-1">
-          用
+          {t('madeWith')}
           <Heart size={12} style={{ color: 'var(--red)' }} />
-          制作 &middot; Way2Vim
+          {t('by')} &middot; Way2Vim
         </span>
-        <span>交互式 Vim 学习平台</span>
+        <span>{common('tagline')}</span>
       </div>
     </footer>
   );

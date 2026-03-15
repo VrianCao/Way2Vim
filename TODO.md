@@ -299,38 +299,38 @@
 ## Phase 5：Gamification 系统（Day 8–10）
 
 ### P5-1 Progress Store
-- [ ] 实现 `src/store/progressStore.ts`（Zustand + persist middleware → localStorage）
-- [ ] 实现 actions：`completeStep(lessonId, stepId)`、`completeLesson(lessonId)`、`recordKeystroke()`、`recordMistake(lessonId)`、`updateStreak()`、`unlockBadge(badgeId)`
-- [ ] 实现 selectors：`isLessonCompleted(id)`、`getLessonProgress(id)`、`getUnlockedBadges()`
-- [ ] 编写测试：state 更新正确性 ≥8 cases
+- [x] 实现 `src/store/progressStore.ts`（Zustand + persist middleware → localStorage）
+- [x] 实现 actions：`completeStep(lessonId, stepId)`、`completeLesson(lessonId)`、`recordKeystroke()`、`recordMistake(lessonId)`、`updateStreak()`、`unlockBadge(badgeId)`
+- [x] 实现 selectors：`isLessonCompleted(id)`、`getLessonProgress(id)`、`getUnlockedBadges()`
+- [x] 编写测试：state 更新正确性 ≥8 cases
 
 ### P5-2 勋章规则引擎
-- [ ] 定义 8 个勋章的解锁条件函数（见 Plan §10.2）
-- [ ] 实现 `checkBadges(state: ProgressState): string[]`，返回新解锁的 badge IDs
-- [ ] 在 `completeLesson` / `completeStep` 后自动触发勋章检查
-- [ ] 编写测试：每个勋章的解锁/未解锁条件
+- [x] 定义 8 个勋章的解锁条件函数（见 Plan §10.2）
+- [x] 实现 `checkBadges(state: ProgressState): string[]`，返回新解锁的 badge IDs
+- [x] 在 `completeLesson` / `completeStep` 后自动触发勋章检查
+- [x] 编写测试：每个勋章的解锁/未解锁条件
 
 ### P5-3 ProgressBar 组件
-- [ ] 实现 `src/components/gamification/ProgressBar.tsx`
-- [ ] 显示当前课程完成步骤比例
-- [ ] Framer Motion spring 填充动画
+- [x] 实现 `src/components/gamification/ProgressBar.tsx`
+- [x] 显示当前课程完成步骤比例
+- [x] Framer Motion spring 填充动画
 
 ### P5-4 BadgeDisplay 组件
-- [ ] 实现 `src/components/gamification/BadgeDisplay.tsx`
-- [ ] 网格展示所有 8 个勋章（未解锁灰色，已解锁彩色）
-- [ ] 新解锁时触发 scale + glow pulse 动画
-- [ ] 勋章 hover 显示名称与解锁条件
+- [x] 实现 `src/components/gamification/BadgeDisplay.tsx`
+- [x] 网格展示所有 8 个勋章（未解锁灰色，已解锁彩色）
+- [x] 新解锁时触发 scale + glow pulse 动画
+- [x] 勋章 hover 显示名称与解锁条件
 
 ### P5-5 StreakTracker 组件
-- [ ] 实现 `src/components/gamification/StreakTracker.tsx`
-- [ ] GitHub 风格打卡热力图（最近 30 天）
-- [ ] 显示当前连续天数
+- [x] 实现 `src/components/gamification/StreakTracker.tsx`
+- [x] GitHub 风格打卡热力图（最近 30 天）
+- [x] 显示当前连续天数
 
 ### P5-6 LessonSummary 组件
-- [ ] 实现 `src/components/gamification/LessonSummary.tsx`
-- [ ] 课程完成后展示：用时、命令数、错误数、勋章解锁
-- [ ] 「下一课」/「回到课程列表」按钮
-- [ ] Confetti 动画 + summary slide-up
+- [x] 实现 `src/components/gamification/LessonSummary.tsx`
+- [x] 课程完成后展示：用时、命令数、错误数、勋章解锁
+- [x] 「下一课」/「回到课程列表」按钮
+- [x] Confetti 动画 + summary slide-up
 
 ---
 

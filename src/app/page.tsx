@@ -5,6 +5,7 @@ import { motion } from 'framer-motion';
 import { ArrowRight, BookOpen, Gamepad2, Zap, Target, Monitor } from 'lucide-react';
 import VimEditor from '@/components/editor/VimEditor';
 import { createInitialState } from '@/engine';
+import PageTransition from '@/components/layout/PageTransition';
 
 const demoText = [
   '欢迎来到 Way2Vim！',
@@ -48,6 +49,7 @@ const features = [
 
 export default function Home() {
   return (
+    <PageTransition>
     <div className="flex flex-col">
       {/* Hero Section */}
       <section className="flex flex-col items-center justify-center px-4 py-20 lg:py-28 text-center">
@@ -180,5 +182,6 @@ export default function Home() {
         </Link>
       </section>
     </div>
+    </PageTransition>
   );
 }

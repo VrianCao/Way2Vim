@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { RotateCcw } from 'lucide-react';
 import VimEditor from '@/components/editor/VimEditor';
 import { createInitialState } from '@/engine';
+import PageTransition from '@/components/layout/PageTransition';
 
 const defaultText = [
   '# Way2Vim 练习场',
@@ -31,6 +32,7 @@ export default function PlaygroundPage() {
   const [resetKey, setResetKey] = useState(0);
 
   return (
+    <PageTransition>
     <div className="max-w-4xl mx-auto px-4 py-10">
       <div className="flex items-center justify-between mb-4">
         <div>
@@ -43,12 +45,13 @@ export default function PlaygroundPage() {
         </div>
         <button
           onClick={() => setResetKey((k) => k + 1)}
-          className="flex items-center gap-1.5 px-3 py-2 rounded-lg text-sm cursor-pointer transition-colors"
+          className="flex items-center gap-1.5 px-3 py-2 rounded-lg text-sm cursor-pointer transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#9ece6a]"
           style={{
             backgroundColor: 'var(--surface)',
             color: 'var(--text-secondary)',
             border: '1px solid var(--surface-hover)',
           }}
+          aria-label="重置编辑器内容"
         >
           <RotateCcw size={14} />
           重置
@@ -57,5 +60,6 @@ export default function PlaygroundPage() {
 
       <VimEditor key={resetKey} initialState={createInitialState(defaultText)} />
     </div>
+    </PageTransition>
   );
 }

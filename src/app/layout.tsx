@@ -15,9 +15,27 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Way2Vim - 交互式 Vim 学习平台",
+  title: {
+    default: 'Way2Vim - 交互式 Vim 学习平台',
+    template: '%s - Way2Vim',
+  },
   description:
-    "通过浏览器内交互式课程，零基础学会 Vim 编辑器的核心操作与思维方式。",
+    '通过浏览器内交互式课程，零基础学会 Vim 编辑器的核心操作与思维方式。12 节渐进课程，即时反馈，免费开源。',
+  keywords: ['Vim', 'Vim教程', 'Vim学习', '交互式学习', '编辑器', 'Way2Vim', '命令行'],
+  authors: [{ name: 'Way2Vim' }],
+  openGraph: {
+    type: 'website',
+    locale: 'zh_CN',
+    siteName: 'Way2Vim',
+    title: 'Way2Vim - 交互式 Vim 学习平台',
+    description: '通过浏览器内交互式课程，零基础学会 Vim 编辑器的核心操作与思维方式。',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Way2Vim - 交互式 Vim 学习平台',
+    description: '通过浏览器内交互式课程，零基础学会 Vim 编辑器的核心操作与思维方式。',
+  },
+  metadataBase: new URL('https://way2vim.vercel.app'),
 };
 
 export default function RootLayout({

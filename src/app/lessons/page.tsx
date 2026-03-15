@@ -5,6 +5,7 @@ import { Lock, CheckCircle, Star, Clock } from 'lucide-react';
 import { allLessons, isLessonUnlocked, getLessonNumber } from '@/lessons/lessonRegistry';
 import { useProgressStore, isLessonCompleted, getLessonProgress } from '@/store/progressStore';
 import ProgressBar from '@/components/gamification/ProgressBar';
+import PageTransition from '@/components/layout/PageTransition';
 
 function DifficultyStars({ difficulty }: { difficulty: number }) {
   return (
@@ -28,6 +29,7 @@ export default function LessonsPage() {
   const completedCount = state.completedLessons.length;
 
   return (
+    <PageTransition>
     <div className="max-w-3xl mx-auto px-4 py-10">
       {/* Page header */}
       <div className="mb-8">
@@ -45,8 +47,25 @@ export default function LessonsPage() {
         </div>
       </div>
 
+      {/* Welcome guide when no progress */}
+      {completedCount === 0 && (
+        <div
+          className="mb-6 p-4 rounded-xl text-sm"
+          style={{
+            backgroundColor: 'rgba(122, 162, 247, 0.08)',
+            border: '1px solid rgba(122, 162, 247, 0.2)',
+            color: 'var(--text-secondary)',
+          }}
+        >
+          <p className="font-medium mb-1" style={{ color: 'var(--blue)' }}>
+            欢迎来到 Way2Vim！
+          </p>
+          <p>从第 1 课开始，循序渐进地学习 Vim 的核心操作。完成每节课 80% 以上步骤即可解锁下一课。</p>
+        </div>
+      )}
+
       {/* Lessons list */}
-      <div className="flex flex-col gap-3">
+      <div className="flex flex-col gap-3" role="list" aria-label="课程列表">
         {allLessons.map((lesson) => {
           const num = getLessonNumber(lesson.id);
           const unlocked = isLessonUnlocked(lesson.id, state.completedSteps);
@@ -71,6 +90,7 @@ export default function LessonsPage() {
         })}
       </div>
     </div>
+    </PageTransition>
   );
 }
 
@@ -159,11 +179,11 @@ function LessonCard({
   );
 
   if (!unlocked) {
-    return <div className="cursor-not-allowed">{content}</div>;
+    return <div className="cursor-not-allowed" role="listitem" aria-label={`${title} - 未解锁`}>{content}</div>;
   }
 
   return (
-    <Link href={`/lessons/${lessonId}`} className="no-underline block hover:brightness-110 transition-all">
+    <Link href={`/lessons/${lessonId}`} className="no-underline block hover:brightness-110 transition-all" role="listitem" aria-label={`${title}${completed ? ' - 已完成' : ''}`}>
       {content}
     </Link>
   );

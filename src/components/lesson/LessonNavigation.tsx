@@ -25,23 +25,27 @@ export default function LessonNavigation({
   canGoNext,
 }: LessonNavigationProps) {
   return (
-    <div className="flex items-center justify-between px-5 py-3 border-t" style={{ borderColor: 'var(--surface-hover)' }}>
+    <nav
+      className="flex items-center justify-between px-5 py-3 border-t"
+      style={{ borderColor: 'var(--surface-hover)' }}
+      aria-label="课程导航"
+    >
       {/* Left actions */}
       <div className="flex items-center gap-2">
         <button
           onClick={onExit}
-          className="flex items-center gap-1 text-xs px-2 py-1 rounded transition-colors cursor-pointer"
+          className="flex items-center gap-1 text-xs px-2 py-1 rounded transition-colors cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-green-400"
           style={{ color: 'var(--text-secondary)' }}
-          title="退出课程"
+          aria-label="退出课程"
         >
           <ArrowLeft size={14} />
           退出
         </button>
         <button
           onClick={onRestart}
-          className="flex items-center gap-1 text-xs px-2 py-1 rounded transition-colors cursor-pointer"
+          className="flex items-center gap-1 text-xs px-2 py-1 rounded transition-colors cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-green-400"
           style={{ color: 'var(--text-secondary)' }}
-          title="重新开始"
+          aria-label="重新开始课程"
         >
           <RotateCcw size={14} />
           重来
@@ -49,7 +53,7 @@ export default function LessonNavigation({
       </div>
 
       {/* Dot indicators */}
-      <div className="flex items-center gap-1.5">
+      <div className="flex items-center gap-1.5" role="progressbar" aria-valuenow={stepIndex + 1} aria-valuemin={1} aria-valuemax={totalSteps} aria-label={`步骤 ${stepIndex + 1} / ${totalSteps}`}>
         {Array.from({ length: totalSteps }, (_, i) => (
           <div
             key={i}
@@ -72,8 +76,9 @@ export default function LessonNavigation({
         <button
           onClick={onPrev}
           disabled={stepIndex === 0}
-          className="flex items-center gap-1 text-xs px-2 py-1 rounded transition-colors cursor-pointer disabled:opacity-30 disabled:cursor-not-allowed"
+          className="flex items-center gap-1 text-xs px-2 py-1 rounded transition-colors cursor-pointer disabled:opacity-30 disabled:cursor-not-allowed focus:outline-none focus-visible:ring-2 focus-visible:ring-green-400"
           style={{ color: 'var(--text-secondary)' }}
+          aria-label="上一步"
         >
           <ChevronLeft size={14} />
           上一步
@@ -81,13 +86,14 @@ export default function LessonNavigation({
         <button
           onClick={onNext}
           disabled={!canGoNext}
-          className="flex items-center gap-1 text-xs px-2 py-1 rounded transition-colors cursor-pointer disabled:opacity-30 disabled:cursor-not-allowed"
+          className="flex items-center gap-1 text-xs px-2 py-1 rounded transition-colors cursor-pointer disabled:opacity-30 disabled:cursor-not-allowed focus:outline-none focus-visible:ring-2 focus-visible:ring-green-400"
           style={{ color: 'var(--cyan)' }}
+          aria-label="下一步"
         >
           下一步
           <ChevronRight size={14} />
         </button>
       </div>
-    </div>
+    </nav>
   );
 }

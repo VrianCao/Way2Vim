@@ -193,12 +193,22 @@ export default function LessonPlayer({
           borderColor: 'var(--surface-hover)',
         }}
       >
-        <InstructionPanel
-          lesson={lesson}
-          step={currentStep}
-          stepIndex={stepIndex}
-          totalSteps={totalSteps}
-        />
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={`instruction-${stepIndex}`}
+            initial={{ opacity: 0, x: -8 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: 8 }}
+            transition={{ duration: 0.15 }}
+          >
+            <InstructionPanel
+              lesson={lesson}
+              step={currentStep}
+              stepIndex={stepIndex}
+              totalSteps={totalSteps}
+            />
+          </motion.div>
+        </AnimatePresence>
 
         <HintSystem
           key={currentStep.id}

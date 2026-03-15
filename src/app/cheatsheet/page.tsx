@@ -1,8 +1,12 @@
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Vim 速查表 - Way2Vim',
-  description: 'Vim 常用命令速查参考表',
+  title: 'Vim 速查表',
+  description: 'Vim 常用命令速查参考表。涵盖移动、编辑、搜索、模式切换等全部 Way2Vim 支持的命令。',
+  openGraph: {
+    title: 'Vim 速查表 - Way2Vim',
+    description: 'Vim 常用命令速查参考表，涵盖全部 Way2Vim 支持的命令。',
+  },
 };
 
 interface CommandEntry {

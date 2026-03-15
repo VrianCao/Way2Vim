@@ -1,12 +1,13 @@
 'use client';
 
 import { useParams, useRouter } from 'next/navigation';
-import { useCallback, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { getLessonById, getNextLesson } from '@/lessons/lessonRegistry';
 import { useProgressStore } from '@/store/progressStore';
 import LessonPlayer from '@/components/lesson/LessonPlayer';
 import LessonSummary from '@/components/gamification/LessonSummary';
 import { badgeDefinitions } from '@/store/badgeEngine';
+import PageTransition from '@/components/layout/PageTransition';
 
 export default function LessonDetailPage() {
   const params = useParams();
@@ -14,21 +15,30 @@ export default function LessonDetailPage() {
   const lessonId = params.lessonId as string;
   const lesson = getLessonById(lessonId);
 
-  const startTimeRef = useRef(Date.now());
+  const startTimeRef = useRef<number>(0);
   const [showSummary, setShowSummary] = useState(false);
   const [keystrokeCount, setKeystrokeCount] = useState(0);
+  const [durationMs, setDurationMs] = useState(0);
+  const [newBadges, setNewBadges] = useState<typeof badgeDefinitions>([]);
 
   const store = useProgressStore();
 
   const nextLesson = lesson ? getNextLesson(lesson.id) : undefined;
 
-  // Track keystrokes from the lesson player
-  const prevBadgesRef = useRef<string[]>([...store.unlockedBadges]);
+  const prevBadgeSnapshotRef = useRef<string[]>([]);
 
-  const handleComplete = useCallback(() => {
+  // Initialize timing on mount
+  useEffect(() => {
+    startTimeRef.current = Date.now();
+    prevBadgeSnapshotRef.current = [...store.unlockedBadges];
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
+
+  function handleComplete() {
     if (!lesson) return;
     const elapsed = Date.now() - startTimeRef.current;
     const mistakes = store.lessonMistakeCount[lesson.id] ?? 0;
+
+    const badgesBefore = [...prevBadgeSnapshotRef.current];
 
     // Record completion in progress store
     store.completeLesson(lesson.id, elapsed, mistakes);
@@ -39,13 +49,23 @@ export default function LessonDetailPage() {
       store.completeStep(lesson.id, step.id);
     }
 
-    setKeystrokeCount(store.totalKeystrokes);
-    setShowSummary(true);
-  }, [lesson, store]);
+    // Calculate newly unlocked badges
+    const newBadgeIds = store.unlockedBadges.filter(
+      (id) => !badgesBefore.includes(id),
+    );
+    const badges = newBadgeIds
+      .map((id) => badgeDefinitions.find((b) => b.id === id))
+      .filter(Boolean) as typeof badgeDefinitions;
 
-  const handleExit = useCallback(() => {
+    setKeystrokeCount(store.totalKeystrokes);
+    setDurationMs(elapsed);
+    setNewBadges(badges);
+    setShowSummary(true);
+  }
+
+  function handleExit() {
     router.push('/lessons');
-  }, [router]);
+  }
 
   if (!lesson) {
     return (
@@ -59,7 +79,7 @@ export default function LessonDetailPage() {
           </p>
           <button
             onClick={() => router.push('/lessons')}
-            className="px-4 py-2 rounded-lg text-sm cursor-pointer transition-colors"
+            className="px-4 py-2 rounded-lg text-sm cursor-pointer transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#9ece6a]"
             style={{ backgroundColor: 'var(--surface)', color: 'var(--text-primary)' }}
           >
             返回课程列表
@@ -69,15 +89,8 @@ export default function LessonDetailPage() {
     );
   }
 
-  // Calculate newly unlocked badges
-  const newBadgeIds = store.unlockedBadges.filter(
-    (id) => !prevBadgesRef.current.includes(id),
-  );
-  const newBadges = newBadgeIds
-    .map((id) => badgeDefinitions.find((b) => b.id === id))
-    .filter(Boolean) as typeof badgeDefinitions;
-
   return (
+    <PageTransition>
     <div className="max-w-6xl mx-auto px-4 py-6">
       <LessonPlayer
         key={lesson.id}
@@ -89,7 +102,7 @@ export default function LessonDetailPage() {
       <LessonSummary
         visible={showSummary}
         lessonTitle={lesson.title}
-        durationMs={Date.now() - startTimeRef.current}
+        durationMs={durationMs}
         keystrokeCount={keystrokeCount}
         mistakeCount={store.lessonMistakeCount[lesson.id] ?? 0}
         newBadges={newBadges}
@@ -98,7 +111,7 @@ export default function LessonDetailPage() {
           nextLesson
             ? () => {
                 setShowSummary(false);
-                prevBadgesRef.current = [...store.unlockedBadges];
+                prevBadgeSnapshotRef.current = [...store.unlockedBadges];
                 startTimeRef.current = Date.now();
                 router.push(`/lessons/${nextLesson.id}`);
               }
@@ -107,11 +120,12 @@ export default function LessonDetailPage() {
         onBackToList={() => router.push('/lessons')}
         onRestart={() => {
           setShowSummary(false);
-          prevBadgesRef.current = [...store.unlockedBadges];
+          prevBadgeSnapshotRef.current = [...store.unlockedBadges];
           startTimeRef.current = Date.now();
           router.push(`/lessons/${lesson.id}`);
         }}
       />
     </div>
+    </PageTransition>
   );
 }

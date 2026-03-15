@@ -387,33 +387,33 @@
 ## Phase 7：Polish 细节优化（Day 10–12）
 
 ### P7-1 页面过渡动画
-- [ ] 使用 Framer Motion `AnimatePresence` 实现页面切换 fade + slide（200ms）
-- [ ] 步骤切换过渡动画
+- [x] 使用 Framer Motion `AnimatePresence` 实现页面切换 fade + slide（200ms）
+- [x] 步骤切换过渡动画
 
 ### P7-2 响应式优化
-- [ ] `>1024px`：全功能双栏验证
-- [ ] `768-1024px`：纵向堆叠（先指令后编辑器）验证
-- [ ] `<768px`：阅读优先，提示使用桌面端练习
+- [x] `>1024px`：全功能双栏验证
+- [x] `768-1024px`：纵向堆叠（先指令后编辑器）验证
+- [x] `<768px`：阅读优先，提示使用桌面端练习
 
 ### P7-3 空状态与加载
-- [ ] 课程加载中 skeleton/loading 状态
-- [ ] 无进度时的欢迎引导
-- [ ] 错误边界组件（Error Boundary）
+- [x] 课程加载中 skeleton/loading 状态
+- [x] 无进度时的欢迎引导
+- [x] 错误边界组件（Error Boundary）
 
 ### P7-4 快捷键提示
-- [ ] 编辑器聚焦时显示可用命令 tooltip（可选开关）
-- [ ] 全局快捷键：`?` 打开快捷键帮助面板
+- [x] 编辑器聚焦时显示可用命令 tooltip（可选开关）
+- [x] 全局快捷键：`?` 打开快捷键帮助面板
 
 ### P7-5 SEO
-- [ ] 每页配置 `metadata`（title / description / Open Graph）
-- [ ] 课程页动态 metadata（课程标题+描述）
-- [ ] `robots.txt` + `sitemap.xml`
+- [x] 每页配置 `metadata`（title / description / Open Graph）
+- [x] 课程页动态 metadata（课程标题+描述）
+- [x] `robots.txt` + `sitemap.xml`
 
 ### P7-6 可访问性（A11y）
-- [ ] 所有按钮可键盘访问（Tab / Enter）
-- [ ] 可见 focus ring
-- [ ] 颜色对比度 WCAG AA 验证
-- [ ] 步骤完成提示使用 `aria-live` region
+- [x] 所有按钮可键盘访问（Tab / Enter）
+- [x] 可见 focus ring
+- [x] 颜色对比度 WCAG AA 验证
+- [x] 步骤完成提示使用 `aria-live` region
 
 ---
 

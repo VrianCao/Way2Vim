@@ -52,6 +52,8 @@ export default function InstructionPanel({
       <div
         className="text-sm leading-relaxed p-4 rounded-lg"
         style={{ backgroundColor: 'var(--surface)', color: 'var(--text-primary)' }}
+        aria-live="polite"
+        aria-atomic="true"
       >
         {step.instruction}
       </div>

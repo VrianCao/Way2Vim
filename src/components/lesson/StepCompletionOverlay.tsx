@@ -40,6 +40,8 @@ export default function StepCompletionOverlay({
           transition={{ duration: 0.2 }}
           className="absolute inset-0 z-20 flex items-center justify-center"
           style={{ backgroundColor: 'rgba(26, 27, 38, 0.85)' }}
+          role="alert"
+          aria-live="assertive"
         >
           <motion.div
             initial={{ scale: 0.8, opacity: 0 }}

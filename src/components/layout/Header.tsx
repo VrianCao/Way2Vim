@@ -24,8 +24,8 @@ export default function Header() {
     >
       <div className="max-w-6xl mx-auto h-full px-4 flex items-center justify-between">
         {/* Logo */}
-        <Link href="/" className="flex items-center gap-2 no-underline">
-          <Terminal size={22} style={{ color: 'var(--green)' }} />
+        <Link href="/" className="flex items-center gap-2 no-underline focus:outline-none focus-visible:ring-2 focus-visible:ring-[#9ece6a] rounded-md px-1">
+          <Terminal size={22} style={{ color: 'var(--green)' }} aria-hidden="true" />
           <span
             className="text-lg font-bold tracking-tight"
             style={{ color: 'var(--green)' }}
@@ -35,20 +35,20 @@ export default function Header() {
         </Link>
 
         {/* Navigation */}
-        <nav className="flex items-center gap-1">
+        <nav className="flex items-center gap-1" aria-label="主导航">
           {navItems.map(({ href, label, icon: Icon }) => {
             const isActive = pathname === href || pathname.startsWith(href + '/');
             return (
               <Link
                 key={href}
                 href={href}
-                className="flex items-center gap-1.5 px-3 py-1.5 rounded-md text-sm no-underline transition-colors"
+                className="flex items-center gap-1.5 px-3 py-1.5 rounded-md text-sm no-underline transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#9ece6a]"
                 style={{
                   color: isActive ? 'var(--green)' : 'var(--text-secondary)',
                   backgroundColor: isActive ? 'rgba(158, 206, 106, 0.1)' : 'transparent',
                 }}
               >
-                <Icon size={16} />
+                <Icon size={16} aria-hidden="true" />
                 <span className="hidden sm:inline">{label}</span>
               </Link>
             );

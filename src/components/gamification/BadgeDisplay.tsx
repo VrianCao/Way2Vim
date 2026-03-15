@@ -15,7 +15,7 @@ import {
 import type { BadgeDefinition } from '@/types/gamification';
 
 // Map icon name -> component
-const iconMap: Record<string, React.ComponentType<{ size?: number }>> = {
+const iconMap: Record<string, React.ComponentType<{ size?: number; style?: React.CSSProperties }>> = {
   GraduationCap,
   Gamepad2,
   Keyboard,

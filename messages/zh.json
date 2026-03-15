@@ -30,7 +30,17 @@
     "feature4Desc": "学习天数、完成进度、勋章成就，激励持续学习",
     "ctaTitle": "准备好了吗？",
     "ctaSubtitle": "12 节课程，从零开始，轻松掌握 Vim。",
-    "ctaButton": "开始第一课"
+    "ctaButton": "开始第一课",
+    "demoText": [
+      "欢迎来到 Way2Vim！",
+      "",
+      "点击此编辑器，然后试试：",
+      "  h j k l  - 移动光标",
+      "  i        - 进入插入模式",
+      "  Esc      - 返回普通模式",
+      "  dd       - 删除整行",
+      "  u        - 撤销"
+    ]
   },
   "footer": {
     "madeWith": "用",

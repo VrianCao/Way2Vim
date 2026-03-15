@@ -30,7 +30,17 @@
     "feature4Desc": "Track learning days, completion progress, and achievement badges to stay motivated",
     "ctaTitle": "Ready to Start?",
     "ctaSubtitle": "12 lessons, from zero to hero, master Vim easily.",
-    "ctaButton": "Start First Lesson"
+    "ctaButton": "Start First Lesson",
+    "demoText": [
+      "Welcome to Way2Vim!",
+      "",
+      "Click this editor, then try:",
+      "  h j k l  - move cursor",
+      "  i        - enter insert mode",
+      "  Esc      - return to normal mode",
+      "  dd       - delete line",
+      "  u        - undo"
+    ]
   },
   "footer": {
     "madeWith": "Made with",

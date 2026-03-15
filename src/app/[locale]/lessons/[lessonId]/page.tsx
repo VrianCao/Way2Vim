@@ -5,6 +5,7 @@ import { useRouter } from '@/i18n/navigation';
 import { useEffect, useRef, useState } from 'react';
 import { useTranslations } from 'next-intl';
 import { getLessonById, getNextLesson } from '@/lessons/lessonRegistry';
+import { useLocalizedLesson } from '@/hooks/useLocalizedLesson';
 import { useProgressStore } from '@/store/progressStore';
 import LessonPlayer from '@/components/lesson/LessonPlayer';
 import LessonSummary from '@/components/gamification/LessonSummary';
@@ -16,7 +17,8 @@ export default function LessonDetailPage() {
   const params = useParams();
   const router = useRouter();
   const lessonId = params.lessonId as string;
-  const lesson = getLessonById(lessonId);
+  const rawLesson = getLessonById(lessonId);
+  const lesson = useLocalizedLesson(rawLesson);
 
   const startTimeRef = useRef<number>(0);
   const [showSummary, setShowSummary] = useState(false);

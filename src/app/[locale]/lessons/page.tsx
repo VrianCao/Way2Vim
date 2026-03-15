@@ -5,6 +5,7 @@ import { Lock, CheckCircle, Star, Clock } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 import { allLessons, isLessonUnlocked, getLessonNumber } from '@/lessons/lessonRegistry';
 import { useProgressStore, isLessonCompleted, getLessonProgress } from '@/store/progressStore';
+import { useLocalizedLessons } from '@/hooks/useLocalizedLesson';
 import ProgressBar from '@/components/gamification/ProgressBar';
 import PageTransition from '@/components/layout/PageTransition';
 
@@ -29,6 +30,7 @@ export default function LessonsPage() {
   const t = useTranslations('lessonsPage');
   const state = useProgressStore();
   const completedCount = state.completedLessons.length;
+  const lessons = useLocalizedLessons(allLessons);
 
   return (
     <PageTransition>
@@ -68,7 +70,7 @@ export default function LessonsPage() {
 
       {/* Lessons list */}
       <div className="flex flex-col gap-3" role="list" aria-label={t('title')}>
-        {allLessons.map((lesson) => {
+        {lessons.map((lesson) => {
           const num = getLessonNumber(lesson.id);
           const unlocked = isLessonUnlocked(lesson.id, state.completedSteps);
           const completed = isLessonCompleted(state, lesson.id);

@@ -11,16 +11,7 @@ import PageTransition from '@/components/layout/PageTransition';
 export default function Home() {
   const t = useTranslations('landing');
 
-  const demoText = [
-    'Welcome to Way2Vim!',
-    '',
-    'Click this editor, then try:',
-    '  h j k l  - move cursor',
-    '  i        - enter insert mode',
-    '  Esc      - return to normal mode',
-    '  dd       - delete line',
-    '  u        - undo',
-  ];
+  const demoText = t.raw('demoText') as string[];
 
   const demoState = createInitialState(demoText);
 

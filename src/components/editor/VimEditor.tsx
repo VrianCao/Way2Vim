@@ -95,6 +95,7 @@ export default function VimEditor({
             mode={mode}
             isFocused={isFocused}
             gutterChars={GUTTER_CHARS}
+            lineContent={lines[cursor.line] || ''}
           />
 
           {/* Lines */}

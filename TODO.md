@@ -247,52 +247,52 @@
 ## Phase 4：Lesson Player 交互组件（Day 7–9）
 
 ### P4-1 InstructionPanel 组件
-- [ ] 实现 `src/components/lesson/InstructionPanel.tsx`
-- [ ] 显示当前步骤的 `instruction` 文案
-- [ ] 显示步骤进度（`Step 3 / 8`）
-- [ ] 显示 `explanation`（可折叠/展开）
-- [ ] 样式：左侧面板，宽度 35%（桌面端）
+- [x] 实现 `src/components/lesson/InstructionPanel.tsx`
+- [x] 显示当前步骤的 `instruction` 文案
+- [x] 显示步骤进度（`Step 3 / 8`）
+- [x] 显示 `explanation`（可折叠/展开）
+- [x] 样式：左侧面板，宽度 35%（桌面端）
 
 ### P4-2 HintSystem 组件
-- [ ] 实现 `src/components/lesson/HintSystem.tsx`
-- [ ] 分级提示：用户卡住 10s 后显示「需要提示吗？」按钮
-- [ ] 点击后显示 `step.hint`
-- [ ] 30s 后自动显示提示（可配置）
-- [ ] 提示样式：黄色 info box
+- [x] 实现 `src/components/lesson/HintSystem.tsx`
+- [x] 分级提示：用户卡住 10s 后显示「需要提示吗？」按钮
+- [x] 点击后显示 `step.hint`
+- [x] 30s 后自动显示提示（可配置）
+- [x] 提示样式：黄色 info box
 
 ### P4-3 KeyVisualizer 组件
-- [ ] 实现 `src/components/lesson/KeyVisualizer.tsx`
-- [ ] 实时显示用户按下的键（类似按键可视化工具）
-- [ ] 使用 Framer Motion spring 动画模拟按键按下效果
-- [ ] 显示最近 5–8 个按键历史
+- [x] 实现 `src/components/lesson/KeyVisualizer.tsx`
+- [x] 实时显示用户按下的键（类似按键可视化工具）
+- [x] 使用 Framer Motion spring 动画模拟按键按下效果
+- [x] 显示最近 5–8 个按键历史
 
 ### P4-4 StepCompletionOverlay 组件
-- [ ] 实现 `src/components/lesson/StepCompletionOverlay.tsx`
-- [ ] 步骤完成时显示 `successMessage`
-- [ ] 绿色边框闪烁 + 勾选图标弹入动画
-- [ ] 自动 1.5s 后进入下一步（或点击「下一步」按钮）
+- [x] 实现 `src/components/lesson/StepCompletionOverlay.tsx`
+- [x] 步骤完成时显示 `successMessage`
+- [x] 绿色边框闪烁 + 勾选图标弹入动画
+- [x] 自动 1.5s 后进入下一步（或点击「下一步」按钮）
 
 ### P4-5 LessonNavigation 组件
-- [ ] 实现 `src/components/lesson/LessonNavigation.tsx`
-- [ ] 「上一步」/「下一步」按钮
-- [ ] 步骤点状进度指示器（dot indicator）
-- [ ] 「重新开始」按钮
-- [ ] 「退出课程」返回课程列表
+- [x] 实现 `src/components/lesson/LessonNavigation.tsx`
+- [x] 「上一步」/「下一步」按钮
+- [x] 步骤点状进度指示器（dot indicator）
+- [x] 「重新开始」按钮
+- [x] 「退出课程」返回课程列表
 
 ### P4-6 LessonPlayer 主组件
-- [ ] 实现 `src/components/lesson/LessonPlayer.tsx`
-- [ ] 加载 `LessonDefinition`，初始化第一步
-- [ ] 管理当前步骤索引
-- [ ] 每步初始化 editor state（`initialContent` + `initialCursor` + `initialMode`）
-- [ ] 每次按键后调用验证引擎判断步骤是否完成
-- [ ] 步骤完成后触发 overlay → 自动推进到下一步
-- [ ] 全部步骤完成后显示课程完成画面
-- [ ] 编排子组件：InstructionPanel + VimEditor + KeyVisualizer + HintSystem + StepCompletionOverlay + LessonNavigation
+- [x] 实现 `src/components/lesson/LessonPlayer.tsx`
+- [x] 加载 `LessonDefinition`，初始化第一步
+- [x] 管理当前步骤索引
+- [x] 每步初始化 editor state（`initialContent` + `initialCursor` + `initialMode`）
+- [x] 每次按键后调用验证引擎判断步骤是否完成
+- [x] 步骤完成后触发 overlay → 自动推进到下一步
+- [x] 全部步骤完成后显示课程完成画面
+- [x] 编排子组件：InstructionPanel + VimEditor + KeyVisualizer + HintSystem + StepCompletionOverlay + LessonNavigation
 
 ### P4-7 集成验证
-- [ ] 用 Lesson 1 数据端到端测试 LessonPlayer 流程
-- [ ] 验证：步骤推进、提示显示、完成反馈、全课完成
-- [ ] 用 Lesson 3（迷宫移动）测试多步骤复杂流程
+- [x] 用 Lesson 1 数据端到端测试 LessonPlayer 流程
+- [x] 验证：步骤推进、提示显示、完成反馈、全课完成
+- [x] 用 Lesson 3（迷宫移动）测试多步骤复杂流程
 
 ---
 

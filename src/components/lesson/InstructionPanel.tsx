@@ -66,6 +66,7 @@ export default function InstructionPanel({
           onClick={() => setShowExplanation(!showExplanation)}
           className="flex items-center gap-1.5 text-xs transition-colors cursor-pointer"
           style={{ color: 'var(--text-secondary)' }}
+          aria-expanded={showExplanation}
         >
           {showExplanation ? <ChevronDown size={14} /> : <ChevronRight size={14} />}
           <span>{t('learnMore')}</span>

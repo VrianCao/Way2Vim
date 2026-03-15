@@ -54,6 +54,7 @@ const StatusBar = React.memo(function StatusBar({
       }}
       role="status"
       aria-live="polite"
+      aria-label="Editor status information"
     >
       {/* Left: Mode badge */}
       <div className="flex items-center gap-2">

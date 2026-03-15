@@ -75,19 +75,153 @@
   "playground": {
     "title": "Playground",
     "subtitle": "Practice Vim commands freely without lesson constraints",
-    "reset": "Reset"
+    "reset": "Reset",
+    "defaultText": [
+      "# Way2Vim Playground",
+      "",
+      "This is a free practice area.",
+      "You can try any Vim commands here without step restrictions.",
+      "",
+      "## Basic Operations",
+      "- h/j/k/l to move cursor",
+      "- i to enter insert mode, Esc to return to normal mode",
+      "- dd to delete line, u to undo",
+      "- yy to yank line, p to paste",
+      "- /pattern to search, n/N to jump matches",
+      "",
+      "## Try Compound Commands",
+      "- 2dd to delete two lines",
+      "- 3w to move forward three words",
+      "- d$ to delete to end of line",
+      "- cw to change a word",
+      "",
+      "Happy practicing!"
+    ]
   },
   "cheatsheet": {
     "title": "Vim Cheatsheet",
-    "subtitle": "Reference for all commands supported by Way2Vim"
+    "subtitle": "Reference for all commands supported by Way2Vim",
+    "sections": {
+      "basicMovement": {
+        "title": "Basic Movement",
+        "commands": {
+          "h": "Move left",
+          "j": "Move down",
+          "k": "Move up",
+          "l": "Move right",
+          "w": "Next word start",
+          "b": "Previous word start",
+          "e": "Current/next word end",
+          "0": "Line start",
+          "$": "Line end",
+          "gg": "First line",
+          "G": "Last line",
+          "f{char}": "Move to character {char}",
+          "t{char}": "Move before character {char}"
+        }
+      },
+      "modeSwitch": {
+        "title": "Mode Switching",
+        "commands": {
+          "i": "Insert before cursor",
+          "I": "Insert at line start",
+          "a": "Append after cursor",
+          "A": "Append at line end",
+          "o": "Open line below",
+          "O": "Open line above",
+          "v": "Visual character mode",
+          "V": "Visual line mode",
+          ":": "Command-line mode",
+          "Esc": "Return to normal mode"
+        }
+      },
+      "editing": {
+        "title": "Editing",
+        "commands": {
+          "x": "Delete character at cursor",
+          "X": "Delete character before cursor",
+          "dd": "Delete line",
+          "dw": "Delete to next word start",
+          "d$": "Delete to line end",
+          "cc": "Change line",
+          "cw": "Change to word end",
+          "c$": "Change to line end",
+          "r{char}": "Replace current character",
+          "J": "Join next line"
+        }
+      },
+      "copyPaste": {
+        "title": "Copy & Paste",
+        "commands": {
+          "yy": "Yank line",
+          "yw": "Yank to word end",
+          "y$": "Yank to line end",
+          "p": "Paste after cursor",
+          "P": "Paste before cursor"
+        }
+      },
+      "undoRedo": {
+        "title": "Undo & Redo",
+        "commands": {
+          "u": "Undo",
+          "Ctrl+r": "Redo",
+          ".": "Repeat last change"
+        }
+      },
+      "searchReplace": {
+        "title": "Search & Replace",
+        "commands": {
+          "/pattern": "Search forward",
+          "n": "Next match",
+          "N": "Previous match",
+          ":s/old/new/": "Replace first in line",
+          ":s/old/new/g": "Replace all in line"
+        }
+      },
+      "commandLine": {
+        "title": "Command-line Mode",
+        "commands": {
+          ":w": "Save",
+          ":q": "Quit",
+          ":wq": "Save and quit",
+          ":q!": "Force quit (no save)",
+          ":{n}": "Jump to line n"
+        }
+      },
+      "combinations": {
+        "title": "Combinations",
+        "commands": {
+          "{n}{motion}": "Repeat motion n times (e.g. 3j)",
+          "{op}{motion}": "Operator + motion (e.g. dw)",
+          "{n}{op}{motion}": "Count + operator + motion (e.g. 2dw)",
+          "{op}{op}": "Operate on line (e.g. dd, yy, cc)"
+        }
+      }
+    }
   },
   "keyboardHelp": {
     "title": "Keyboard Reference",
     "close": "Close",
-    "basicMovement": "Basic Movement",
-    "modeSwitch": "Mode Switching",
-    "editing": "Editing",
-    "toggleHint": "Press ? to toggle · Esc to close"
+    "toggleHint": "Press ? to toggle · Esc to close",
+    "categories": {
+      "basicMovement": "Basic Movement",
+      "modeSwitch": "Mode Switching",
+      "editing": "Editing"
+    },
+    "shortcuts": {
+      "hjkl": "Left / Down / Up / Right",
+      "wb": "Next word / Previous word",
+      "0dollar": "Line start / Line end",
+      "ggG": "First line / Last line",
+      "ia": "Insert before / after cursor",
+      "oO": "Open line below / above",
+      "vV": "Visual char / line mode",
+      "esc": "Return to normal mode",
+      "xdd": "Delete char / Delete line",
+      "yyp": "Yank line / Paste",
+      "uctrlr": "Undo / Redo",
+      "wq": "Save and quit"
+    }
   },
   "mobilePrompt": {
     "message": "Desktop recommended for best practice experience"
@@ -136,5 +270,171 @@
     "title": "Something went wrong",
     "message": "An unexpected error occurred. Please try again.",
     "retry": "Retry"
+  },
+  "lessons": {
+    "lesson01": {
+      "title": "What is Vim? Why Learn Vim?",
+      "description": "Understand Vim editor's history, core philosophy, and the concept of modal editing. Experience Vim's two basic modes through simple interactions.",
+      "objectives": ["Understand what Modal Editing is", "Understand Vim's value and use cases"],
+      "steps": [
+        {"instruction": "Welcome to Way2Vim! This is an interactive Vim learning platform. What you see now is a simulated Vim editor. Please read the text in the editor carefully, then press any movement key (like j) to continue.", "hint": "Press the j key to move down one line to continue.", "explanation": "Vim (Vi IMproved) is a powerful text editor, born in 1991. It's one of the most commonly used editors in Linux/Unix systems, pre-installed on almost all servers.", "initialContent": ["Welcome to Way2Vim!", "", "Vim is an efficient text editor.", "Its core philosophy: hands never leave the keyboard.", "Let's learn Vim step by step."], "successMessage": "Great! You've read the introduction. Let's continue to learn about Vim's modes."},
+        {"instruction": "Vim's biggest feature is 'modal editing'. It has multiple modes, the two most important being: Normal mode (NORMAL) and Insert mode (INSERT). Normal mode is for navigating and manipulating text, Insert mode is for typing. Look at the status bar in the bottom left, it currently shows NORMAL mode. Press j to continue.", "hint": "Press j to move the cursor down.", "explanation": "Traditional editors (like Notepad) have only one mode: typing means writing. Vim's Normal mode lets you perform complex editing operations with simple keystrokes, far more efficient than using a mouse.", "initialContent": ["Vim's modes:", "", "  NORMAL  — Navigate, delete, copy, paste", "  INSERT  — Type text", "  VISUAL  — Select text", "  COMMAND — Execute commands (like save, quit)"], "successMessage": "Now you know Vim has four main modes."},
+        {"instruction": "Why learn Vim? Because it's everywhere: server management, code editing, command-line operations all rely on it. Many modern editors (VS Code, IntelliJ) also support Vim keybindings. Learn Vim once, benefit for life! Press j to continue.", "hint": "Press j to move the cursor and continue.", "explanation": "Statistics show over 25% of developers use Vim or Vim keybindings. Mastering Vim can significantly improve your editing efficiency.", "initialContent": ["Reasons to learn Vim:", "", "1. Vim is on almost every server", "2. Extremely fast editing, hands never leave keyboard", "3. Highly customizable with rich plugins", "4. Mindset transfers to other tools"], "successMessage": "Excellent! Now let's actually try it out."},
+        {"instruction": "Now let's experience mode switching! Press the i key to enter Insert mode (INSERT). Watch the status bar in the bottom left change.", "hint": "Press the i key on your keyboard (lowercase letter i).", "explanation": "Pressing i is the most basic way to enter Insert mode. Once in, you can type text like in a regular editor.", "initialContent": ["Press i to enter Insert mode.", "After entering, the status bar will show INSERT."], "successMessage": "You successfully entered Insert mode! Notice the status bar now shows INSERT."},
+        {"instruction": "Great! You're now in Insert mode. Press the Esc key to return to Normal mode (NORMAL). This is one of the most important keys in Vim—you can always use Esc to return to the safe Normal mode.", "hint": "Press the Esc key in the top left of your keyboard.", "explanation": "The Esc key is your safety exit. No matter what mode you're in, pressing Esc will return you to Normal mode. Remember this principle: when in doubt, press Esc first.", "initialContent": ["You're now in Insert mode.", "Press Esc to return to Normal mode.", "", "Remember: Esc is your safety exit!"], "successMessage": "Congratulations on completing the first lesson! You've learned Vim's most basic mode switching: i to enter Insert mode, Esc to return to Normal mode."}
+      ]
+    },
+    "lesson02": {
+      "title": "Entering and Exiting Vim",
+      "description": "Learn how to use Command mode to exit Vim. Master the three most common exit commands: :q, :q!, and :wq.",
+      "objectives": ["Learn to use :q to exit normally", "Learn to use :q! to force quit (discard changes)", "Learn to use :wq to save and quit"],
+      "steps": [
+        {"instruction": "Many beginners don't know how to exit Vim after opening it—this has even become a classic joke! Let's learn how to exit Vim. Type : q and press Enter, that is, enter the command :q to quit.", "hint": "First press : (colon) to enter Command mode, then type q, and finally press Enter to execute.", "explanation": ":q is short for quit. The colon : enters Command mode, and you'll see an input area at the bottom of the editor. After typing, press Enter to execute the command.", "initialContent": ["How to exit Vim?", "", "Type :q and press Enter.", "", "This is the most basic exit command."], "successMessage": "Well done! :q will exit Vim (provided you have no unsaved changes)."},
+        {"instruction": "If you've modified the file but don't want to save, :q will error. In this case, use :q! to force quit. Type : q ! and press Enter.", "hint": "First press : (colon), then type q and ! (exclamation mark), and finally press Enter.", "explanation": "The ! in :q! means force. This command will discard all unsaved changes and exit. It's useful when you accidentally make unwanted changes.", "initialContent": ["This file has been modified.", "", "Use :q! to discard changes and exit.", "! means force."], "successMessage": "Great! :q! can force quit when there are unsaved changes."},
+        {"instruction": "Before learning :wq, let's make some changes. Press i to enter Insert mode, then type some text.", "hint": "Press i to enter Insert mode. Once in, you can type text like in a regular editor.", "explanation": "When you modify file content, Vim tracks these changes. Before exiting, you usually need to decide whether to save or discard these changes.", "initialContent": ["Type some text here.", "", "Press i to enter Insert mode and start typing."], "successMessage": "You've entered Insert mode and can freely type text."},
+        {"instruction": "Now let's save changes and exit. First press Esc to return to Normal mode, then type :wq and press Enter. :wq means write and quit.", "hint": "First press Esc, then press : (colon), type wq, and finally press Enter.", "explanation": ":wq is the most common way to exit. w stands for write (save), q stands for quit. You can also use :x or ZZ as alternatives.", "initialContent": ["After making changes, use :wq to save and exit.", "", "w = write (save)", "q = quit (exit)"], "successMessage": "Excellent! :wq will save the file and exit Vim."},
+        {"instruction": "Congratulations! You've learned three ways to exit Vim. Let's review: :q to exit normally, :q! to force quit, :wq to save and exit. Press j or k to move the cursor and complete this lesson.", "hint": "Press j or k to move the cursor to complete.", "explanation": "Tip: You can also use :w to save without exiting, or use ZZ (two uppercase Z's) as a shortcut for :wq.", "initialContent": ["Summary of ways to exit Vim:", "", "  :q   — Quit (when no changes)", "  :q!  — Force quit (discard changes)", "  :wq  — Save and quit", "", "Press j or k to complete this lesson."], "successMessage": "Congratulations on completing lesson 2! You never have to worry about being trapped in Vim again."}
+      ]
+    },
+    "lesson03": {
+      "title": "Normal Mode - Moving the Cursor (h, j, k, l)",
+      "description": "Learn Vim's most basic cursor movement. The h j k l keys keep your hands in the home row, no need to use arrow keys.",
+      "objectives": ["Master the four basic movement keys h j k l", "Understand why Vim uses these keys instead of arrow keys", "Navigate text fluently"],
+      "steps": [
+        {"instruction": "Press j once to move the cursor down one line.", "hint": "Press the j key once, and the cursor will move down one line.", "explanation": "The j key is in the home row, where your right index finger naturally rests. This way you don't need to move your hand to press arrow keys.", "initialContent": ["This is line one", "This is line two", "This is line three", "This is line four", "This is line five"], "successMessage": "Good! You moved down one line."},
+        {"instruction": "Press k once to move the cursor up one line.", "hint": "Press the k key once, and the cursor will move up one line.", "explanation": "k is above j, so k moves up and j moves down. This design is quite intuitive.", "initialContent": ["This is line one", "This is line two", "This is line three", "This is line four", "This is line five"], "successMessage": "Great! You moved up one line."},
+        {"instruction": "Press l once to move the cursor right one character.", "hint": "Press the l key once, and the cursor will move right one character.", "explanation": "l is on the right side of the keyboard, so l moves right. Memory aid: l = right.", "initialContent": ["abcdefghij", "klmnopqrst", "uvwxyz1234"], "successMessage": "Perfect! You moved right."},
+        {"instruction": "Press h once to move the cursor left one character.", "hint": "Press the h key once, and the cursor will move left one character.", "explanation": "h is on the left side of the keyboard, so h moves left. Now you've learned all four directions: h left, j down, k up, l right.", "initialContent": ["abcdefghij", "klmnopqrst", "uvwxyz1234"], "successMessage": "Excellent! You've mastered all four directions."},
+        {"instruction": "Move to line 3, column 4 (the letter 'r').", "hint": "First use j to move down to line 3, then use l to move right to column 4.", "explanation": "You can press the same key multiple times to move repeatedly. For example, pressing j 3 times will move down 3 lines.", "initialContent": ["abcdefg", "hijklmn", "opqrstu", "vwxyz12"], "successMessage": "Well done! You reached the target position."},
+        {"instruction": "Navigate to one of the stars (★).", "hint": "Observe the star positions, use j to move down and l to move right to reach them.", "explanation": "In actual use, you'll find hjkl is much faster than arrow keys because your fingers don't need to leave the home row.", "initialContent": ["Start . . . .", "# # . # .", ". . . # ★", ". # # . .", "★ . . . End"], "successMessage": "Great navigation!"},
+        {"instruction": "Navigate to the other star (★).", "hint": "Use j to move down, then use h to move left.", "explanation": "With practice, you'll develop muscle memory, and moving the cursor will become as natural as breathing.", "initialContent": ["Start . . . .", "# # . # .", ". . . # ★", ". # # . .", "★ . . . End"], "successMessage": "Excellent work!"},
+        {"instruction": "Navigate to 'End'.", "hint": "From your current position, use l to move right to 'End'.", "explanation": "Congratulations! You've completed basic hjkl training. In later lessons, you'll learn more efficient movement methods, but hjkl will always be the foundation.", "initialContent": ["Start . . . .", "# # . # .", ". . . # ★", ". # # . .", "★ . . . End"], "successMessage": "Perfect! You've mastered hjkl movement."}
+      ]
+    },
+    "lesson04": {
+      "title": "Insert Mode (i, a, o, I, A, O)",
+      "description": "Learn six ways to enter Insert mode. Each method places the cursor at a different position for more efficient text editing.",
+      "objectives": ["Master the difference between i and a (insert before/after cursor)", "Master I and A (insert at line start/end)", "Master o and O (open line below/above)"],
+      "steps": [
+        {"instruction": "Press i to enter Insert mode.", "hint": "Press the i key to enter Insert mode.", "explanation": "i is the most common way to enter Insert mode. The cursor stays at the current position, and what you type will be inserted before the cursor.", "initialContent": ["Hello World", "Press i to enter Insert mode"], "successMessage": "You entered Insert mode with i."},
+        {"instruction": "Press a to insert after the cursor.", "hint": "Press the a key, notice the cursor moves right one position.", "explanation": "The difference between a and i: i inserts before the cursor, a inserts after. When you want to add content after a character, a is more convenient than i.", "initialContent": ["Hello World", "Press a to insert after cursor"], "successMessage": "You entered Insert mode with a."},
+        {"instruction": "Press I to jump to the line start.", "hint": "Press Shift + i to type uppercase I.", "explanation": "I is an enhanced version of i. When you want to add content at the line start (like comment symbols), I is much faster than pressing 0 then i.", "initialContent": ["    This is an indented line", "Press I to jump to line start"], "successMessage": "You jumped to line start with I."},
+        {"instruction": "Press A to jump to the line end.", "hint": "Press Shift + a to type uppercase A.", "explanation": "A is an enhanced version of a. When you want to add content at the line end (like semicolons or commas), A is much faster than pressing $ then a.", "initialContent": ["console.log(\"Hello\")", "Press A to jump to line end"], "successMessage": "You jumped to line end with A."},
+        {"instruction": "Press o to open a new line below.", "hint": "Press the o key, a new line will appear below.", "explanation": "o is equivalent to: move to line end → press Enter → enter Insert mode. But it only takes one key!", "initialContent": ["function hello() {", "}"], "successMessage": "You opened a new line below with o."},
+        {"instruction": "Press O to open a new line above.", "hint": "Press Shift + o to type uppercase O.", "explanation": "The difference between O and o: o opens a line below, O opens a line above. Memory aid: O is above, o is below.", "initialContent": ["function hello() {", "  console.log(\"world\");", "}"], "successMessage": "You opened a new line above with O."},
+        {"instruction": "Press Esc to return to Normal mode.", "hint": "Press the Esc key to return to Normal mode.", "explanation": "Tip: In actual use, i, a, and o are the most common three. I, A, and O can save many keystrokes in specific scenarios.", "initialContent": ["Insert mode summary:", "", "  i — Insert before cursor", "  a — Insert after cursor", "  I — Insert at line start", "  A — Insert at line end", "  o — Open line below", "  O — Open line above", "", "Press Esc to complete this lesson"], "successMessage": "You completed lesson 4!"}
+      ]
+    },
+    "lesson05": {
+      "title": "Save and Quit (:w, :q, :wq, ZZ)",
+      "description": "Learn how to save files and exit the editor in Vim. Master common commands like :w, :q, :wq, and ZZ.",
+      "objectives": ["Learn to use :w to save files", "Learn to use :q to quit the editor", "Learn to use :wq to save and quit", "Learn to use ZZ shortcut to save and quit"],
+      "steps": [
+        {"instruction": "Press i to enter Insert mode.", "hint": "Press lowercase letter i to enter Insert mode.", "explanation": "In Vim, you need to enter Insert mode first to edit text. After editing, you usually need to save the file.", "initialContent": ["Hello, Vim!", "Learning save and quit"], "successMessage": "You entered Insert mode."},
+        {"instruction": "Press Esc, then type :w and press Enter to save.", "hint": "First press Escape, then type : w and press Enter.", "explanation": "The :w command writes the current buffer content to the file. w stands for write.", "initialContent": ["Hello, Vim!", "Learning save and quit"], "successMessage": "File saved with :w."},
+        {"instruction": "Type :q and press Enter to quit.", "hint": "Type : q and press Enter.", "explanation": "The :q command quits Vim. If the file has unsaved changes, Vim will prevent quitting and prompt you to save first.", "initialContent": ["Hello, Vim!", "Learning save and quit"], "successMessage": "You executed :q."},
+        {"instruction": "Type :wq and press Enter to save and quit.", "hint": "Type : w q and press Enter.", "explanation": ":wq combines :w (save) and :q (quit) into one command. This is one of the most common ways to exit.", "initialContent": ["Hello, Vim!", "Learning save and quit"], "successMessage": "You executed :wq."},
+        {"instruction": "Press ZZ to save and quit.", "hint": "Make sure you're in Normal mode, then press uppercase Z twice.", "explanation": "ZZ is equivalent to :wq, but faster. Note it's uppercase Z, requiring the Shift key. This is a common exit method for efficient Vim users.", "initialContent": ["Hello, Vim!", "Learning save and quit"], "successMessage": "You completed lesson 5!"}
+      ]
+    },
+    "lesson06": {
+      "title": "Delete and Undo (x, dd, u, Ctrl-r)",
+      "description": "Learn to use x to delete characters, dd to delete lines, u to undo, and Ctrl-r to redo operations.",
+      "objectives": ["Learn to use x to delete character at cursor", "Learn to use dd to delete entire line", "Learn to use u to undo operations", "Learn to use Ctrl-r to redo operations", "Understand the relationship between undo and redo"],
+      "steps": [
+        {"instruction": "Press x to delete the character at the cursor.", "hint": "Press x once to delete the character at the cursor position.", "explanation": "The x command deletes the character at the cursor position, equivalent to the Delete key. After deletion, following characters move forward.", "initialContent": ["abcdefgh", "Delete this line", "Keep this line", "Keep this too"], "successMessage": "You deleted one character."},
+        {"instruction": "Press x three times to delete 'b', 'c', 'd'.", "hint": "Press x three times consecutively to delete 'b', 'c', 'd'.", "explanation": "You can press x multiple times to delete multiple characters. You can also use a number prefix like 3x to delete 3 characters at once.", "initialContent": ["bcdefgh", "Delete this line", "Keep this line", "Keep this too"], "successMessage": "You deleted three characters."},
+        {"instruction": "Press j to move down, then dd to delete the line.", "hint": "First press j to move to the next line, then press d twice (dd) to delete the entire line.", "explanation": "The dd command deletes the entire line at the cursor. The deleted line is saved to a register and can be pasted later with p.", "initialContent": ["efgh", "Delete this line", "Keep this line", "Keep this too"], "successMessage": "You deleted a line with dd."},
+        {"instruction": "Press u to undo the last operation.", "hint": "Press u once to undo the last operation.", "explanation": "u is Vim's undo command. It undoes the most recent operation. You can press u multiple times to undo earlier operations.", "initialContent": ["efgh", "Keep this line", "Keep this too"], "successMessage": "You undid the deletion."},
+        {"instruction": "Press u again to undo further.", "hint": "Continue pressing u to go back to an earlier state.", "explanation": "Vim's undo is multi-level. You can press u repeatedly to go back to much earlier states. The undo history is very deep, so don't worry about losing operations.", "initialContent": ["efgh", "Delete this line", "Keep this line", "Keep this too"], "successMessage": "You undid another operation."},
+        {"instruction": "Press Ctrl-r to redo.", "hint": "Hold Ctrl and press r.", "explanation": "Ctrl-r is the redo command. It restores the most recent operation undone by u. u and Ctrl-r let you move freely forward and backward in the undo history.", "initialContent": ["bcdefgh", "Delete this line", "Keep this line", "Keep this too"], "successMessage": "You redid the operation."},
+        {"instruction": "Press dd to delete the line, then u to undo.", "hint": "First press dd to delete the current line, then press u to undo.", "explanation": "Mastering the combination of delete and undo lets you edit fearlessly—you can always undo mistakes.", "initialContent": ["efgh", "Delete this line", "Keep this line", "Keep this too"], "successMessage": "You practiced delete and undo."},
+        {"instruction": "Press u repeatedly until the first line becomes 'abcdefgh'.", "hint": "Press u repeatedly until the first line returns to 'abcdefgh'.", "explanation": "Vim's undo history can take you back to when the file was first opened. Using undo effectively is key to safe editing.", "initialContent": ["efgh", "Delete this line", "Keep this line", "Keep this too"], "successMessage": "You completed lesson 6!"}
+      ]
+    },
+    "lesson07": {
+      "title": "Copy and Paste (yy, yw, p, P)",
+      "description": "Learn to use yy to copy entire lines, yw to copy words, and p and P to paste at different positions.",
+      "objectives": ["Learn to use yy to copy entire line", "Learn to use p to paste after cursor", "Learn to use P to paste before cursor", "Learn to use yw to copy a word", "Combine copy and paste to rearrange text"],
+      "steps": [
+        {"instruction": "Press yy to copy the current line.", "hint": "Press y twice (yy) to copy the current line. The screen won't change visibly, but the content is copied to a register.", "explanation": "yy copies (yanks) the entire line at the cursor to a register. y stands for yank, Vim's term for 'copy'. After copying, neither the cursor nor text changes.", "initialContent": ["Line 1: Apple", "Line 2: Banana", "Line 3: Grape"], "successMessage": "You copied the line."},
+        {"instruction": "Press p to paste below.", "hint": "Press lowercase p to insert the copied content below the current line.", "explanation": "p (lowercase) pastes below the current line. For line-level copies (yy), p always adds a new line below.", "initialContent": ["Line 1: Apple", "Line 2: Banana", "Line 3: Grape"], "successMessage": "You pasted below with p."},
+        {"instruction": "Press gg to go to first line, then P to paste above.", "hint": "First press gg to return to the first line, then press uppercase P (Shift+p) to paste above.", "explanation": "P (uppercase) pastes above the current line. The difference between p and P is the paste direction: p below, P above.", "initialContent": ["Line 1: Apple", "Line 1: Apple", "Line 2: Banana", "Line 3: Grape"], "successMessage": "You pasted above with P."},
+        {"instruction": "Press yw to copy a word.", "hint": "Press y then w, that is yw, to copy from the cursor to the next word start.", "explanation": "yw copies from the cursor position to before the next word start. y is the copy operator, w is the 'to next word' motion.", "initialContent": ["apple banana cherry"], "successMessage": "You copied a word."},
+        {"instruction": "Press $ to go to line end, then p to paste after cursor.", "hint": "First press $ to move to line end, then press p to paste after the cursor.", "explanation": "For character-level copies (like yw), p inserts text after the cursor position, not on a new line.", "initialContent": ["apple banana cherry"], "successMessage": "You pasted at line end."},
+        {"instruction": "Press 2j to line 3, dd to cut, gg to line 1, P to paste above.", "hint": "First press 2j to go to the third line, dd to cut it, then press gg to go to the first line, and P to paste above.", "explanation": "dd not only deletes the line but also saves it to a register, equivalent to 'cut'. Combined with p/P, you can move and rearrange lines.", "initialContent": ["Apple", "Banana", "Grape"], "successMessage": "You completed lesson 7!"}
+      ]
+    },
+    "lesson08": {
+      "title": "Search and Replace (/, n, N, :s)",
+      "description": "Learn to use / to search text, n/N to jump between matches, and :s command for text replacement.",
+      "objectives": ["Learn to use / for forward search", "Learn to use n to jump to next match", "Learn to use N to jump to previous match", "Learn to use :s for single-line replacement", "Learn to use :s with g flag for full-line replacement"],
+      "steps": [
+        {"instruction": "Type /vim and press Enter to search.", "hint": "Type / v i m then press Enter. The search will jump to the first match.", "explanation": "/ enters search mode. After typing the search keyword and pressing Enter, the cursor jumps to the first match. Search is a core feature for quickly locating text in Vim.", "initialContent": ["vim is fast", "vim is modal", "I love vim", "vim is powerful"], "successMessage": "You searched for 'vim'."},
+        {"instruction": "Press n to jump to the next match.", "hint": "Press lowercase n to jump to the next search result.", "explanation": "n (next) jumps to the next match in the search direction. If it reaches the end of the file, it automatically wraps around to the beginning (wrap search).", "initialContent": ["vim is fast", "vim is modal", "I love vim", "vim is powerful"], "successMessage": "You jumped to next match."},
+        {"instruction": "Press N to jump to the previous match.", "hint": "Press uppercase N (Shift+n) to jump backward to the previous match.", "explanation": "N works opposite to n, jumping in the reverse search direction. n and N let you move freely back and forth between all matches.", "initialContent": ["vim is fast", "vim is modal", "I love vim", "vim is powerful"], "successMessage": "You jumped to previous match."},
+        {"instruction": "Type :s/vim/Vim/ and press Enter.", "hint": "Type : s / v i m / V i m / then press Enter.", "explanation": ":s/old/new/ replaces the first match in the current line. s stands for substitute (replace).", "initialContent": ["vim is fast", "vim is modal", "I love vim", "vim is powerful"], "successMessage": "You replaced text in the line."},
+        {"instruction": "Move to line 3, type :s/vim/Vim/g and press Enter.", "hint": "First move to the third line, then type :s/vim/Vim/g and press Enter. The g at the end means replace all matches in the line.", "explanation": "By default :s only replaces the first match in each line. Adding the g (global) flag replaces all matches in that line.", "initialContent": ["Vim is fast", "vim is modal", "I love vim", "vim is powerful"], "successMessage": "You replaced all matches in the line."},
+        {"instruction": "Type /xyz and press Enter.", "hint": "Type / x y z then press Enter.", "explanation": "When no match is found, Vim displays a message. This doesn't cause an error, and you remain in Normal mode.", "initialContent": ["Vim is fast", "vim is modal", "I love Vim", "vim is powerful"], "successMessage": "You searched for non-existent text."},
+        {"instruction": "Move to line 2 and execute :s/vim/Vim/, then line 4 and do the same.", "hint": "First move to line 2 and execute :s/vim/Vim/, then move to line 4 and execute the same command.", "explanation": "In actual use, you can use :%s/vim/Vim/g to replace throughout the entire file. But line-by-line replacement helps you better understand how the replace command works.", "initialContent": ["Vim is fast", "vim is modal", "I love Vim", "vim is powerful"], "successMessage": "You completed lesson 8!"}
+      ]
+    },
+    "lesson09": {
+      "title": "Visual Mode (v, V)",
+      "description": "Learn to use Visual mode to select text and perform operations on selections like delete, copy, and change.",
+      "objectives": ["Master entering and exiting character Visual mode (v)", "Learn to extend selections in Visual mode", "Master using line Visual mode (V)", "Learn to perform delete (d), copy (y), paste (p), and change (c) operations on selections"],
+      "steps": [
+        {"instruction": "Press v to enter character Visual mode.", "hint": "Press lowercase letter v to enter character Visual mode.", "explanation": "Visual mode lets you select a text region first, then perform operations on it. After pressing v to enter character Visual mode, moving the cursor extends the selection.", "initialContent": ["hello vim world", "line two content", "line three content"], "successMessage": "You entered Visual mode."},
+        {"instruction": "Press v, then w to select a word, then d to delete.", "hint": "First press v to enter Visual mode, then press w to select a word, finally press d to delete.", "explanation": "In Visual mode, all movement commands (like l, w, e, etc.) extend or shrink the selection. After selecting text, press d to delete the selection.", "initialContent": ["hello vim world", "line two content", "line three content"], "successMessage": "You deleted the selection."},
+        {"instruction": "Press u to undo, then Shift+v to enter line Visual mode.", "hint": "First press u to undo, then press Shift+v to enter line Visual mode. Line Visual mode selects entire lines.", "explanation": "Line Visual mode (V) differs from character Visual mode—it automatically selects entire lines. Moving the cursor up or down extends the selection by lines.", "initialContent": ["hello vim world", "line two content", "line three content"], "successMessage": "You entered line Visual mode."},
+        {"instruction": "Press y to copy the selected line.", "hint": "Press y directly to copy the selected line.", "explanation": "y (yank) is Vim's copy command. In Visual mode, pressing y copies the selection to a register and automatically exits Visual mode back to Normal mode.", "initialContent": ["hello vim world", "line two content", "line three content"], "successMessage": "You copied the selection."},
+        {"instruction": "Press p to paste below.", "hint": "In Normal mode, press p directly to paste below the cursor.", "explanation": "p (paste/put) pastes the register content. If you copied entire lines (in line Visual mode), pasting inserts new lines below the current line.", "initialContent": ["hello vim world", "line two content", "line three content"], "successMessage": "You pasted the copied content."},
+        {"instruction": "Press v, w, then c to change.", "hint": "Press v, w, c in sequence. c deletes the selection and switches to Insert mode, letting you type new text.", "explanation": "c (change) is the 'modify' command. In Visual mode, pressing c deletes the selected text and immediately enters Insert mode, letting you type new content to replace it. This is more efficient than deleting then inserting separately.", "initialContent": ["hello vim world", "line two content", "line three content"], "successMessage": "You completed lesson 9!"}
+      ]
+    },
+    "lesson10": {
+      "title": "Advanced Movement (w, b, e, 0, $, gg, G, f, t)",
+      "description": "Master various efficient cursor movement commands in Vim, including word-level movement, line start/end jumps, file start/end jumps, and character finding.",
+      "objectives": ["Master word-level movement: w (next word start), b (previous word start), e (word end)", "Master line jumps: 0 (line start), $ (line end)", "Master file jumps: gg (first line), G (last line)", "Master character finding: f (find jump to char), t (till jump before char)"],
+      "steps": [
+        {"instruction": "Press w to move to the next word.", "hint": "Press w directly, the cursor will jump from T in 'The' to q in 'quick'.", "explanation": "w (word) moves the cursor to the start of the next word. In Vim, a 'word' consists of letters, numbers, and underscores, with spaces and punctuation as separators.", "initialContent": ["The quick brown fox jumps", "over the lazy dog today", "alpha beta gamma delta", "epsilon zeta eta theta", "final line here end"], "successMessage": "You moved to next word."},
+        {"instruction": "Press b to move to the previous word.", "hint": "Press b directly, the cursor will jump left to the previous word start.", "explanation": "b (back) is opposite to w, moving the cursor to the start of the previous word. w and b are complementary movement commands.", "initialContent": ["The quick brown fox jumps", "over the lazy dog today", "alpha beta gamma delta", "epsilon zeta eta theta", "final line here end"], "successMessage": "You moved to previous word."},
+        {"instruction": "Press e to move to word end.", "hint": "Press e directly, the cursor will move to the last letter e in 'The'.", "explanation": "e (end) moves the cursor to the last character of the current (or next) word. Unlike w, e stops at word end rather than word start.", "initialContent": ["The quick brown fox jumps", "over the lazy dog today", "alpha beta gamma delta", "epsilon zeta eta theta", "final line here end"], "successMessage": "You moved to word end."},
+        {"instruction": "Press 0 to jump to line start.", "hint": "Press the number 0 on your keyboard, the cursor will immediately jump to the line start.", "explanation": "0 moves the cursor to the first column (column 0) of the current line. This is the fastest way to return to line start. There's also ^ which jumps to the first non-whitespace character.", "initialContent": ["The quick brown fox jumps", "over the lazy dog today", "alpha beta gamma delta", "epsilon zeta eta theta", "final line here end"], "successMessage": "You jumped to line start."},
+        {"instruction": "Press $ to jump to line end.", "hint": "Press Shift+4 (the $ symbol), the cursor will jump to the last character of the line.", "explanation": "$ moves the cursor to the last character of the current line. 0 and $ are a pair, representing line start and line end.", "initialContent": ["The quick brown fox jumps", "over the lazy dog today", "alpha beta gamma delta", "epsilon zeta eta theta", "final line here end"], "successMessage": "You jumped to line end."},
+        {"instruction": "Press gg to jump to file start.", "hint": "Quickly press g twice, the cursor will jump to the very beginning of the file.", "explanation": "gg moves the cursor to the first line of the file. This is very useful when browsing long files, allowing quick return to the file start.", "initialContent": ["The quick brown fox jumps", "over the lazy dog today", "alpha beta gamma delta", "epsilon zeta eta theta", "final line here end"], "successMessage": "You jumped to file start."},
+        {"instruction": "Press G to jump to file end.", "hint": "Press Shift+g, the cursor will jump to the last line of the file.", "explanation": "G moves the cursor to the last line of the file. gg and G are a pair, representing file first line and file last line.", "initialContent": ["The quick brown fox jumps", "over the lazy dog today", "alpha beta gamma delta", "epsilon zeta eta theta", "final line here end"], "successMessage": "You jumped to file end."},
+        {"instruction": "Press f then o to find 'o'.", "hint": "First press f, then press o. The cursor will jump to the first occurrence of letter o in the first line.", "explanation": "f{char} (find) searches right in the current line for the specified character and moves the cursor to it. This is a powerful tool for precise positioning within a line. Press ; to repeat the search for the next occurrence.", "initialContent": ["The quick brown fox jumps", "over the lazy dog today", "alpha beta gamma delta", "epsilon zeta eta theta", "final line here end"], "successMessage": "You found the character."},
+        {"instruction": "Press t then o to move till 'o'.", "hint": "First press t, then press o. The cursor will stop on the character before letter o.", "explanation": "t{char} (till) is similar to f, but the cursor stops at the position before the target character. t is especially useful when combined with operators (like d, c), for example dt) can delete everything up to but not including the right parenthesis.", "initialContent": ["The quick brown fox jumps", "over the lazy dog today", "alpha beta gamma delta", "epsilon zeta eta theta", "final line here end"], "successMessage": "You moved till the character."},
+        {"instruction": "Press G to jump to the last line.", "hint": "Press Shift+g to jump to the last line of the file.", "explanation": "Congratulations on completing all advanced movement commands! Summary: w/b/e move by word, 0/$ jump within lines, gg/G jump within files, f/t precisely find characters. These commands can be freely combined to greatly improve editing efficiency.", "initialContent": ["The quick brown fox jumps", "over the lazy dog today", "alpha beta gamma delta", "epsilon zeta eta theta", "final line here end"], "successMessage": "You completed lesson 10!"}
+      ]
+    },
+    "lesson11": {
+      "title": "Compound Commands (number+motion, operator+motion)",
+      "description": "Learn one of Vim's most powerful features—command composition. Achieve efficient text editing through 'number+motion' and 'operator+motion' combinations.",
+      "objectives": ["Master number prefix with movement commands (like 3j, 2w)", "Master dd (delete line) and dw (delete word)", "Master d$ (delete to line end) and cw (change word)", "Master operators with numbers (like 2dd delete two lines)", "Understand Vim's 'operator + motion' syntax model"],
+      "steps": [
+        {"instruction": "Press 3j to move down 3 lines.", "hint": "First press 3, then press j. The cursor will jump from line 1 to line 4.", "explanation": "In Vim, almost all commands can have a number prefix. 3j means 'move down 3 lines', 5w means 'move forward 5 words'. This is the foundation of Vim's efficient editing.", "initialContent": ["one two three four five six seven", "alpha beta gamma delta epsilon", "line A", "line B", "line C", "line D", "line E"], "successMessage": "You moved down 3 lines."},
+        {"instruction": "Press 2w to move forward 2 words.", "hint": "First press 2, then press w. The cursor will jump from 'one' past 'two' to the start of 'three'.", "explanation": "2w means execute the w command twice. From 'one', the first w goes to 'two', the second w goes to 'three'.", "initialContent": ["one two three four five six seven", "alpha beta gamma delta epsilon", "line A", "line B", "line C", "line D", "line E"], "successMessage": "You moved forward 2 words."},
+        {"instruction": "Press dd to delete the current line.", "hint": "Quickly press d twice to delete the entire line at the cursor.", "explanation": "dd is a special form of 'operator repetition'—when an operator is pressed twice, it acts on the entire line. d is the delete operator, so dd deletes the entire line. Similarly, there's yy (copy line) and cc (change line).", "initialContent": ["one two three four five six seven", "alpha beta gamma delta epsilon", "line A", "line B", "line C", "line D", "line E"], "successMessage": "You deleted a line."},
+        {"instruction": "Press dw to delete a word.", "hint": "First press d, then press w. The word at the cursor position will be deleted.", "explanation": "Vim's core syntax is 'operator + motion'. d is the delete operator, w is the 'to next word start' motion, so dw = delete to next word start = delete current word.", "initialContent": ["one two three four five six seven", "alpha beta gamma delta epsilon", "line A", "line B", "line C", "line D", "line E"], "successMessage": "You deleted a word."},
+        {"instruction": "Press d$ to delete to line end.", "hint": "First press d, then press $ (Shift+4). Everything after the cursor will be deleted.", "explanation": "In d$, d is the operator and $ is the 'to line end' motion. You can also use uppercase D to achieve the same effect—D is equivalent to d$.", "initialContent": ["one two three four five six seven", "alpha beta gamma delta epsilon", "line A", "line B", "line C", "line D", "line E"], "successMessage": "You deleted to line end."},
+        {"instruction": "Press cw to change a word.", "hint": "First press c, then press w. The word will be deleted and you'll enter Insert mode.", "explanation": "c (change) is the modify operator. cw = delete current word and enter Insert mode. c behaves like d but automatically enters Insert mode after deletion. Similarly, cc changes the entire line, c$ or C changes to line end.", "initialContent": ["one two three four five six seven", "alpha beta gamma delta epsilon", "line A", "line B", "line C", "line D", "line E"], "successMessage": "You changed a word."},
+        {"instruction": "Press Escape, then 2dd to delete 2 lines.", "hint": "First press Escape, then press 2, d, d in sequence. Two lines will be deleted simultaneously.", "explanation": "Number prefixes can combine with any command. 2dd means 'delete 2 lines', 3dw means 'delete 3 words'. Mastering number prefixes lets you complete large amounts of editing with minimal keystrokes.", "initialContent": ["one two three four five six seven", "alpha beta gamma delta epsilon", "line A", "line B", "line C", "line D", "line E"], "successMessage": "You deleted 2 lines."},
+        {"instruction": "Press 2j to move down to line 3, then dd to delete.", "hint": "First press 2j to move down to line 3, then press dd to delete the current line.", "explanation": "Vim's power lies in command composability. Any movement command can have a number prefix, and any operator can combine with movement commands. This 'syntax' lets you complete almost all editing operations by remembering just a few basic commands.", "initialContent": ["one two three four five six seven", "alpha beta gamma delta epsilon", "line A", "line B", "line C", "line D", "line E"], "successMessage": "You completed lesson 11!"}
+      ]
+    },
+    "lesson12": {
+      "title": "Practical Tips and Configuration",
+      "description": "Learn about Vim's configuration file, common settings, and practical tips to build a foundation for daily Vim use.",
+      "objectives": ["Understand the role of .vimrc configuration file", "Learn common Vim setting options", "Learn Vim's learning path and practice suggestions", "Complete Way2Vim basic tutorial"],
+      "steps": [
+        {"instruction": "Press j to move down one line and see Vim configuration options.", "hint": "Press j to move down one line and look at Vim's configuration options.", "explanation": ".vimrc is Vim's configuration file, located in the user's home directory (~/.vimrc). You can set line numbers, indentation, search behavior, and other options to make Vim better suit your usage habits.", "initialContent": ["\" .vimrc example", "set number", "set relativenumber", "set ignorecase", "set smartcase"], "successMessage": "You viewed the config."},
+        {"instruction": "Press j to move to the next config item.", "hint": "Press j to move down to the next configuration item.", "explanation": "Line number settings help you quickly locate positions. Relative line numbers show the distance from the current line to other lines, very efficient when used with number prefixes (like 5j).", "initialContent": ["\" .vimrc example", "set number", "set relativenumber", "set ignorecase", "set smartcase"], "successMessage": "You learned about line numbers."},
+        {"instruction": "Press j to move down.", "hint": "Press j to move down.", "explanation": "These two options work together to make search smarter: searching for 'vim' will match 'Vim' and 'VIM', but searching for 'Vim' will only precisely match cases with uppercase V.", "initialContent": ["\" .vimrc example", "set number", "set relativenumber", "set ignorecase", "set smartcase"], "successMessage": "You learned about search settings."},
+        {"instruction": "Press any of j, k, h, or l.", "hint": "Press any of j, k, h, or l.", "explanation": "Vim's learning curve is steep, but once mastered, editing efficiency improves dramatically. Start with basic movement and editing, gradually learning advanced features. Don't try to memorize all commands at once—accumulate them slowly through actual use.", "initialContent": ["\" .vimrc example", "set number", "set relativenumber", "set ignorecase", "set smartcase"], "successMessage": "You're on the learning path."},
+        {"instruction": "Press G to jump to the file end.", "hint": "Press Shift+g (uppercase G) to jump to the file end.", "explanation": "You've mastered Vim's core concepts: mode switching, movement commands, operator and motion combinations, Visual mode, and more. Next, practice more in daily editing, and you'll discover Vim's power and elegance. Continue exploring more advanced features like macro recording, window splitting, and the plugin system. Best wishes on your Vim journey!", "initialContent": ["\" .vimrc example", "set number", "set relativenumber", "set ignorecase", "set smartcase"], "successMessage": "Congratulations! You completed all 12 lessons!"}
+      ]
+    }
   }
 }

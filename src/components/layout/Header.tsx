@@ -32,7 +32,7 @@ export default function Header() {
     >
       <div className="max-w-6xl mx-auto h-full px-4 flex items-center justify-between">
         {/* Logo */}
-        <Link href="/" className="flex items-center gap-2 no-underline focus:outline-none focus-visible:ring-2 focus-visible:ring-[#9ece6a] rounded-md px-1">
+        <Link href="/" className="flex items-center gap-2 no-underline focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--green)] rounded-md px-1">
           <Terminal size={22} style={{ color: 'var(--green)' }} aria-hidden="true" />
           <span
             className="text-lg font-bold tracking-tight"
@@ -50,11 +50,12 @@ export default function Header() {
               <Link
                 key={href}
                 href={href}
-                className="flex items-center gap-1.5 px-3 py-1.5 rounded-md text-sm no-underline transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#9ece6a]"
+                className="flex items-center gap-1.5 px-3 py-1.5 rounded-md text-sm no-underline transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--green)]"
                 style={{
                   color: isActive ? 'var(--green)' : 'var(--text-secondary)',
                   backgroundColor: isActive ? 'rgba(158, 206, 106, 0.1)' : 'transparent',
                 }}
+                aria-current={isActive ? 'page' : undefined}
               >
                 <Icon size={16} aria-hidden="true" />
                 <span className="hidden sm:inline">{label}</span>
@@ -63,7 +64,7 @@ export default function Header() {
           })}
           <button
             onClick={switchLocale}
-            className="flex items-center gap-1.5 px-3 py-1.5 rounded-md text-sm transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#9ece6a] ml-1"
+            className="flex items-center gap-1.5 px-3 py-1.5 rounded-md text-sm transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--green)] ml-1"
             style={{ color: 'var(--text-secondary)' }}
             aria-label="Switch language"
           >

@@ -90,15 +90,10 @@ export function handleVisualMode(key: string, state: EditorState): EditorState {
     };
   }
 
-  // gg - go to top
+  // gg - go to top (handled by waiting state in normalMode, ignore single 'g')
   if (key === 'g') {
-    // Wait for second g (simplified: treat 'g' as gg in visual)
-    const newActive = { line: 0, col: 0 };
-    return {
-      ...state,
-      cursor: newActive,
-      visualSelection: { ...sel, active: newActive },
-    };
+    // Return state unchanged - let the waiting state mechanism handle 'gg'
+    return state;
   }
 
   // G - go to bottom

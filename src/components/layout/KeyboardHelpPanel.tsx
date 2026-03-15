@@ -5,29 +5,29 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { X, Keyboard } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 
-const shortcuts = [
-  { category: '基础移动', items: [
-    { key: 'h j k l', desc: '左 / 下 / 上 / 右' },
-    { key: 'w / b', desc: '下一个词首 / 上一个词首' },
-    { key: '0 / $', desc: '行首 / 行尾' },
-    { key: 'gg / G', desc: '文件首行 / 末行' },
-  ]},
-  { category: '模式切换', items: [
-    { key: 'i / a', desc: '光标前 / 后插入' },
-    { key: 'o / O', desc: '下方 / 上方新开行' },
-    { key: 'v / V', desc: '字符 / 行可视模式' },
-    { key: 'Esc', desc: '返回普通模式' },
-  ]},
-  { category: '编辑操作', items: [
-    { key: 'x / dd', desc: '删除字符 / 删除整行' },
-    { key: 'yy / p', desc: '复制整行 / 粘贴' },
-    { key: 'u / Ctrl+r', desc: '撤销 / 重做' },
-    { key: ':wq', desc: '保存并退出' },
-  ]},
-];
-
 export default function KeyboardHelpPanel() {
   const t = useTranslations('keyboardHelp');
+
+  const shortcuts = [
+    { category: 'basicMovement', items: [
+      { key: 'h j k l', desc: t('shortcuts.hjkl') },
+      { key: 'w / b', desc: t('shortcuts.wb') },
+      { key: '0 / $', desc: t('shortcuts.0dollar') },
+      { key: 'gg / G', desc: t('shortcuts.ggG') },
+    ]},
+    { category: 'modeSwitch', items: [
+      { key: 'i / a', desc: t('shortcuts.ia') },
+      { key: 'o / O', desc: t('shortcuts.oO') },
+      { key: 'v / V', desc: t('shortcuts.vV') },
+      { key: 'Esc', desc: t('shortcuts.esc') },
+    ]},
+    { category: 'editing', items: [
+      { key: 'x / dd', desc: t('shortcuts.xdd') },
+      { key: 'yy / p', desc: t('shortcuts.yyp') },
+      { key: 'u / Ctrl+r', desc: t('shortcuts.uctrlr') },
+      { key: ':wq', desc: t('shortcuts.wq') },
+    ]},
+  ];
   const [isOpen, setIsOpen] = useState(false);
 
   const toggle = useCallback(() => setIsOpen(prev => !prev), []);
@@ -122,7 +122,7 @@ export default function KeyboardHelpPanel() {
                 {shortcuts.map(section => (
                   <div key={section.category}>
                     <h3 className="text-xs font-semibold mb-1.5" style={{ color: 'var(--cyan)' }}>
-                      {t(section.category)}
+                      {t(`categories.${section.category}`)}
                     </h3>
                     <div className="space-y-1">
                       {section.items.map(item => (

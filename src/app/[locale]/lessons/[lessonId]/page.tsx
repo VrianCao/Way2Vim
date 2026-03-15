@@ -82,7 +82,7 @@ export default function LessonDetailPage() {
           </p>
           <button
             onClick={() => router.push('/lessons')}
-            className="px-4 py-2 rounded-lg text-sm cursor-pointer transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#9ece6a]"
+            className="px-4 py-2 rounded-lg text-sm cursor-pointer transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--green)]"
             style={{ backgroundColor: 'var(--surface)', color: 'var(--text-primary)' }}
           >
             {t('backToList')}

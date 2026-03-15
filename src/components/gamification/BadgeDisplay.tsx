@@ -44,7 +44,7 @@ export default function BadgeDisplay({
   const newSet = useMemo(() => new Set(newlyUnlockedIds), [newlyUnlockedIds]);
 
   return (
-    <div className="grid grid-cols-4 gap-3">
+    <div className="grid grid-cols-4 gap-3" role="region" aria-label="Achievement badges">
       <AnimatePresence>
         {badges.map((badge) => {
           const unlocked = unlockedSet.has(badge.id);

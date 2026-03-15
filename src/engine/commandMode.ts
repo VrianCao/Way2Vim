@@ -300,6 +300,11 @@ function findAllMatches(lines: string[], query: string): CursorPosition[] {
       let match;
       while ((match = regex.exec(lines[line])) !== null) {
         matches.push({ line, col: match.index });
+        // Safeguard: prevent infinite loop on zero-width matches (e.g., ^, $, \b)
+        if (match[0].length === 0) {
+          regex.lastIndex++;
+          if (regex.lastIndex > lines[line].length) break;
+        }
       }
     }
   } catch {

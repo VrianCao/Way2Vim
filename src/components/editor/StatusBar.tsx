@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import { useTranslations } from 'next-intl';
 import type { VimMode } from '@/types/vim';
 
 interface StatusBarProps {
@@ -34,6 +35,7 @@ const StatusBar = React.memo(function StatusBar({
   cursorCol,
   pendingKeys,
 }: StatusBarProps) {
+  const t = useTranslations('statusBar');
   // In COMMAND mode, show the command buffer with ':'/' prefix
   const centerText =
     mode === 'COMMAND'
@@ -76,7 +78,7 @@ const StatusBar = React.memo(function StatusBar({
 
       {/* Right: Cursor position */}
       <div className="text-text-secondary whitespace-nowrap">
-        Ln {cursorLine + 1}, Col {cursorCol + 1}
+        {t('ln')} {cursorLine + 1}, {t('col')} {cursorCol + 1}
       </div>
     </div>
   );

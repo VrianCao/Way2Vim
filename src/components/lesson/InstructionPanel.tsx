@@ -35,7 +35,7 @@ export default function InstructionPanel({
           {t('step')} {stepIndex + 1} / {totalSteps}
         </span>
         <span className="text-xs text-text-secondary">
-          难度 {'★'.repeat(lesson.difficulty)}{'☆'.repeat(5 - lesson.difficulty)}
+          {t('difficulty')} {'★'.repeat(lesson.difficulty)}{'☆'.repeat(5 - lesson.difficulty)}
         </span>
       </div>
 

@@ -10,7 +10,8 @@
   "nav": {
     "lessons": "Lessons",
     "playground": "Playground",
-    "cheatsheet": "Cheatsheet"
+    "cheatsheet": "Cheatsheet",
+    "mainNav": "Main navigation"
   },
   "landing": {
     "heroTitle": "The Best Way to Master Vim",
@@ -58,7 +59,8 @@
     "nextStep": "Next",
     "completeLesson": "Complete",
     "notFound": "Lesson Not Found",
-    "completedSteps": "You completed {completed}/{total} steps in \"{title}\"."
+    "completedSteps": "You completed {completed}/{total} steps in \"{title}\".",
+    "difficulty": "Difficulty"
   },
   "lessonSummary": {
     "title": "Lesson Complete!",
@@ -237,27 +239,27 @@
       "name": "Beginner",
       "description": "Complete first lesson"
     },
-    "hjklMaster": {
+    "hjkl-master": {
       "name": "HJKL Master",
       "description": "Complete all steps in lesson 3"
     },
-    "insertPro": {
+    "insert-pro": {
       "name": "Insert Pro",
       "description": "Complete all steps in lesson 4"
     },
-    "commandExpert": {
+    "command-expert": {
       "name": "Command Expert",
       "description": "Complete lessons 5 and 8"
     },
-    "persistence": {
+    "persistence-3d": {
       "name": "Persistent",
       "description": "Learn for 3 consecutive days"
     },
-    "vimNinja": {
+    "vim-ninja": {
       "name": "Vim Ninja",
       "description": "Complete all 12 lessons"
     },
-    "speedStar": {
+    "speed-star": {
       "name": "Speed Star",
       "description": "Complete any lesson in under 2 minutes"
     },
@@ -270,6 +272,14 @@
     "title": "Something went wrong",
     "message": "An unexpected error occurred. Please try again.",
     "retry": "Retry"
+  },
+  "editor": {
+    "ariaLabel": "Vim Editor",
+    "clickToEdit": "Click here to start editing"
+  },
+  "statusBar": {
+    "ln": "Ln",
+    "col": "Col"
   },
   "lessons": {
     "lesson01": {

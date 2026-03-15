@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useCallback, useEffect, useRef } from 'react';
+import { useTranslations } from 'next-intl';
 import type { EditorState } from '@/types/vim';
 import { useKeyCapture } from '@/hooks/useKeyCapture';
 import { useVimEditor } from '@/hooks/useVimEditor';
@@ -21,6 +22,7 @@ export default function VimEditor({
   onStateChange,
   externalState,
 }: VimEditorProps) {
+  const t = useTranslations('editor');
   const { state, mode, lines, cursor, statusMessage, commandBuffer, visualSelection, searchMatches, onKey, resetState } =
     useVimEditor(initialState);
   const [isFocused, setIsFocused] = useState(false);
@@ -81,7 +83,7 @@ export default function VimEditor({
       onFocus={() => setIsFocused(true)}
       onBlur={() => setIsFocused(false)}
       role="textbox"
-      aria-label="Vim 编辑器"
+      aria-label={t('ariaLabel')}
       aria-roledescription="Vim editor"
     >
       {/* Editor content area */}
@@ -122,7 +124,7 @@ export default function VimEditor({
           aria-hidden="true"
         >
           <span className="text-text-secondary text-sm px-4 py-2 rounded bg-surface/80">
-            点击此处开始编辑
+            {t('clickToEdit')}
           </span>
         </div>
       )}

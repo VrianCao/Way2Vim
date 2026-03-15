@@ -10,7 +10,8 @@
   "nav": {
     "lessons": "课程",
     "playground": "练习场",
-    "cheatsheet": "速查表"
+    "cheatsheet": "速查表",
+    "mainNav": "主导航"
   },
   "landing": {
     "heroTitle": "掌握 Vim 的最佳方式",
@@ -58,7 +59,8 @@
     "nextStep": "下一步",
     "completeLesson": "完成课程",
     "notFound": "课程未找到",
-    "completedSteps": "你完成了「{title}」的 {completed}/{total} 个步骤。"
+    "completedSteps": "你完成了「{title}」的 {completed}/{total} 个步骤。",
+    "difficulty": "难度"
   },
   "lessonSummary": {
     "title": "课程完成！",
@@ -105,6 +107,7 @@
       "basicMovement": {
         "title": "基础移动",
         "commands": {
+          "0": "行首",
           "h": "向左移动",
           "j": "向下移动",
           "k": "向上移动",
@@ -112,7 +115,6 @@
           "w": "下一个词首",
           "b": "上一个词首",
           "e": "当前/下一个词尾",
-          "0": "行首",
           "$": "行尾",
           "gg": "文件首行",
           "G": "文件末行",
@@ -237,33 +239,33 @@
       "name": "初学者",
       "description": "完成第一课"
     },
-    "hjklMaster": {
-      "name": "HJKL大师",
-      "description": "完成第三课所有步骤"
-    },
-    "insertPro": {
-      "name": "插入达人",
-      "description": "完成第四课所有步骤"
-    },
-    "commandExpert": {
-      "name": "命令行专家",
-      "description": "完成第五课和第八课"
-    },
-    "persistence": {
-      "name": "坚持不懈",
-      "description": "连续学习 3 天"
-    },
-    "vimNinja": {
-      "name": "Vim忍者",
-      "description": "完成全部 12 课"
-    },
-    "speedStar": {
-      "name": "速度之星",
-      "description": "任意课程在 2 分钟内完成"
-    },
     "flawless": {
       "name": "零失误",
       "description": "任意课程零错误完成"
+    },
+    "hjkl-master": {
+      "name": "HJKL大师",
+      "description": "完成第三课所有步骤"
+    },
+    "insert-pro": {
+      "name": "插入达人",
+      "description": "完成第四课所有步骤"
+    },
+    "command-expert": {
+      "name": "命令行专家",
+      "description": "完成第五课和第八课"
+    },
+    "persistence-3d": {
+      "name": "坚持不懈",
+      "description": "连续学习 3 天"
+    },
+    "vim-ninja": {
+      "name": "Vim忍者",
+      "description": "完成全部 12 课"
+    },
+    "speed-star": {
+      "name": "速度之星",
+      "description": "任意课程在 2 分钟内完成"
     }
   },
   "errorBoundary": {
@@ -429,7 +431,7 @@
       ],
       "steps": [
         {
-          "instruction": "",
+          "instruction": "在 Vim 中，j 键用于向下移动光标。请按 j 键将光标向下移动至少一行。",
           "hint": "按一次 j 键，光标会向下移动一行。",
           "explanation": "j 键的位置在键盘主区，你的右手食指自然放置的位置。这样你就不需要移动手去按方向键了。",
           "initialContent": [
@@ -439,10 +441,10 @@
             "这是第四行",
             "这是第五行"
           ],
-          "successMessage": ""
+          "successMessage": "很好！j 键可以向下移动光标。"
         },
         {
-          "instruction": "",
+          "instruction": "k 键用于向上移动光标。你的光标现在在第 4 行，请按 k 键向上移动至少一行。",
           "hint": "按一次 k 键，光标会向上移动一行。",
           "explanation": "k 在 j 的上方，所以 k 向上，j 向下。这个设计很符合直觉。",
           "initialContent": [
@@ -452,10 +454,10 @@
             "这是第四行",
             "这是第五行"
           ],
-          "successMessage": ""
+          "successMessage": "做得好！k 键可以向上移动光标。"
         },
         {
-          "instruction": "",
+          "instruction": "l 键（小写字母 L）用于向右移动光标。请按 l 键将光标向右移动至少一个字符。",
           "hint": "按一次 l 键，光标会向右移动一个字符。",
           "explanation": "l 在键盘的右侧，所以 l 向右移动。记忆方法：l = right（右）。",
           "initialContent": [
@@ -463,10 +465,10 @@
             "klmnopqrst",
             "uvwxyz1234"
           ],
-          "successMessage": ""
+          "successMessage": "太棒了！l 键可以向右移动光标。"
         },
         {
-          "instruction": "",
+          "instruction": "h 键用于向左移动光标。你的光标现在在第 6 列，请按 h 键向左移动至少一个字符。",
           "hint": "按一次 h 键，光标会向左移动一个字符。",
           "explanation": "h 在键盘的左侧，所以 h 向左移动。现在你已经学会了全部四个方向：h 左，j 下，k 上，l 右。",
           "initialContent": [
@@ -474,10 +476,10 @@
             "klmnopqrst",
             "uvwxyz1234"
           ],
-          "successMessage": ""
+          "successMessage": "完美！h 键可以向左移动光标。"
         },
         {
-          "instruction": "",
+          "instruction": "现在让我们综合练习。请使用 h j k l 键将光标移动到第 3 行第 4 列的位置（字符 \"x\" 上）。",
           "hint": "先用 j 向下移动到第 3 行，再用 l 向右移动到第 4 列。",
           "explanation": "你可以连续按同一个键来移动多次。例如按 3 次 j 就能向下移动 3 行。",
           "initialContent": [
@@ -486,10 +488,10 @@
             "opqrstu",
             "vwxyz12"
           ],
-          "successMessage": ""
+          "successMessage": "干得漂亮！你已经能够精确控制光标位置了。"
         },
         {
-          "instruction": "",
+          "instruction": "让我们来玩一个小游戏！请使用 h j k l 移动光标到第一个星星 ★ 的位置。",
           "hint": "观察星星的位置，使用 j 向下，l 向右来到达。",
           "explanation": "在实际使用中，你会发现 hjkl 比方向键快得多，因为你的手指不需要离开主键盘区。",
           "initialContent": [
@@ -499,10 +501,10 @@
             ". # # . .",
             "★ . . . 终点"
           ],
-          "successMessage": ""
+          "successMessage": "找到了！继续前往下一个星星。"
         },
         {
-          "instruction": "",
+          "instruction": "很好！现在请移动到第二个星星 ★ 的位置（在左下角）。",
           "hint": "使用 j 向下移动，然后用 h 向左移动。",
           "explanation": "随着练习，你会形成肌肉记忆，移动光标将变得像呼吸一样自然。",
           "initialContent": [
@@ -512,10 +514,10 @@
             ". # # . .",
             "★ . . . 终点"
           ],
-          "successMessage": ""
+          "successMessage": "太棒了！你已经掌握了基本的导航技巧。"
         },
         {
-          "instruction": "",
+          "instruction": "最后一步！请移动光标到\"终点\"这个词的位置（第 5 行第 8 列）。",
           "hint": "从当前位置使用 l 向右移动到\"终点\"。",
           "explanation": "恭喜！你已经完成了 hjkl 的基础训练。在后续课程中，你会学到更多高效的移动方式，但 hjkl 永远是基础。",
           "initialContent": [
@@ -525,7 +527,7 @@
             ". # # . .",
             "★ . . . 终点"
           ],
-          "successMessage": ""
+          "successMessage": "恭喜你完成了第三课！你已经掌握了 Vim 最基本的移动方式。记住：h 左，j 下，k 上，l 右。"
         }
       ]
     },
@@ -539,57 +541,57 @@
       ],
       "steps": [
         {
-          "instruction": "",
+          "instruction": "你已经学过 i 键可以进入插入模式。i 的含义是 insert（插入），它会在光标当前位置之前开始插入。请按 i 进入插入模式。",
           "hint": "按 i 键即可进入插入模式。",
           "explanation": "i 是最常用的进入插入模式的方式。光标会停留在当前位置，你输入的内容会插入到光标前面。",
           "initialContent": [
             "Hello World",
             "请按 i 进入插入模式"
           ],
-          "successMessage": ""
+          "successMessage": "很好！i 会在光标前插入文本。"
         },
         {
-          "instruction": "",
+          "instruction": "a 键的含义是 append（追加），它会在光标当前位置之后开始插入。光标现在在字母 \"W\" 上，请按 a 进入插入模式，观察光标位置的变化。",
           "hint": "按 a 键，注意光标会向右移动一格。",
           "explanation": "a 和 i 的区别：i 在光标前插入，a 在光标后插入。当你想在某个字符后面添加内容时，用 a 比 i 更方便。",
           "initialContent": [
             "Hello World",
             "请按 a 在光标后插入"
           ],
-          "successMessage": ""
+          "successMessage": "注意到了吗？a 会让光标向右移动一格，然后开始插入。"
         },
         {
-          "instruction": "",
+          "instruction": "I（大写的 i）会在当前行的开头进入插入模式。无论光标在哪里，按 I 都会跳到行首。请按 I 试试。",
           "hint": "按 Shift + i 输入大写的 I。",
           "explanation": "I 是 i 的增强版。当你想在行首添加内容（比如注释符号）时，I 比先按 0 再按 i 要快得多。",
           "initialContent": [
             "    这是一行缩进的文字",
             "请按 I 跳到行首"
           ],
-          "successMessage": ""
+          "successMessage": "很好！I 会直接跳到行首并进入插入模式。"
         },
         {
-          "instruction": "",
+          "instruction": "A（大写的 a）会在当前行的末尾进入插入模式。无论光标在哪里，按 A 都会跳到行尾。请按 A 试试。",
           "hint": "按 Shift + a 输入大写的 A。",
           "explanation": "A 是 a 的增强版。当你想在行尾添加内容（比如分号、逗号）时，A 比先按 $ 再按 a 要快得多。",
           "initialContent": [
             "console.log(\"Hello\")",
             "请按 A 跳到行尾"
           ],
-          "successMessage": ""
+          "successMessage": "完美！A 会直接跳到行尾并进入插入模式。"
         },
         {
-          "instruction": "",
+          "instruction": "o（小写）会在当前行下方新建一行，并进入插入模式。这是添加新代码行的最快方式。请按 o 试试。",
           "hint": "按 o 键，会在下方出现新的一行。",
           "explanation": "o 相当于：移到行尾 → 按回车 → 进入插入模式。但只需要按一个键！",
           "initialContent": [
             "function hello() {",
             "}"
           ],
-          "successMessage": ""
+          "successMessage": "太好了！o 会在下方新建一行并进入插入模式。"
         },
         {
-          "instruction": "",
+          "instruction": "O（大写的 o）会在当前行上方新建一行，并进入插入模式。请按 O 试试。",
           "hint": "按 Shift + o 输入大写的 O。",
           "explanation": "O 和 o 的区别：o 在下方新建行，O 在上方新建行。记忆方法：O 在上，o 在下。",
           "initialContent": [
@@ -597,10 +599,10 @@
             "  console.log(\"world\");",
             "}"
           ],
-          "successMessage": ""
+          "successMessage": "做得好！O 会在上方新建一行并进入插入模式。"
         },
         {
-          "instruction": "",
+          "instruction": "现在你已经学会了 6 种进入插入模式的方式！让我们回顾一下：i/a（前/后），I/A（行首/行尾），o/O（下方/上方新行）。请按 Esc 返回普通模式完成本课。",
           "hint": "按 Esc 键返回普通模式。",
           "explanation": "小贴士：在实际使用中，i、a、o 是最常用的三个。I、A、O 在特定场景下能节省很多按键。",
           "initialContent": [
@@ -615,7 +617,7 @@
             "",
             "按 Esc 完成本课"
           ],
-          "successMessage": ""
+          "successMessage": "恭喜你完成了第四课！你现在可以灵活地在任何位置进入插入模式了。"
         }
       ]
     },
@@ -630,54 +632,54 @@
       ],
       "steps": [
         {
-          "instruction": "",
+          "instruction": "首先，按 i 进入插入模式，准备编辑文本。",
           "hint": "按下小写字母 i 即可进入插入模式。",
           "explanation": "在 Vim 中，你需要先进入插入模式才能编辑文本。编辑完成后，通常需要保存文件。",
           "initialContent": [
             "Hello, Vim!",
             "学习保存和退出"
           ],
-          "successMessage": ""
+          "successMessage": "很好！你已经进入了插入模式。接下来学习如何保存文件。"
         },
         {
-          "instruction": "",
+          "instruction": "按 Escape 回到普通模式，然后输入 :w 并按回车来保存文件。",
           "hint": "先按 Escape，再依次输入 : w 然后按 Enter。",
           "explanation": ":w 命令会将当前缓冲区的内容写入文件。w 代表 write（写入）。",
           "initialContent": [
             "Hello, Vim!",
             "学习保存和退出"
           ],
-          "successMessage": ""
+          "successMessage": "文件已保存！:w 是 Vim 中最常用的保存命令。"
         },
         {
-          "instruction": "",
+          "instruction": "输入 :q 并按回车来退出编辑器。",
           "hint": "依次输入 : q 然后按 Enter。",
           "explanation": ":q 命令会退出 Vim。如果文件有未保存的修改，Vim 会阻止退出并提示你先保存。",
           "initialContent": [
             "Hello, Vim!",
             "学习保存和退出"
           ],
-          "successMessage": ""
+          "successMessage": "成功退出！在已保存的情况下，:q 可以正常退出。"
         },
         {
-          "instruction": "",
+          "instruction": "输入 :wq 并按回车，一步完成保存并退出。",
           "hint": "依次输入 : w q 然后按 Enter。",
           "explanation": ":wq 将 :w（保存）和 :q（退出）合并为一个命令，这是最常用的退出方式之一。",
           "initialContent": [
             "Hello, Vim!",
             "学习保存和退出"
           ],
-          "successMessage": ""
+          "successMessage": "完美！:wq 是保存退出的最常用方法。"
         },
         {
-          "instruction": "",
+          "instruction": "在普通模式下按 ZZ（两次大写 Z），这是 :wq 的快捷方式。",
           "hint": "确保在普通模式下，连续按两次大写 Z。",
           "explanation": "ZZ 等同于 :wq，但更快捷。注意是大写 Z，需要按住 Shift 键。这是高效 Vim 用户常用的退出方式。",
           "initialContent": [
             "Hello, Vim!",
             "学习保存和退出"
           ],
-          "successMessage": ""
+          "successMessage": "太棒了！你已经掌握了所有保存和退出的方法。ZZ 是最快的保存退出方式！"
         }
       ]
     },
@@ -693,7 +695,7 @@
       ],
       "steps": [
         {
-          "instruction": "",
+          "instruction": "光标在第一行的 \"a\" 上。按 x 删除光标处的字符 \"a\"。",
           "hint": "按一次 x 即可删除光标所在位置的字符。",
           "explanation": "x 命令会删除光标所在位置的字符，相当于键盘上的 Delete 键。删除后，后面的字符会向前移动。",
           "initialContent": [
@@ -702,10 +704,10 @@
             "保留这一行",
             "这行也保留"
           ],
-          "successMessage": ""
+          "successMessage": "字符 \"a\" 已被删除！x 是最简单的删除命令。"
         },
         {
-          "instruction": "",
+          "instruction": "继续按 x 删除字符，直到第一行变成 \"efgh\"。你需要再删除 3 次。",
           "hint": "连续按 x 三次，分别删除 \"b\"、\"c\"、\"d\"。",
           "explanation": "你可以多次按 x 来删除多个字符。也可以用数字前缀如 3x 一次删除 3 个字符。",
           "initialContent": [
@@ -714,10 +716,10 @@
             "保留这一行",
             "这行也保留"
           ],
-          "successMessage": ""
+          "successMessage": "很好！你也可以用 3x 一次性删除 3 个字符，效率更高。"
         },
         {
-          "instruction": "",
+          "instruction": "将光标移到第二行（\"删除这一行\"），然后按 dd 删除整行。",
           "hint": "先按 j 移动到下一行，然后按两次 d（即 dd）来删除整行。",
           "explanation": "dd 命令会删除光标所在的整行。被删除的行会保存到寄存器中，之后可以用 p 粘贴。",
           "initialContent": [
@@ -726,10 +728,10 @@
             "保留这一行",
             "这行也保留"
           ],
-          "successMessage": ""
+          "successMessage": "\"删除这一行\" 已被删除！dd 是删除整行的快捷方式。"
         },
         {
-          "instruction": "",
+          "instruction": "按 u 撤销刚才的删除操作，恢复被删除的行。",
           "hint": "按一次 u 即可撤销上一步操作。",
           "explanation": "u 是 Vim 中的撤销命令（undo）。它会撤销最近的一次操作，可以多次按 u 来撤销更早的操作。",
           "initialContent": [
@@ -737,10 +739,10 @@
             "保留这一行",
             "这行也保留"
           ],
-          "successMessage": ""
+          "successMessage": "撤销成功！\"删除这一行\" 已恢复。u 是非常重要的命令。"
         },
         {
-          "instruction": "",
+          "instruction": "再按一次 u，继续撤销，恢复之前删除的字符。",
           "hint": "继续按 u，可以一步步回到更早的状态。",
           "explanation": "Vim 的撤销是多级的，你可以连续按 u 回到很早之前的状态。撤销的历史非常深，不用担心丢失操作。",
           "initialContent": [
@@ -749,10 +751,10 @@
             "保留这一行",
             "这行也保留"
           ],
-          "successMessage": ""
+          "successMessage": "连续撤销成功！第一行已恢复到更早的状态。"
         },
         {
-          "instruction": "",
+          "instruction": "按 Ctrl-r 重做刚才被撤销的操作。",
           "hint": "同时按住 Ctrl 键和 r 键。",
           "explanation": "Ctrl-r 是重做命令（redo），它会恢复最近一次被 u 撤销的操作。u 和 Ctrl-r 可以在撤销历史中自由前进和后退。",
           "initialContent": [
@@ -761,10 +763,10 @@
             "保留这一行",
             "这行也保留"
           ],
-          "successMessage": ""
+          "successMessage": "重做成功！Ctrl-r 恢复了被撤销的操作。"
         },
         {
-          "instruction": "",
+          "instruction": "综合练习：先用 dd 删除第一行 \"efgh\"，然后按 u 撤销，确认恢复。",
           "hint": "先按 dd 删除当前行，再按 u 撤销。",
           "explanation": "熟练运用删除和撤销的组合，可以让你在编辑时无所畏惧——随时可以撤销错误的操作。",
           "initialContent": [
@@ -773,10 +775,10 @@
             "保留这一行",
             "这行也保留"
           ],
-          "successMessage": ""
+          "successMessage": "做得好！删除后立即撤销，内容完好如初。"
         },
         {
-          "instruction": "",
+          "instruction": "最终挑战：通过多次按 u 将内容恢复到最初状态。第一行应该恢复为 \"abcdefgh\"。",
           "hint": "连续按 u 直到第一行变回 \"abcdefgh\"。",
           "explanation": "Vim 的撤销历史可以让你回到文件最初被打开时的状态。善用撤销功能是安全编辑的关键。",
           "initialContent": [
@@ -785,7 +787,7 @@
             "保留这一行",
             "这行也保留"
           ],
-          "successMessage": ""
+          "successMessage": "太棒了！你已完全掌握了删除（x、dd）、撤销（u）和重做（Ctrl-r）！"
         }
       ]
     },
@@ -801,7 +803,7 @@
       ],
       "steps": [
         {
-          "instruction": "",
+          "instruction": "光标在第一行。按 yy 复制当前整行。复制不会改变内容或模式。",
           "hint": "按两次 y（即 yy）来复制当前行。屏幕不会有明显变化，但内容已被复制到寄存器中。",
           "explanation": "yy 会复制（yank）光标所在的整行到寄存器中。y 代表 yank（拉取），是 Vim 中\"复制\"的术语。复制后光标和文本都不会变化。",
           "initialContent": [
@@ -809,10 +811,10 @@
             "第二行：香蕉",
             "第三行：葡萄"
           ],
-          "successMessage": ""
+          "successMessage": "第一行已复制到寄存器中！虽然看不到变化，但内容已准备好粘贴。"
         },
         {
-          "instruction": "",
+          "instruction": "按 p 将刚才复制的行粘贴到当前行的下方。",
           "hint": "按小写 p 会在当前行下方插入复制的内容。",
           "explanation": "p（小写）会在当前行的下方粘贴整行内容。对于行级复制（yy），p 总是在下方新增一行。",
           "initialContent": [
@@ -820,10 +822,10 @@
             "第二行：香蕉",
             "第三行：葡萄"
           ],
-          "successMessage": ""
+          "successMessage": "粘贴成功！复制的行已出现在第一行下方。"
         },
         {
-          "instruction": "",
+          "instruction": "将光标移到第一行（按 gg），然后按大写 P 将内容粘贴到当前行的上方。",
           "hint": "先按 gg 回到第一行，然后按大写 P（Shift+p）在上方粘贴。",
           "explanation": "P（大写）会在当前行的上方粘贴内容。p 和 P 的区别就是粘贴方向：p 在下方，P 在上方。",
           "initialContent": [
@@ -832,28 +834,28 @@
             "第二行：香蕉",
             "第三行：葡萄"
           ],
-          "successMessage": ""
+          "successMessage": "大写 P 在上方粘贴成功！现在你会区分 p 和 P 了。"
         },
         {
-          "instruction": "",
+          "instruction": "光标在 \"apple\" 的开头。按 yw 复制一个单词。复制后模式仍然是普通模式。",
           "hint": "按 y 然后按 w，即 yw，复制从光标到下一个单词开头之间的内容。",
           "explanation": "yw 复制从光标位置到下一个单词开头之前的内容。y 是复制操作符，w 是\"到下一个单词\"的动作。",
           "initialContent": [
             "apple banana cherry"
           ],
-          "successMessage": ""
+          "successMessage": "单词 \"apple \" 已复制！yw 复制会包含单词后的空格。"
         },
         {
-          "instruction": "",
+          "instruction": "将光标移到行尾（按 $），然后按 p 将复制的单词粘贴到光标后面。",
           "hint": "先按 $ 移到行尾，然后按 p 在光标后粘贴。",
           "explanation": "对于字符级复制（如 yw），p 会在光标位置之后插入文本，而不是新增一行。",
           "initialContent": [
             "apple banana cherry"
           ],
-          "successMessage": ""
+          "successMessage": "单词粘贴成功！字符级粘贴会直接插入到文本中。"
         },
         {
-          "instruction": "",
+          "instruction": "最终任务：将三行内容重新排列。先用 dd 剪切第三行，再移到第一行用 P 粘贴到上方，使顺序变为：葡萄、苹果、香蕉。",
           "hint": "先按 2j 到第三行，dd 剪切，然后按 gg 到第一行，按 P 粘贴到上方。",
           "explanation": "dd 不仅删除行，还会把内容保存到寄存器中，相当于\"剪切\"。配合 p/P 使用，就可以实现行的移动和重排。",
           "initialContent": [
@@ -861,7 +863,7 @@
             "香蕉",
             "葡萄"
           ],
-          "successMessage": ""
+          "successMessage": "太棒了！你已掌握了复制粘贴的所有基本操作。dd + p 实现剪切粘贴，yy + p 实现复制粘贴！"
         }
       ]
     },
@@ -877,7 +879,7 @@
       ],
       "steps": [
         {
-          "instruction": "",
+          "instruction": "按 / 进入搜索模式，输入 vim，然后按回车执行搜索。",
           "hint": "依次按 / v i m 然后按 Enter。搜索会跳转到第一个匹配的位置。",
           "explanation": "/ 会进入搜索模式，输入搜索关键词后按回车，光标会跳到第一个匹配的位置。搜索是 Vim 中快速定位文本的核心功能。",
           "initialContent": [
@@ -886,10 +888,10 @@
             "I love vim",
             "vim is powerful"
           ],
-          "successMessage": ""
+          "successMessage": "搜索成功！光标已跳到第一个 \"vim\" 的位置。"
         },
         {
-          "instruction": "",
+          "instruction": "按 n 跳转到下一个 \"vim\" 匹配项。",
           "hint": "按小写 n 可以跳转到搜索结果的下一个匹配位置。",
           "explanation": "n（next）会按照搜索方向跳转到下一个匹配项。如果到达文件末尾，会自动从头开始继续搜索（环绕搜索）。",
           "initialContent": [
@@ -898,10 +900,10 @@
             "I love vim",
             "vim is powerful"
           ],
-          "successMessage": ""
+          "successMessage": "找到了！光标已跳到第二行的 \"vim\"。"
         },
         {
-          "instruction": "",
+          "instruction": "按大写 N 跳回到上一个 \"vim\" 匹配项。",
           "hint": "按大写 N（Shift+n）可以反向跳转到上一个匹配位置。",
           "explanation": "N 的作用与 n 相反，它会按搜索方向的反方向跳转。n 和 N 让你可以在所有匹配项之间自由来回移动。",
           "initialContent": [
@@ -910,10 +912,10 @@
             "I love vim",
             "vim is powerful"
           ],
-          "successMessage": ""
+          "successMessage": "反向跳转成功！光标回到了第一行的 \"vim\"。"
         },
         {
-          "instruction": "",
+          "instruction": "使用替换命令将当前行（第一行）的 \"vim\" 替换为 \"Vim\"。输入 :s/vim/Vim/ 并按回车。",
           "hint": "依次输入 : s / v i m / V i m / 然后按 Enter。",
           "explanation": ":s/旧文本/新文本/ 会替换当前行中第一个匹配的文本。s 代表 substitute（替换）。",
           "initialContent": [
@@ -922,10 +924,10 @@
             "I love vim",
             "vim is powerful"
           ],
-          "successMessage": ""
+          "successMessage": "替换成功！第一行的 \"vim\" 已变为 \"Vim\"。"
         },
         {
-          "instruction": "",
+          "instruction": "移到第三行（\"I love vim\"），使用 :s/vim/Vim/g 替换该行所有的 \"vim\"。",
           "hint": "先移到第三行，然后输入 :s/vim/Vim/g 并按回车。末尾的 g 表示替换该行所有匹配项。",
           "explanation": "默认情况下 :s 只替换每行的第一个匹配项。加上 g（global）标志后，会替换该行中所有的匹配项。",
           "initialContent": [
@@ -934,10 +936,10 @@
             "I love vim",
             "vim is powerful"
           ],
-          "successMessage": ""
+          "successMessage": "第三行替换完成！g 标志确保了所有匹配项都被替换。"
         },
         {
-          "instruction": "",
+          "instruction": "尝试搜索一个不存在的文本。输入 /xyz 并按回车。搜索完成后会回到普通模式。",
           "hint": "依次按 / x y z 然后按 Enter。",
           "explanation": "当搜索不到匹配项时，Vim 会显示提示信息。这不会导致错误，你仍然处于普通模式中。",
           "initialContent": [
@@ -946,10 +948,10 @@
             "I love Vim",
             "vim is powerful"
           ],
-          "successMessage": ""
+          "successMessage": "搜索完毕，没有找到 \"xyz\"，但编辑器状态正常。"
         },
         {
-          "instruction": "",
+          "instruction": "最终任务：将剩余行中所有的 \"vim\" 替换为 \"Vim\"。分别在第二行和第四行执行 :s/vim/Vim/ 命令。",
           "hint": "先移到第二行执行 :s/vim/Vim/，再移到第四行执行同样的命令。",
           "explanation": "在实际使用中，你可以用 :%s/vim/Vim/g 一次替换全文。但逐行替换能帮助你更好地理解替换命令的工作方式。",
           "initialContent": [
@@ -958,7 +960,7 @@
             "I love Vim",
             "vim is powerful"
           ],
-          "successMessage": ""
+          "successMessage": "恭喜你！所有的 \"vim\" 都已替换为 \"Vim\"。你已掌握搜索和替换的基本用法！"
         }
       ]
     },
@@ -973,7 +975,7 @@
       ],
       "steps": [
         {
-          "instruction": "",
+          "instruction": "按 v 进入字符可视模式。注意左下角的模式指示器会变为 VISUAL。",
           "hint": "直接按小写字母 v 即可进入字符可视模式。",
           "explanation": "可视模式允许你先选择文本区域，再对其执行操作。按 v 进入字符可视模式后，移动光标即可扩展选区。",
           "initialContent": [
@@ -981,10 +983,10 @@
             "line two content",
             "line three content"
           ],
-          "successMessage": ""
+          "successMessage": "你已进入可视模式！现在可以移动光标来选择文本。"
         },
         {
-          "instruction": "",
+          "instruction": "在可视模式下，用 l 或 w 扩展选区，然后按 d 删除选中的文本。",
           "hint": "先按 v 进入可视模式，然后按 w 选择一个单词，最后按 d 删除。",
           "explanation": "在可视模式下，所有移动命令（如 l、w、e 等）都会扩展或缩小选区。选好文本后，按 d 删除选区内容。",
           "initialContent": [
@@ -992,10 +994,10 @@
             "line two content",
             "line three content"
           ],
-          "successMessage": ""
+          "successMessage": "太棒了！你成功用可视模式选择并删除了文本。"
         },
         {
-          "instruction": "",
+          "instruction": "先按 u 撤销刚才的删除，然后按 V（大写）进入行可视模式。",
           "hint": "先按 u 撤销，再按 Shift+v 进入行可视模式。行可视模式会选中整行。",
           "explanation": "行可视模式（V）与字符可视模式不同，它会自动选中整行。上下移动光标时，会以行为单位扩展选区。",
           "initialContent": [
@@ -1003,10 +1005,10 @@
             "line two content",
             "line three content"
           ],
-          "successMessage": ""
+          "successMessage": "你已进入行可视模式！注意整行都被高亮选中了。"
         },
         {
-          "instruction": "",
+          "instruction": "在行可视模式下，按 y 复制（yank）当前选中的行。复制后会自动返回普通模式。",
           "hint": "直接按 y 即可复制选中的行。",
           "explanation": "y（yank）是 Vim 中的复制命令。在可视模式下按 y，会复制选区内容到寄存器，同时自动退出可视模式回到普通模式。",
           "initialContent": [
@@ -1014,10 +1016,10 @@
             "line two content",
             "line three content"
           ],
-          "successMessage": ""
+          "successMessage": "复制成功！文本已保存到寄存器中，可以用 p 粘贴。"
         },
         {
-          "instruction": "",
+          "instruction": "按 p 粘贴刚才复制的行。粘贴后文档应该会多出一行。",
           "hint": "在普通模式下直接按 p 即可在光标下方粘贴。",
           "explanation": "p（paste/put）会将寄存器中的内容粘贴出来。如果复制的是整行（行可视模式下复制），粘贴时会在当前行下方插入新行。",
           "initialContent": [
@@ -1025,10 +1027,10 @@
             "line two content",
             "line three content"
           ],
-          "successMessage": ""
+          "successMessage": "粘贴成功！你可以看到新的一行已经被插入。"
         },
         {
-          "instruction": "",
+          "instruction": "按 v 进入可视模式，用 w 扩展选区，然后按 c 修改选中的文本。注意 c 会删除选区并进入插入模式。",
           "hint": "依次按 v、w、c。c 会删除选区内容并切换到插入模式，让你输入新文本。",
           "explanation": "c（change）是\"修改\"命令。在可视模式下按 c，会删除选中的文本并立即进入插入模式，让你输入新内容来替换。这比先删除再插入更高效。",
           "initialContent": [
@@ -1036,7 +1038,7 @@
             "line two content",
             "line three content"
           ],
-          "successMessage": ""
+          "successMessage": "你已掌握可视模式的修改操作！c 命令在可视模式下非常实用。"
         }
       ]
     },
@@ -1051,7 +1053,7 @@
       ],
       "steps": [
         {
-          "instruction": "",
+          "instruction": "按 w 向前移动一个单词。光标会跳到下一个单词的开头。",
           "hint": "直接按 w，光标会从 \"The\" 的 T 跳到 \"quick\" 的 q。",
           "explanation": "w（word）将光标移到下一个单词的开头。Vim 中\"单词\"由字母、数字和下划线组成，空格和标点符号是分隔符。",
           "initialContent": [
@@ -1061,10 +1063,10 @@
             "epsilon zeta eta theta",
             "final line here end"
           ],
-          "successMessage": ""
+          "successMessage": "光标已移动到 \"quick\" 的开头！w 是最常用的移动命令之一。"
         },
         {
-          "instruction": "",
+          "instruction": "按 b 向后移动一个单词。光标会跳到前一个单词的开头。",
           "hint": "直接按 b，光标会从当前位置向左跳到上一个单词开头。",
           "explanation": "b（back）与 w 相反，将光标移到前一个单词的开头。w 和 b 是一对互补的移动命令。",
           "initialContent": [
@@ -1074,10 +1076,10 @@
             "epsilon zeta eta theta",
             "final line here end"
           ],
-          "successMessage": ""
+          "successMessage": "光标已回到 \"quick\" 的开头！b 让你可以快速回退。"
         },
         {
-          "instruction": "",
+          "instruction": "按 e 移动到当前单词的末尾。光标会停在单词的最后一个字符上。",
           "hint": "直接按 e，光标会移动到 \"The\" 的最后一个字母 e 上。",
           "explanation": "e（end）将光标移到当前单词（或下一个单词）的最后一个字符。与 w 不同的是，e 停在词尾而非词首。",
           "initialContent": [
@@ -1087,10 +1089,10 @@
             "epsilon zeta eta theta",
             "final line here end"
           ],
-          "successMessage": ""
+          "successMessage": "光标已到达 \"The\" 的末尾！e 在很多组合命令中非常有用。"
         },
         {
-          "instruction": "",
+          "instruction": "按 0（数字零）跳到当前行的第一个字符。",
           "hint": "按键盘上的数字 0，光标会立即跳到行首。",
           "explanation": "0 将光标移到当前行的第一列（第 0 列）。这是最快的回到行首的方法。还有 ^ 可以跳到行首的第一个非空白字符。",
           "initialContent": [
@@ -1100,10 +1102,10 @@
             "epsilon zeta eta theta",
             "final line here end"
           ],
-          "successMessage": ""
+          "successMessage": "光标已跳到行首！0 是快速回到行开头的利器。"
         },
         {
-          "instruction": "",
+          "instruction": "按 $ 跳到当前行的最后一个字符。",
           "hint": "按 Shift+4（即 $），光标会跳到行尾的最后一个字符。",
           "explanation": "$ 将光标移到当前行的最后一个字符。0 和 $ 是一对，分别代表行首和行尾。",
           "initialContent": [
@@ -1113,10 +1115,10 @@
             "epsilon zeta eta theta",
             "final line here end"
           ],
-          "successMessage": ""
+          "successMessage": "光标已到达行尾！$ 让你瞬间到达一行的末端。"
         },
         {
-          "instruction": "",
+          "instruction": "按 gg 跳到文件的第一行。",
           "hint": "快速连按两次 g，光标会跳到文件的最开头。",
           "explanation": "gg 将光标移到文件的第一行。这在浏览长文件时非常有用，可以快速回到文件开头。",
           "initialContent": [
@@ -1126,10 +1128,10 @@
             "epsilon zeta eta theta",
             "final line here end"
           ],
-          "successMessage": ""
+          "successMessage": "你已跳到文件的第一行！gg 是最快到达文件开头的方法。"
         },
         {
-          "instruction": "",
+          "instruction": "按 G（大写）跳到文件的最后一行。",
           "hint": "按 Shift+g，光标会跳到文件的最后一行。",
           "explanation": "G 将光标移到文件的最后一行。gg 和 G 是一对，分别代表文件首行和文件末行。",
           "initialContent": [
@@ -1139,10 +1141,10 @@
             "epsilon zeta eta theta",
             "final line here end"
           ],
-          "successMessage": ""
+          "successMessage": "你已跳到文件的最后一行！G 让你瞬间到达文件底部。"
         },
         {
-          "instruction": "",
+          "instruction": "按 fo 查找当前行中下一个字母 o，光标会直接跳到该字符上。",
           "hint": "先按 f，再按 o。光标会跳到第一行中第一个出现的字母 o。",
           "explanation": "f{char}（find）在当前行内向右查找指定字符，并将光标移到该字符上。这是行内精准定位的利器。按 ; 可以重复查找下一个。",
           "initialContent": [
@@ -1152,10 +1154,10 @@
             "epsilon zeta eta theta",
             "final line here end"
           ],
-          "successMessage": ""
+          "successMessage": "光标已跳到 \"brown\" 中的字母 o！f 是行内快速定位的绝佳命令。"
         },
         {
-          "instruction": "",
+          "instruction": "按 to 移动到字母 o 的前一个字符。与 f 不同，t 会停在目标字符之前。",
           "hint": "先按 t，再按 o。光标会停在字母 o 之前的那个字符上。",
           "explanation": "t{char}（till）与 f 类似，但光标停在目标字符的前一个位置。t 在与操作符（如 d、c）组合时特别有用，例如 dt) 可以删除到右括号之前的所有内容。",
           "initialContent": [
@@ -1165,10 +1167,10 @@
             "epsilon zeta eta theta",
             "final line here end"
           ],
-          "successMessage": ""
+          "successMessage": "光标停在了 o 之前！t 比 f 少走一步，在组合命令中很常用。"
         },
         {
-          "instruction": "",
+          "instruction": "综合挑战：使用 G 跳到文件末尾。试着记住今天学到的所有移动命令！",
           "hint": "按 Shift+g 即可跳到文件的最后一行。",
           "explanation": "恭喜你学完了所有高级移动命令！总结一下：w/b/e 按单词移动，0/$ 在行内跳转，gg/G 在文件间跳转，f/t 精准查找字符。这些命令可以自由组合，大幅提升编辑效率。",
           "initialContent": [
@@ -1178,7 +1180,7 @@
             "epsilon zeta eta theta",
             "final line here end"
           ],
-          "successMessage": ""
+          "successMessage": "太棒了！你已经掌握了所有高级移动命令，编辑效率将大幅提升！"
         }
       ]
     },
@@ -1194,7 +1196,7 @@
       ],
       "steps": [
         {
-          "instruction": "",
+          "instruction": "按 3j 向下移动 3 行。数字前缀可以让任何移动命令重复执行指定次数。",
           "hint": "先按 3，再按 j。光标会从第 1 行跳到第 4 行。",
           "explanation": "在 Vim 中，几乎所有命令都可以加数字前缀。3j 表示\"向下移动 3 行\"，5w 表示\"向前移动 5 个单词\"。这是 Vim 高效编辑的基础。",
           "initialContent": [
@@ -1206,10 +1208,10 @@
             "line D",
             "line E"
           ],
-          "successMessage": ""
+          "successMessage": "光标已跳到第 4 行！数字前缀让移动更精准高效。"
         },
         {
-          "instruction": "",
+          "instruction": "按 2w 向前移动 2 个单词。光标会跳过两个单词到达第三个单词的开头。",
           "hint": "先按 2，再按 w。光标会从 \"one\" 跳过 \"two\"，到达 \"three\" 的开头。",
           "explanation": "2w 表示执行两次 w 命令。从 \"one\" 开始，第一次 w 到 \"two\"，第二次 w 到 \"three\"。",
           "initialContent": [
@@ -1221,10 +1223,10 @@
             "line D",
             "line E"
           ],
-          "successMessage": ""
+          "successMessage": "光标已到达 \"three\" 的开头！数字 + w 的组合非常实用。"
         },
         {
-          "instruction": "",
+          "instruction": "按 dd 删除当前整行。dd 是 Vim 中最常用的删除命令之一。",
           "hint": "快速连按两次 d 即可删除光标所在的整行。",
           "explanation": "dd 是\"操作符重复\"的特殊形式——当一个操作符按两次时，它会作用于整行。d 是删除操作符，dd 就是删除整行。类似的还有 yy（复制整行）、cc（修改整行）。",
           "initialContent": [
@@ -1236,10 +1238,10 @@
             "line D",
             "line E"
           ],
-          "successMessage": ""
+          "successMessage": "\"line A\" 已被删除！dd 是日常编辑中使用频率最高的命令之一。"
         },
         {
-          "instruction": "",
+          "instruction": "按 dw 删除光标所在的单词。操作符 d 加上移动命令 w，会删除从光标到下一个单词开头之间的内容。",
           "hint": "先按 d，再按 w。光标位置的第一个单词会被删除。",
           "explanation": "Vim 的核心语法是\"操作符 + 动作\"。d 是删除操作符，w 是\"到下一个词首\"的动作，所以 dw = 删除到下一个词首 = 删除当前单词。",
           "initialContent": [
@@ -1251,10 +1253,10 @@
             "line D",
             "line E"
           ],
-          "successMessage": ""
+          "successMessage": "单词 \"one \" 已被删除！dw 是删除单词的标准方法。"
         },
         {
-          "instruction": "",
+          "instruction": "按 d$ 删除从光标位置到行尾的所有内容。$ 代表行尾，d$ 就是\"删除到行尾\"。",
           "hint": "先按 d，再按 $（Shift+4）。光标之后的所有内容会被删除。",
           "explanation": "d$ 中，d 是操作符，$ 是\"到行尾\"的动作。你也可以用大写 D 来达到同样效果——D 等价于 d$。",
           "initialContent": [
@@ -1266,10 +1268,10 @@
             "line D",
             "line E"
           ],
-          "successMessage": ""
+          "successMessage": "从光标到行尾的内容已删除！d$ 和 D 都能快速清理行尾。"
         },
         {
-          "instruction": "",
+          "instruction": "按 cw 修改当前单词。cw 会删除单词并进入插入模式，让你输入新内容。",
           "hint": "先按 c，再按 w。单词会被删除，同时进入插入模式。",
           "explanation": "c（change）是修改操作符。cw = 删除当前单词并进入插入模式。c 的行为类似 d，但会在删除后自动进入插入模式。同理，cc 修改整行，c$ 或 C 修改到行尾。",
           "initialContent": [
@@ -1281,10 +1283,10 @@
             "line D",
             "line E"
           ],
-          "successMessage": ""
+          "successMessage": "单词已删除并进入插入模式！cw 是快速替换单词的最佳方式。"
         },
         {
-          "instruction": "",
+          "instruction": "按 Escape 回到普通模式，然后按 2dd 一次删除 2 行。数字前缀同样适用于组合命令。",
           "hint": "先按 Escape，然后依次按 2、d、d。两行内容会同时被删除。",
           "explanation": "数字前缀可以和任何命令组合。2dd 表示\"删除 2 行\"，3dw 表示\"删除 3 个单词\"。掌握数字前缀后，你可以用最少的按键完成大量编辑。",
           "initialContent": [
@@ -1296,10 +1298,10 @@
             "line D",
             "line E"
           ],
-          "successMessage": ""
+          "successMessage": "两行已同时删除！数字 + dd 让批量删除变得轻而易举。"
         },
         {
-          "instruction": "",
+          "instruction": "综合练习：将光标移到第 3 行（使用 2j），然后用 dd 删除该行。完成后文件应该只剩 6 行。",
           "hint": "先按 2j 向下移动到第 3 行，再按 dd 删除当前行。",
           "explanation": "Vim 的强大之处在于命令的可组合性。任何移动命令都可以加数字前缀，任何操作符都可以与移动命令组合。这种\"语法\"让你只需记住少量基本命令，就能完成几乎所有编辑操作。",
           "initialContent": [
@@ -1311,7 +1313,7 @@
             "line D",
             "line E"
           ],
-          "successMessage": ""
+          "successMessage": "恭喜你掌握了组合命令！记住：操作符 + 动作 = Vim 的核心语法。"
         }
       ]
     },
@@ -1326,7 +1328,7 @@
       ],
       "steps": [
         {
-          "instruction": "",
+          "instruction": "这是一个示例 .vimrc 配置文件。按 j 向下移动，浏览这些常用配置。",
           "hint": "按 j 向下移动一行，看看 Vim 的配置选项。",
           "explanation": ".vimrc 是 Vim 的配置文件，位于用户主目录下（~/.vimrc）。你可以在其中设置行号、缩进、搜索行为等选项，让 Vim 更符合你的使用习惯。",
           "initialContent": [
@@ -1336,10 +1338,10 @@
             "set ignorecase",
             "set smartcase"
           ],
-          "successMessage": ""
+          "successMessage": "你已开始浏览配置文件！继续向下了解更多设置。"
         },
         {
-          "instruction": "",
+          "instruction": "set number 显示行号，set relativenumber 显示相对行号（便于使用数字前缀）。按 j 继续浏览。",
           "hint": "按 j 向下移动到下一个配置项。",
           "explanation": "行号设置能帮助你快速定位。相对行号显示当前行到其他行的距离，配合数字前缀（如 5j）使用非常高效。",
           "initialContent": [
@@ -1349,10 +1351,10 @@
             "set ignorecase",
             "set smartcase"
           ],
-          "successMessage": ""
+          "successMessage": "相对行号是 Vim 高手的常用配置！"
         },
         {
-          "instruction": "",
+          "instruction": "set ignorecase 让搜索忽略大小写，set smartcase 在搜索包含大写字母时自动区分大小写。按 j 继续。",
           "hint": "按 j 向下移动。",
           "explanation": "这两个选项配合使用，让搜索更智能：搜索 \"vim\" 会匹配 \"Vim\" 和 \"VIM\"，但搜索 \"Vim\" 只会精确匹配大写 V 的情况。",
           "initialContent": [
@@ -1362,10 +1364,10 @@
             "set ignorecase",
             "set smartcase"
           ],
-          "successMessage": ""
+          "successMessage": "智能搜索让 Vim 使用更加便捷！"
         },
         {
-          "instruction": "",
+          "instruction": "学习 Vim 的最佳方式是每天练习。建议每天花 10-15 分钟练习基本命令，逐步形成肌肉记忆。按任意移动键继续。",
           "hint": "按 j、k、h 或 l 中的任意一个。",
           "explanation": "Vim 的学习曲线较陡，但一旦掌握，编辑效率会大幅提升。建议从基本移动和编辑开始，逐步学习高级功能。不要试图一次记住所有命令，而是在实际使用中慢慢积累。",
           "initialContent": [
@@ -1375,10 +1377,10 @@
             "set ignorecase",
             "set smartcase"
           ],
-          "successMessage": ""
+          "successMessage": "坚持练习是掌握 Vim 的关键！"
         },
         {
-          "instruction": "",
+          "instruction": "恭喜你完成 Way2Vim 的所有基础课程！按 G 跳到最后一行，象征你的 Vim 学习之旅才刚刚开始。",
           "hint": "按 Shift+g（即大写 G）跳到文件末尾。",
           "explanation": "你已经掌握了 Vim 的核心概念：模式切换、移动命令、操作符与动作的组合、可视模式等。接下来，在日常编辑中多加练习，你会发现 Vim 的强大和优雅。继续探索更多高级功能，如宏录制、窗口分割、插件系统等。祝你在 Vim 的世界里越走越远！",
           "initialContent": [
@@ -1388,9 +1390,17 @@
             "set ignorecase",
             "set smartcase"
           ],
-          "successMessage": ""
+          "successMessage": "🎉 恭喜毕业！你已完成 Way2Vim 基础教程。继续练习，Vim 会成为你最得力的编辑工具！"
         }
       ]
     }
+  },
+  "editor": {
+    "ariaLabel": "Vim 编辑器",
+    "clickToEdit": "点击此处开始编辑"
+  },
+  "statusBar": {
+    "ln": "Ln",
+    "col": "Col"
   }
 }

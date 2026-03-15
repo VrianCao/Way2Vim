@@ -43,7 +43,7 @@ export default function Header() {
         </Link>
 
         {/* Navigation */}
-        <nav className="flex items-center gap-1" aria-label="主导航">
+        <nav className="flex items-center gap-1" aria-label={t('mainNav')}>
           {navItems.map(({ href, label, icon: Icon }) => {
             const isActive = pathname === href || pathname.startsWith(href + '/');
             return (
